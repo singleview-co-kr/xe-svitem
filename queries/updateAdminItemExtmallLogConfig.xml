@@ -1,0 +1,13 @@
+<query id="updateAdminItemExtmallLogConfig" action="update">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="extmall_log_conf" var="extmall_log_conf" />
+		<column name="updatetime" var="updatetime" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="item_srl" var="item_srl" notnull="notnull" />
+		<condition operation="equal" column="module_srl" var="module_srl" notnull="notnull" pipe="and"/>
+	</conditions>
+</query>

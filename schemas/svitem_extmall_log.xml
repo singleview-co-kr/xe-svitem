@@ -1,0 +1,8 @@
+<table name="svitem_extmall_log">
+	<column name="ext_mall_log_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment"/>
+	<column name="ext_mall_srl" type="number" size="11" default="0" notnull="notnull" index="idx_ext_mall_srl" />
+	<column name="bundle_rsp" type="number" size="10" notnull="notnull" />
+	<column name="bundle_qty" type="number" size="10" notnull="notnull" />
+	<column name="promo_memo" type="varchar" size="255" notnull="notnull" />
+	<column name="regdate" type="date" notnull="notnull" />
+</table>

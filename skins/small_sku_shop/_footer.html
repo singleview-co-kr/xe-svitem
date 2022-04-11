@@ -1,0 +1,203 @@
+<script type="text/javascript">
+// Enhanced E-Commerce Tagging Start(20141216) - singleview.co.kr
+function _gaSendBuyNowEventTotalPrice( param )
+{
+	var nTotalPrice = param[0].price * param[0].quantity;
+	ga('send', 'event', 'buy_immediate', 'clicked', 'goods_price', nTotalPrice, { 'hitCallback': function() { console.log('buy_immediate_clicked'); }});
+}
+
+function _gaSendAddToCartEventTotalPrice( param )
+{
+	var nTotalPrice = param[0].price * param[0].quantity;
+	ga('ec:addProduct', {
+		'id': param[0].item_srl,
+		'name': param[0].name,
+		'category': '',
+		'brand': '',
+		'variant': '',
+		'price': param[0].price,
+		'quantity': param[0].quantity
+	});
+	ga('ec:setAction', 'add');
+	ga('send', 'event', 'add_to_cart', 'clicked', 'goods_price', nTotalPrice, { 'hitCallback': function() { console.log('addCart_clicked'); }});
+}
+// Enhanced E-Commerce Tagging End(20141216) - singleview.co.kr
+
+/**
+ * add items into cart
+ */
+function addItemsToCartInDetailPage( item_srl, bPriceUndecided ) 
+{
+	var param = getCartParamsInDetailPage(item_srl);
+	
+	if( bPriceUndecided == 1 )
+		alert( '판매 제품이 아닙니다.');
+	else
+		addItemsToCartObj( param );
+
+	// Enhanced E-Commerce Tagging (20141216) - singleview.co.kr
+	_gaSendAddToCartEventTotalPrice( param );
+}
+
+/*
+ * direct order
+ */
+function orderItemsInDetailPage( item_srl, svcart_mid, bPriceUndecided, link_url )
+{
+	var param = getCartParamsInDetailPage( item_srl );
+
+	if( link_url.length > 3 )
+		location.href = link_url;
+	else
+	{
+		if( bPriceUndecided == 1 )
+			alert( '판매 제품이 아닙니다.');
+		else
+			orderItemsDirectly( param, svcart_mid );
+	}
+	
+	// Enhanced E-Commerce Tagging (20141216) - singleview.co.kr
+	_gaSendBuyNowEventTotalPrice( param );
+}
+
+function orderItemsDirectly( args, svcart_mid )
+{
+	if( typeof(args) == 'undefined' ) 
+		return;
+
+	if (!jQuery.isArray(args))
+		args = [args];
+
+	var params = new Array();
+	params['data'] = JSON.stringify(args);
+
+	var response_tags = new Array('error','message','cart_srl');
+	exec_xml('svitem', 'procSvitemAddItemsToCartObj', params, function(ret_obj) {
+		var cart_srl = ret_obj['cart_srl'];
+		current_url = current_url.setQuery('document_srl', '');
+		if (typeof(svcart_mid) == 'undefined' || svcart_mid == '') 
+		{
+			alert('SVCART MID is not defined.');
+			return;
+		}
+		location.href = current_url.setQuery('mid', svcart_mid).setQuery('act','dispSvcartOrderItems').setQuery('cartnos',cart_srl);
+	}, response_tags);
+}
+
+/**
+ * return cart parameter formatted string.
+ * format [ {item_srl:x, option_srl:x, quantity:x} , {item_srl:x, option_srl:x, quantity:x},...  ]
+ */
+function getCartParamsInDetailPage( item_srl ) 
+{
+	var param = new Array();
+
+	/*var options_count = 0;
+	jQuery('input[name=option_srls]').each(function(idx, elem) {
+		var option_srl = jQuery(elem).val();
+		var item = new Object();
+		item.item_srl = item_srl;
+		item.option_srl = option_srl;
+		item.quantity = jQuery(elem).next('.quantity').val();
+		param[param.length] = item;
+		options_count++;
+	});*/
+
+	//if( options_count == 0 ) 
+	//{
+		var item = new Object();
+		item.item_srl = item_srl;
+		item.quantity = jQuery('#quantity_'+item_srl).val();
+		item.price = jQuery('#price_'+item_srl).val();
+		item.name = jQuery('#item_name_'+item_srl).val();
+//console.log( item.name );
+		param[param.length] = item;
+	//}
+
+	/*jQuery('input[name=related_item]:checked').each(function(idx, elem) {
+		var item = new Object();
+		item.item_srl = jQuery(elem).val();
+		param[param.length] = item;
+	});*/
+	return param;
+}
+
+/**
+ * add items into cart (new)
+ * @param args format [ {item_srl:x, option_srl:x, quantity:x} , {item_srl:x, option_srl:x, quantity:x},...  ]
+ *        item_srl is required.
+ */
+var each_count = 0;
+
+function addItemsToCartObj( args ) 
+{
+	if( typeof(args)=='undefined' )
+		return;
+
+	if( !jQuery.isArray( args ) ) 
+		args = [args];
+
+	var params = new Array();
+	params['data'] = JSON.stringify(args);
+
+	exec_xml( 'svitem', 'procSvitemAddItemsToCartObj', params, function( ret_obj ){
+		var cartbox = $('.ajax-cart-box');
+		var cartcountbox = cartbox.find('.acs-title sub span');
+		var cartamntbox = cartbox.find('.acs-content');
+		
+		//ret_obj.total_price = 399000;
+		// current cart number
+		var cartcount = $('.cartnav span').html();
+		var each_count = $( '#quantity_' + args[0].item_srl ).val();
+		
+		$('.btn-wrap i').remove();
+		$(window).scrollTop(0);
+
+		var each_countstr = each_count + ' 개';
+		$('.action-tips span').html(each_countstr);
+		//$('.ac-item-subinfo').html(each_countstr);
+		
+		// total price display
+console.log( $( '#price_' + args[0].item_srl ).val() );
+		var each_price = removeComma( $( '#price_' + args[0].item_srl ).val() );
+		var total_price = parseInt( each_price ) *  parseInt( each_count );
+
+		var carttotalpricestr = formatNumber( total_price )+ ' 원';
+		$('.ac-item-price').html(carttotalpricestr);
+		//cartcountbox.html( cartcountstr );
+
+///console.log( total_price );
+
+		// quantity display
+		var nTotalCnt = parseInt( cartcount ) + parseInt( each_count );
+		$('.cartnav span').html(nTotalCnt);
+		var cartcountstr = nTotalCnt + ' 개';
+		cartcountbox.html( cartcountstr );
+		
+		// total amnt display
+		var cartamnt = removeComma( $('.acs-content').html() );
+		
+//console.log( parseInt( cartamnt ) );
+//console.log( parseInt( total_price ) );
+		var nTotalAmnt = parseInt( cartamnt ) + parseInt( total_price );
+
+		var cartamntstr = formatNumber( nTotalAmnt )+ '원';
+		cartamntbox.html( cartamntstr );
+
+		$('.ac-item-thumb').attr('src', $('.mp-thumb-' + args[0].item_srl ).attr('src') );
+
+		cartbox.css({top:0});
+		//$('.acs-content').html('$'+(ret_obj.total_price/100).toFixed(2));
+		
+		var t = 1000;
+		if( t )
+			clearTimeout( t );
+		t = setTimeout(function(){
+			$('.ajax-cart-box').css({top:'-'+$('.ajax-cart-box').outerHeight()+'px'});
+		},8000);
+	});
+
+	if(typeof loaded_count == 'function') 
+		loaded_count();
+}
+</SCRIPT>

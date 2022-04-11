@@ -1,0 +1,86 @@
+<li class="large-3 medium-3 small-6 columns">
+			<!---form action="/cart/add" method="post">
+				<input type="hidden" name="id" class="variant-id" value="939112813" />
+				<input type="hidden" name="varprice" class="varprice" value="$29.99" />
+				<input type="hidden" name="varname" class="varname" value="Default" /---->
+				<div class="mp-item">
+					<a class="mp-thumb-hook" href="/products/3colorshinesportbands"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20b_264x208.jpg"  alt="thumbnail-dial-h20b" /></a>
+					<ul class="variant-selection">
+						<li></li>
+					</ul>
+					<div class="mp-info">
+						<h3>InBody H20B</h3>
+					</div>
+					<div class="btn-wrap">
+						<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+					</div>
+				</div>
+			<!---/form---->
+		</li>
+		<li class="large-3 medium-3 small-6 columns">
+			<form action="/cart/add" method="post">
+				<input type="hidden" name="id" class="variant-id" value="453136357" />
+				<input type="hidden" name="varprice" class="varprice" value="$9.95" />
+				<input type="hidden" name="varname" class="varname" value="Sports Wristband" />
+				<div class="mp-item">
+					<a class="mp-thumb-hook" href="/products/sport-band"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20_264x208.jpg"  alt="thumbnail-dial-h20" /></a>
+					<ul class="variant-selection">
+						<li></li>
+					</ul>
+					<div class="mp-info">
+						<h3>InBody H20</h3>
+					</div>
+					<div class="btn-wrap">
+						<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+					</div>
+				</div>
+			</form>
+		</li>
+		<li class="large-3 medium-3 small-6 columns">
+			<form action="/cart/add" method="post">
+				<input type="hidden" name="id" class="variant-id" value="271449676" />
+				<input type="hidden" name="varprice" class="varprice" value="$39.99" />
+				<input type="hidden" name="varname" class="varname" value="Tan" />
+				<div class="mp-item">
+					<a class="mp-thumb-hook" href="/products/leather-band"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_black_264x208.jpg"  alt="thumbnail-inlab-black" /></a>
+					<ul class="variant-selection">
+						<!--li>
+							<a class="color-button active tan" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/leatherband_brown_small_3f94694c-9ed1-4c1d-aa53-e0c8f40343e8_large.jpg?v=1411651477" data-varid="271449676" data-varname="Tan" data-varprice="$39.99"><i></i></a>
+						</li>
+						<li>
+							<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/leatherband_black_small_c2555533-abdf-4eef-a51c-176adab35de2_large.jpg?v=1411651477" data-varid="271449484" data-varname="Black" data-varprice="$39.99"><i></i></a>
+						</li--->
+					</ul>
+					<div class="mp-info">
+						<h3>InLab Black</h3>
+					</div>
+					<div class="btn-wrap">
+						<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+					</div>
+				</div>
+			</form>
+		</li>
+		<li class="large-3 medium-3 small-6 columns">
+			<form action="/cart/add" method="post">
+				<input type="hidden" name="id" class="variant-id" value="849930773" />
+				<input type="hidden" name="varprice" class="varprice" value="$49.99" />
+				<input type="hidden" name="varname" class="varname" value="Tan" />
+				<div class="mp-item">
+					<a class="mp-thumb-hook" href="/products/pebbled"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_white_264x208.jpg"  alt="thumbnail-inlab-white" /></a>
+					<ul class="variant-selection">
+						<!---li>
+							<a class="color-button active tan" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/pebble_brown_small_7e9e144a-8ad0-433c-803a-af29c5e3c41f_large.jpg?v=1411651647" data-varid="849930773" data-varname="Tan" data-varprice="$49.99"><i></i></a>
+						</li>
+						<li>
+							<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/pebble_black_small_f7a0a133-3166-478c-b32f-77e0329680ae_large.jpg?v=1411651647" data-varid="849932501" data-varname="Black" data-varprice="$49.99"><i></i></a>
+						</li---->
+					</ul>
+					<div class="mp-info">
+						<h3>InLab White</h3>
+					</div>
+					<div class="btn-wrap">
+						<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+					</div>
+				</div>
+			</form>
+		</li>

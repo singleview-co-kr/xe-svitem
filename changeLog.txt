@@ -1,0 +1,1333 @@
+v 4.0.0
+14th, Aug 2020
+1. extravar.class 기능 개선
+./svitem.extravar.controller.php 추가
+
+./svitem.class.php에서 아래의 코드 제거
+require_once(_XE_PATH_.'modules/svitem/ExtraItem.class.php');
+
+./svitem.admin.view.php::dispSvitemAdminItemExtraSetup()에서 아래의 코드를
+$args->module_srl = Context::get('module_srl');
+$output = executeQueryArray('svitem.getItemExtraList', $args);
+if(!$output->toBool()) 
+	return $output;
+$ExtraList = $output->data;
+Context::set('list', $ExtraList);
+
+아래와 같이 변경
+require_once(_XE_PATH_.'modules/svitem/svitem.extravar.controller.php');
+$oExtraVarsController = new svitemExtraVarController();
+$nModuleSrl = Context::get('module_srl');
+$aRst = $oExtraVarsController->getItemExtraFormList($nModuleSrl);
+Context::set('list', $aRst);
+unset($aRst);
+unset($oExtraVarsController);
+
+./svitem.admin.controller.php::procSvitemAdminInsertItemExtra()에서 아래의 코드를
+$args->module_srl = Context::get('module_srl');
+$args->extra_srl = Context::get('extra_srl');
+$args->column_type = Context::get('column_type');
+$args->column_name = strtolower(Context::get('column_name'));
+$args->column_title = Context::get('column_title');
+$args->default_value = explode("\n", str_replace("\r", '', Context::get('default_value')));
+$args->required = Context::get('required');
+$args->is_active = (isset($args->required));
+if(!in_array(strtoupper($args->required), array('Y','N')))
+	$args->required = 'N';
+
+$args->description = Context::get('description');
+// check column_name
+if($this->checkColumnName($args->module_srl, $args->column_name))
+	return new Object(-1, 'msg_invalid_column_name');
+$this->insertItemExtra($args);
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+{
+	$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module', Context::get('module'), 'act', 'dispSvitemAdminItemExtraSetup');
+	$this->setRedirectUrl($returnUrl);
+	return;
+}
+
+아래와 같이 변경
+$oArgs->module_srl = Context::get('module_srl');
+$oArgs->extra_srl = Context::get('extra_srl');
+$oArgs->column_type = Context::get('column_type');
+$oArgs->column_name = strtolower(Context::get('column_name'));
+$oArgs->column_title = Context::get('column_title');
+$oArgs->default_value = explode("\n", str_replace("\r", '', Context::get('default_value')));
+$oArgs->required = Context::get('required');
+$oArgs->is_active = (isset($oArgs->required));
+$oArgs->description = Context::get('description');
+if(!in_array(strtoupper($oArgs->required), array('Y','N')))
+	$oArgs->required = 'N';
+
+require_once(_XE_PATH_.'modules/svitem/svitem.extravar.controller.php');
+$oExtraVarsController = new svitemExtraVarController();
+$oRst = $oExtraVarsController->addVar($oArgs);
+if(!$oRst->toBool()) 
+	return $oRst;
+unset($oArgs);
+unset($oRst);
+unset($oExtraVarsController);
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+{
+	$sReturnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module', Context::get('module'), 'act', 'dispSvitemAdminItemExtraSetup');
+	$this->setRedirectUrl($sReturnUrl);
+	return;
+}
+
+./svitem.admin.view.php::checkColumnName() 제거
+./svitem.admin.view.php::insertItemExtra() 제거
+
+./svitem.admin.controller.php::procSvitemAdminDeleteItemExtra()에서 아래의 코드를
+$module_srl = Context::get('module_srl');
+//DB 삭제부분
+$args->extra_srl = Context::get('extra_srl');
+$output = executeQuery('svitem.deleteItemExtra', $args);
+if(!$output->toBool())
+	return $output;
+//dynamic ruleset 재생성
+$oSvitemModel = &getModel('svitem');
+$extra_vars = $oSvitemModel->getItemExtraFormList($module_srl);
+$this->createInsertItemRuleset($extra_vars);
+$this->setMessage('success_deleted');
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+	$this->setRedirectUrl(getNotencodedUrl('','module','svshopmaster','act','dispSvitemAdminItemExtraSetup','module_srl',$module_srl));
+
+아래와 같이 변경
+$nModuleSrl = Context::get('module_srl');
+$oArgs->nModuleSrl = $nModuleSrl;
+$oArgs->nExtraSrl = Context::get('extra_srl');
+require_once(_XE_PATH_.'modules/svitem/svitem.extravar.controller.php');
+$oExtraVarsController = new svitemExtraVarController();
+$oRst = $oExtraVarsController->removeVar($oArgs);
+if(!$oRst->toBool()) 
+	return $oRst;
+unset($oArgs);
+unset($oRst);
+unset($oExtraVarsController);
+$this->setMessage('success_deleted');
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+	$this->setRedirectUrl(getNotencodedUrl('','module','svshopmaster','act','dispSvitemAdminItemExtraSetup','module_srl',$nModuleSrl));
+
+./svitem.admin.model.php::getCombinedExtraVars() 추가
+
+./svitem.model.php::getOutputsOnCatalogPage() 제거
+./svitem.model.php::getDefaultDisplayConfig() 제거
+./svitem.model.php::getOutputsOnDetailPage() 제거
+
+./svitem.admin.controller.php::_insertListConfig() 제거
+./svitem.admin.controller.php::_insertDetailListConfig() 제거
+
+./svitem.admin.controller.php::_insertDisplayConfig() 추가
+
+./svitem.admin.controller.php::procSvitemAdminInsertListDisplayConfig() 제거
+./svitem.admin.controller.php::procSvitemAdminInsertDetailDisplayConfig() 제거
+
+./svitem.admin.controller.php::procSvitemAdminSaveDisplayConfig() 추가
+
+./svitem.view.php::dispSvitemItemList()에서 아래의 코드를
+Context::set('list_config', $oSvitemModel->getOutputsOnCatalogPage($nModuleSrl));
+
+아래와 같이 변경
+require_once(_XE_PATH_.'modules/svitem/svitem.extravar.controller.php');
+$oExtraVarsController = new svitemExtraVarController();
+$oArgs->sPageType = 'catalog';
+$oArgs->nModuleSrl = $this->module_info->module_srl;
+Context::set('list_config', $oExtraVarsController->getCombinedExtraVars($oArgs));
+unset($oArgs);
+
+./svitem.view.php::dispSvitemItemDetail()에서 아래의 코드를
+Context::set('list_config', $oSvitemModel->getOutputsOnDetailPage($this->module_info->module_srl));
+
+아래와 같이 변경
+require_once(_XE_PATH_.'modules/svitem/svitem.extravar.controller.php');
+$oExtraVarsController = new svitemExtraVarController();
+$oArgs->sPageType = 'detail';
+$oArgs->nModuleSrl = $this->module_info->module_srl;
+$aRst = $oExtraVarsController->getCombinedExtraVars($oArgs);
+Context::set('list_config', $aRst);
+unset($aRst); 
+unset($oArgs);
+
+./svitem.model.php::getExtraVars() 제거
+./svitem.model.php::getCombineItemExtras() 제거
+./svitem.model.php::getSvitemExtraVars() 제거
+./svitem.model.php::getItemExtraFormList() 제거
+./svitem.view.php::_dispExtraTitle() 제거
+./svitem.view.php::_dispExtraValue() 제거
+
+#####################################################################
+#####################################################################
+#####################################################################
+#####################################################################
+
+2. item class 추가
+./svitem.item_admin.php 추가
+./svitem.item_consumer.php 추가
+
+./conf/module.xml에서 아래의 코드를
+<action name="procSvitemAdminInsertItem" type="controller" ruleset="@svitem_insertItem" />
+
+아래와 같이 변경
+<action name="procSvitemAdminInsertItem" type="controller" />
+
+./svitem.admin.view.php::dispSvitemAdminInsertItem()에서 아래의 코드 제거
+$oEditorModel = &getModel('editor');
+$oSvitemAdminController = &getAdminController('svitem');
+$oSvitemModel = &getModel('svitem');
+//dynamic ruleset 재생성
+$extra_vars = $oSvitemModel->getItemExtraFormList($this->module_info->module_srl);
+$oSvitemAdminController->createInsertItemRuleset($extra_vars);
+$document_srl = getNextSequence();
+Context::set('document_srl', $document_srl);
+Context::set('editor', $oEditorModel->getModuleEditor('document', $this->module_info->module_srl, $document_srl, 'document_srl', 'description'));
+//Context::set('editor2', $oEditorModel->getModuleEditor('document', $this->module_info->module_srl, 0, 0, 'delivery_info'));
+// extra vars
+$item_info = new stdclass();
+$item_info->module_srl = $this->module_info->module_srl;
+Context::set('extra_vars', NExtraItemList::getList($item_info));
+
+./svitem.admin.controller.php::procSvitemAdminInsertItem()에서 아래의 코드를
+$args = Context::getRequestVars();
+// before
+$output = ModuleHandler::triggerCall('svitem.insertItem', 'before', $args);
+if (!$output->toBool())
+	return $output;
+//  save item info , get item_srl
+$output = $this->_insertItem($args);
+if (!$output->toBool())
+	return $output;
+$item_srl = $output->get('item_srl');
+$this->add('item_srl', $item_srl);
+
+// save file
+$oFileController = &getController('file');
+$args = Context::gets('module_srl','thumbnail_image');
+$args->item_srl = $item_srl;
+if (is_uploaded_file($args->thumbnail_image['tmp_name']))
+{
+	$output = $oFileController->insertFile($args->thumbnail_image, $args->module_srl, $args->item_srl);
+	if(!$output || !$output->toBool())
+		return $output;
+	$args->thumb_file_srl = $output->get('file_srl');
+}
+
+if($args->thumb_file_srl)
+{
+	$output = executeQuery('svitem.updateItemFile', $args);
+	if(!$output->toBool())
+		return $output;
+}
+$oFileController->setFilesValid($item_srl);
+// extra_vars insert
+$oSvitemModel = &getModel('svitem');
+$extra_vars = $oSvitemModel->getExtraVars($args->module_srl);
+$extra_vars = delObjectVars($extra_vars, $args);
+unset($args);
+foreach($extra_vars as $k => $v)
+{
+	$ex_args->item_srl = $item_srl;
+	$ex_args->name = $k;
+	$ex_args->value = $v->getValuePlain();
+	$output = executeQuery('svitem.deleteSvitemExtraVars', $ex_args);
+	if(!$output->toBool())
+		return $output;
+
+	$output = executeQuery('svitem.insertSvitemExtraVars', $ex_args);
+	if(!$output->toBool())
+		return $output;
+}
+// before
+//$output = ModuleHandler::triggerCall('svitem.insertItem', 'after', $args);
+//if (!$output->toBool()) return $output;
+$this->_resetCache();
+$this->setMessage('success_registed');
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON')))
+{
+	$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module'),'act','dispSvitemAdminUpdateItem','module_srl',Context::get('module_srl'),'item_srl',$item_srl);
+	$this->setRedirectUrl($returnUrl);
+	return;
+}
+
+아래와 같이 변경
+$oArgs = Context::getRequestVars();
+// before
+//$oTriggerRst = ModuleHandler::triggerCall('svitem.insertItem', 'before', $oArgs);
+//if(!$oTriggerRst->toBool())
+//	return $oTriggerRst;
+//unset($oTriggerRst);
+
+require_once(_XE_PATH_.'modules/svitem/svitem.item_admin.php');
+$oItemAdmin = new svitemItemAdmin();
+$oInsertRst = $oItemAdmin->create($oArgs);
+if (!$oInsertRst->toBool())
+	return $oInsertRst;
+
+$nItemSrl = $oInsertRst->get('nItemSrl');
+$this->add('item_srl', $nItemSrl);
+unset($oInsertRst);
+unset($oItemAdmin);
+
+// after
+//$output = ModuleHandler::triggerCall('svitem.insertItem', 'after', $oArgs);
+//if (!$output->toBool())
+//	return $output;
+//unset($output);
+$this->_resetCache();
+$this->setMessage('success_registed');
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON')))
+{
+	$sReturnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module'),'act','dispSvitemAdminUpdateItem','module_srl',Context::get('module_srl'),'item_srl',$nItemSrl);
+	$this->setRedirectUrl($sReturnUrl);
+	return;
+}
+
+./svitem.admin.controller.php::createInsertItemRuleset() 제거
+./svitem.admin.controller.php::_insertItem() 제거
+./svitem.admin.controller.php::_updateItemFile() 제거
+
+./svitem.admin.controller.php::procSvitemAdminUpdateItem()에서 아래의 코드를
+$item_srl = Context::get('item_srl');
+$module_srl = Context::get('disp_module_srl');
+$item_name = Context::get('item_name');
+$item_code = Context::get('item_code');
+$document_srl = Context::get('document_srl');
+$price = Context::get('price');
+$current_stock = Context::get('current_stock');
+$safe_stock = Context::get('safe_stock');
+$taxfree = Context::get('taxfree');
+$display = Context::get('display');
+$delivery_info = Context::get('delivery_info');
+// update document
+$description = Context::get('description');
+$sUaType = Context::get('ua_type');
+if( $sUaType == 'og' )
+{
+	$doc_args->document_srl = Context::get('mob_doc_srl');
+	$doc_args->module_srl = $module_srl;
+	$doc_args->content = $description;
+	$doc_args->title = $item_name;
+	$doc_args->list_order = $doc_args->document_srl*-1;
+	$doc_args->tags = Context::get('tag');
+	$doc_args->allow_comment = 'Y';
+	$oDocumentModel = &getModel('document');
+	$oDocumentController = &getController('document');
+	$output = $oDocumentController->updateDocument($oDocumentModel->getDocument($doc_args->document_srl), $doc_args);
+	if (!$output->toBool())
+		return $output;
+}
+elseif( $sUaType == 'mob' )
+	$args->mob_description = $description;
+elseif( $sUaType == 'pc' )
+	$args->pc_description = $description;
+
+$nGalleryDocSrl = Context::get('gallery_doc_srl');
+$oFileController = getController('file');
+$oFileController->setFilesValid($nGalleryDocSrl);
+//if(Context::get('delete_file'))
+//{
+//	$delete_file_srl = Context::get('delete_file');
+//	$this->deleteSvitemFile($delete_file_srl, $item_srl);
+//}
+// update item
+$args->item_srl = $item_srl;
+$args->item_name = $item_name;
+$args->item_code = $item_code;
+$args->module_srl = $module_srl;
+$args->document_srl = $document_srl;
+$args->price = $price;
+$args->current_stock = $current_stock;
+$args->safe_stock = $safe_stock;
+$args->taxfree = $taxfree;
+$args->display = $display;
+$args->delivery_info = $delivery_info;
+// related items' item_srls separated with comma
+$args->related_items = Context::get('related_items');
+// extras
+$oSvitemModel = &getModel('svitem');
+$extra_vars = $oSvitemModel->getExtraVars($module_srl);
+$extra_vars = delObjectVars($extra_vars, $args);
+$nCnt = 0;
+foreach( $extra_vars as $k )
+	$nCnt++;
+
+// 개발자용 PC 상세 페이지를 extra_vars에 등록
+if( strlen( Context::get('description_skin_pc') ) > 0 )
+	$extra_vars->description_skin_pc = new NExtraItem($val->module_srl, ++$nCnt, 'description_skin_pc', 'description_skin_pc', 'text', '', 'description_skin_pc', 'N', 'N', trim(Context::get('description_skin_pc')));
+	
+// 개발자용 MOB 상세 페이지를 extra_vars에 등록
+if( strlen( Context::get('description_skin_mob') ) > 0 )
+	$extra_vars->description_skin_mob = new NExtraItem($val->module_srl, ++$nCnt, 'description_skin_mob', 'description_skin_mob', 'text', '', 'description_skin_mob', 'N', 'N', trim(Context::get('description_skin_mob')));
+$args->extra_vars = serialize($extra_vars);
+// before
+//$output = ModuleHandler::triggerCall('svitem.updateItem', 'before', $args);
+//if (!$output->toBool())
+//	return $output;
+// begin extra_vars update
+foreach( $extra_vars as $k => $v )
+{
+	$ex_args->item_srl = $item_srl;
+	$ex_args->name = $k;
+	$ex_args->value = $v->getValuePlain();
+	$output = executeQuery('svitem.deleteSvitemExtraVars', $ex_args);
+	if(!$output->toBool()) 
+		return $output;
+
+	$output = executeQuery('svitem.insertSvitemExtraVars', $ex_args);
+	if(!$output->toBool()) 
+		return $output;
+}
+// end extra_vars update
+// begin GA EEC info processing
+$oEnhancedItemInfo = new stdClass();
+$sGaBrandName = strip_tags( Context::get('ga_brand_name') );
+$sGaCategoryName = strip_tags( Context::get('ga_category_name') );
+$sGaVariationName = strip_tags( Context::get('ga_variation_name') );
+$oEnhancedItemInfo->ga_brand_name = $sGaBrandName;
+$oEnhancedItemInfo->ga_category_name = $sGaCategoryName;
+$oEnhancedItemInfo->ga_variation_name = $sGaVariationName;
+// naver EP info processing
+$sNEpItemName = strip_tags( Context::get('naver_ep_item_name') );
+$sNEpMaker = strip_tags( Context::get('naver_ep_maker') );
+$sNEpOrigin = strip_tags( Context::get('naver_ep_origin') );
+$sNEpSearchTag = strip_tags( Context::get('naver_ep_search_tag') );
+$sNEpBarcode = strip_tags( Context::get('naver_ep_barcode') );
+$sNEpNvrCategory = strip_tags( Context::get('naver_ep_naver_category') );
+$sNEpEventWords = strip_tags( Context::get('naver_ep_event_words') );
+$sNEpSvCampaign2nd = trim( strip_tags( strtoupper( Context::get('naver_ep_sv_campaign2') ) ) );
+if( strlen( $sNEpSvCampaign2nd ) )
+{
+	if(!ctype_alnum($sNEpSvCampaign2nd)) 
+		return new Object(-1, 'msg_invalid_naverep_sv_campaign_code');
+}
+$sNEpSvCampaign3rd = trim( strip_tags( strtoupper( Context::get('naver_ep_sv_campaign3') ) ) );
+if( strlen( $sNEpSvCampaign3rd ) )
+{
+	if(!ctype_alnum($sNEpSvCampaign3rd)) 
+		return new Object(-1, 'msg_invalid_naverep_sv_campaign_code');
+}
+$sDEpItemName = strip_tags( Context::get('daum_ep_item_name') );
+
+$aBadgeIcon = Context::get('badge_icon' );
+$aBadgeIconToSave = [];
+foreach( $aBadgeIcon as $nIdx=>$sVal)
+	$aBadgeIconToSave[$sVal] = 1;
+
+$nGalleryRepThumbnailIdx = Context::get('gallery_rep_thumbnail_idx');
+if( $nGalleryRepThumbnailIdx )
+{
+	$oFileModel = getModel('file');
+	$nThumFileCnt = $oFileModel->getFilesCount($nGalleryDocSrl);
+
+	if( $nGalleryRepThumbnailIdx > $nThumFileCnt - 1 )
+		return new Object(-1, 'msg_invalid_gallery_rep_thumbnail_idx');
+	$oEnhancedItemInfo->rep_gallery_thumb_idx = $nGalleryRepThumbnailIdx;
+}
+$oEnhancedItemInfo->item_brief = trim( Context::get('item_brief' ) );
+$oEnhancedItemInfo->naver_ep_item_name = $sNEpItemName;
+$oEnhancedItemInfo->naver_ep_maker = $sNEpMaker;
+$oEnhancedItemInfo->naver_ep_origin = $sNEpOrigin;
+$oEnhancedItemInfo->naver_ep_search_tag = $sNEpSearchTag;
+$oEnhancedItemInfo->naver_ep_barcode = preg_replace("/[^0-9]*/s", '', $sNEpBarcode);
+$oEnhancedItemInfo->naver_ep_naver_category = $sNEpNvrCategory;
+$oEnhancedItemInfo->naver_ep_event_words = $sNEpEventWords;
+$oEnhancedItemInfo->naver_ep_sv_campaign2 = $sNEpSvCampaign2nd;
+$oEnhancedItemInfo->naver_ep_sv_campaign3 = $sNEpSvCampaign3rd;
+$oEnhancedItemInfo->daum_ep_item_name = $sDEpItemName;
+$oEnhancedItemInfo->default_badge_icon = $aBadgeIconToSave;
+$args->enhanced_item_info = serialize($oEnhancedItemInfo);
+
+// end GA EEC & SEO info processing
+$output = executeQuery('svitem.updateAdminItem', $args);
+if (!$output->toBool()) 
+	return $output;
+$this->_updateItemFile();
+// after
+//$output = ModuleHandler::triggerCall('svitem.updateItem', 'after', $args);
+//if (!$output->toBool())
+//	return $output;
+$this->_resetCache();
+$this->setRedirectUrl(getNotEncodedUrl('', 'module', Context::get('module'),'act','dispSvitemAdminUpdateItem','module_srl',Context::get('module_srl'),'item_srl',$item_srl,'ua_type', $sUaType, 'search_item_name',Context::get('search_item_name'),'category',Context::get('category')));
+
+아래와 같이 변경
+$oArgs = Context::getRequestVars();
+// before
+//$oTriggerRst = ModuleHandler::triggerCall('svitem.updateItem', 'before', $oArgs);
+//if (!$oTriggerRst->toBool())
+//	return $oTriggerRst;
+//unset($oTriggerRst);
+
+// update item
+require_once(_XE_PATH_.'modules/svitem/svitem.item_admin.php');
+$oItemAdmin = new svitemItemAdmin();
+$oParams->item_srl = $oArgs->item_srl;
+$oTmpRst = $oItemAdmin->loadHeader($oParams);
+if(!$oTmpRst->toBool())
+	return new Object(-1,'msg_invalid_item_request');
+unset($oParams);
+unset($oTmpRst);
+$oInsertRst = $oItemAdmin->update($oArgs);
+if (!$oInsertRst->toBool())
+	return $oInsertRst;
+unset($oInsertRst);
+unset($oItemAdmin);
+
+// after
+//$oTriggerRst = ModuleHandler::triggerCall('svitem.updateItem', 'after', $oArgs);
+//if(!$oTriggerRst->toBool())
+//	return $oTriggerRst;
+//unset($oTriggerRst);
+
+./svitem.admin.controller.php::procSvitemAdminDeleteItem() 변경
+./svitem.admin.controller.php::procSvitemAdminPermanentDeleteItem() 변경
+
+./svitem.admin.controller.php::procSvitemAdminUpdateItemList()에서 아래의 코드를
+$oSvitemController = &getController('svitem');
+$oSvitemModel = &getModel('svitem');
+$oModuleModel = &getModel('module');
+$item_srls = Context::get('item_srls');
+$item_name_arr = Context::get('item_name');
+$taxfree_arr = Context::get('taxfree');
+$display_arr = Context::get('display');
+$list_order_arr = Context::get('list_order');
+$item_code_arr = Context::get('item_code');
+$price_arr = Context::get('price');
+$cart = Context::get('cart');
+$updated_itemlist = array();
+$args->module_srl = Context::get('module_srl');
+$module_info = $oModuleModel->getModuleInfoByModuleSrl($args->module_srl);
+
+if(count($item_srls))
+{
+	foreach ($item_srls as $key=>$item_srl) 
+	{
+		$args->item_srl = $item_srl;
+		$args->item_name = $item_name_arr[$key];
+		$args->taxfree = $taxfree_arr[$key];
+		$args->display = $display_arr[$key];
+		$args->item_code = $item_code_arr[$key];
+		$args->list_order = $list_order_arr[$key];
+		$args->price = $price_arr[$key];
+		if(!$item_srl) 
+		{
+			// inert
+			$output = $oSvitemController->insertItem($args);
+			if(!$output->toBool())
+				return $output;
+		} 
+		else 
+		{
+			// update
+			$item_info = $oSvitemModel->getItemInfoByItemSrl($item_srl);
+			$update_flag = FALSE;
+			if($args->item_name != $item_info->item_name)
+				$update_flag = TRUE;
+			if($args->taxfree != $item_info->taxfree)
+				$update_flag = TRUE;
+			if($args->display != $item_info->display)
+				$update_flag = TRUE;
+			if($args->item_code != $item_info->item_code)
+				$update_flag = TRUE;
+			if($args->price != $item_info->price)
+				$update_flag = TRUE;
+			if($update_flag)
+				$args->updatetime = date('YmdHis');
+			if($args->list_order != $item_info->list_order)
+				$update_flag = TRUE;
+			if($update_flag)
+			{
+				$output = executeQuery('svitem.updateItem', $args);
+				if(!$output->toBool())
+					return $output;
+				$updated_itemlist[] = $item_info;
+			}
+		}
+	}
+}
+// after
+//$output = ModuleHandler::triggerCall('svitem.updateItem', 'after', $updated_itemlist);
+//if (!$output->toBool())
+//	return $output;
+$this->_resetCache();
+$this->setMessage('success_updated');
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+{
+	$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module')
+		,'act', 'dispSvitemAdminItemListByModule','module_srl',Context::get('module_srl')
+		,'category',Context::get('category'),'search_item_name',Context::get('search_item_name'));
+	$this->setRedirectUrl($returnUrl);
+	return;
+}
+
+아래와 같이 변경
+$nModuleSrl = Context::get('module_srl');
+$aItemSrl = Context::get('item_srls');
+$aItemName = Context::get('item_name');
+$aItemCode = Context::get('item_code');
+$aDisplay = Context::get('display');
+$aListOrder = Context::get('list_order');
+$aPrice = Context::get('price');
+if(count($aItemSrl)) // update item
+{
+	$aUpdatedItem = [];
+	$oArg = new stdClass();
+	
+	require_once(_XE_PATH_.'modules/svitem/svitem.item_admin.php');
+	$oItemAdmin = new svitemItemAdmin();
+	foreach ($aItemSrl as $nIdx => $nItemSrl) 
+	{
+		$oParams->item_srl = $nItemSrl;
+		$oTmpRst = $oItemAdmin->loadHeader($oParams);
+		if (!$oTmpRst->toBool())
+			return new Object(-1,'msg_invalid_item_request');
+		unset($oParams);
+		unset($oTmpRst);
+
+		$oParams->sUaType = 'og';
+		$oTmpRst = $oItemAdmin->loadDetail($oParams);
+		$oArg->item_srl = null;
+		$oArg->item_name = null;
+		$oArg->item_code = null;
+		$oArg->display = null;
+		$oArg->list_order = null;
+		$oArg->price = null;
+
+		//$oHeaderInfo = $oItemAdmin->getHeader('old'); // 기존 정보만 가져오기
+		$bUpdated = FALSE;
+		if($aItemName[$nIdx] != $oItemAdmin->item_name)
+		{
+			$oArg->item_name = $aItemName[$nIdx];
+			$bUpdated = TRUE;
+		}
+		if($aItemCode[$nIdx] != $oItemAdmin->item_code)
+		{
+			$oArg->item_code = $aItemCode[$nIdx];
+			$bUpdated = TRUE;
+		}
+		if($aDisplay[$nIdx] != $oItemAdmin->display)
+		{
+			$oArg->display = $aDisplay[$nIdx];
+			$bUpdated = TRUE;
+		}
+		if($aListOrder[$nIdx] != $oItemAdmin->list_order)
+		{
+			$oArg->list_order = $aListOrder[$nIdx];
+			$bUpdated = TRUE;
+		}
+		if($aPrice[$nIdx] != $oItemAdmin->price)
+		{
+			$oArg->price = $aPrice[$nIdx];
+			$bUpdated = TRUE;
+		}
+		if($bUpdated) // commit update
+		{
+			$oArg->item_srl = $nItemSrl;
+			$oArg->updatetime = date('YmdHis');
+			$oInsertRst = $oItemAdmin->update($oArg);
+			if (!$oInsertRst->toBool())
+				return $oInsertRst;
+			unset($oInsertRst);
+			$aUpdatedItem[] = $oItemAdmin->item_name;
+		}
+	}
+	unset($oItemAdmin);
+}
+$this->_resetCache();
+$sUpdatedItemName = implode(',', $aUpdatedItem);
+$this->setMessage($sUpdatedItemName.' 품목이 변경되었습니다.'); // 실제로 변경된 품목만 추출하도록 개선해야함
+if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))) 
+{
+	$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module')
+		,'act', 'dispSvitemAdminItemListByModule','module_srl',Context::get('module_srl')
+		,'category',Context::get('category'),'search_item_name',Context::get('search_item_name'));
+	$this->setRedirectUrl($returnUrl);
+	return;
+}
+
+./svitem.model.php::extractItemListForListPage()에서 아래의 코드를
+$oCatalog = $this->getCatalog($nModuleSrl, $nCatalogSrl);
+
+$list_count = Context::get('disp_numb');
+if (!$list_count && $this->module_info->list_count)
+	$list_count = $this->module_info->list_count;
+
+$sort_index = Context::get('sort_index');
+if( !$sort_index )
+	$sort_index = "list_order";
+
+$order_type = Context::get('order_type');
+if( !$order_type )
+	$order_type = 'asc';
+
+// item list
+$args->module_srl = $nModuleSrl;
+$args->display = 'Y';
+$args->page = Context::get('page');
+$args->list_count = $list_count;
+$args->sort_index = $sort_index;
+$args->order_type = $order_type;
+
+if( $nCatalogSrl ) // 카테고리 입력되면, category_node_srl 검색 
+	$args->category_node_srls = $oCatalog->displaying_catalog_srls;
+
+if( is_null( $args->page ) )
+	$args->page = 1;
+
+$sCatalogItemListCacheFile = FileHandler::readFile('./files/cache/svitem/catalog_itemlist.'.$nModuleSrl.'.'.$nCatalogSrl.'.'.$args->page.'.cache.php');
+if($sCatalogItemListCacheFile)
+	$output = unserialize( $sCatalogItemListCacheFile );
+else
+	$output = $this->_compileCatalogItemListCache($nModuleSrl, $nCatalogSrl, $args);
+
+$oSvpromotionModel = &getModel('svpromotion');
+$output->data = $oSvpromotionModel->getItemPriceList($output->data);
+foreach( $output->data as $nIdx => $oVal )
+{
+	$this->_unserializeItemInfo($oVal);
+	$dtReg = new DateTime($oVal->regdate); // new badge 표시 여부 시작 
+	$dtToday = new DateTime(date('Ymdhis'));
+	$dtElapsedDays = date_diff($dtReg, $dtToday);
+	if( $dtElapsedDays->days < 30 ) // 등록 후 30일까지만 new 표시
+		$oVal->enhanced_item_info->default_badge_icon['new']=1; // new badge 표시 여부 끝
+	if( $oVal->discount_amount )
+		$oVal->enhanced_item_info->default_badge_icon['sale']=1; // sale badge 표시 여부 끝
+}
+$output->add('catalog_info', $oCatalog);
+return $output;
+
+아래와 같이 변경
+$oCatalog = $this->getCatalog($nModuleSrl, $nCatalogSrl);
+
+$list_count = Context::get('disp_numb');
+if (!$list_count && $this->module_info->list_count)
+	$list_count = $this->module_info->list_count;
+
+$sort_index = Context::get('sort_index');
+if( !$sort_index )
+	$sort_index = "list_order";
+
+$order_type = Context::get('order_type');
+if( !$order_type )
+	$order_type = 'asc';
+
+// item list
+$args->module_srl = $nModuleSrl;
+$args->display = 'Y';
+$args->page = Context::get('page');
+$args->list_count = $list_count;
+$args->sort_index = $sort_index;
+$args->order_type = $order_type;
+
+if( $nCatalogSrl ) // 카테고리 입력되면, category_node_srl 검색 
+	$args->category_node_srls = $oCatalog->displaying_catalog_srls;
+
+if( is_null( $args->page ) )
+	$args->page = 1;
+
+$sCatalogItemListCacheFile = FileHandler::readFile('./files/cache/svitem/catalog_itemlist.'.$nModuleSrl.'.'.$nCatalogSrl.'.'.$args->page.'.cache.php');
+if($sCatalogItemListCacheFile)
+	$output = unserialize( $sCatalogItemListCacheFile );
+else
+	$output = $this->_compileCatalogItemListCache($nModuleSrl, $nCatalogSrl, $args);
+
+require_once(_XE_PATH_.'modules/svitem/svitem.item_consumer.php');
+$aItemOnCatalog = [];
+$oSvpromotionModel = &getModel('svpromotion');
+foreach( $output->data as $nIdx => $oVal )
+{
+	$oItemConsumer = new svitemItemConsumer();
+	$oParams->mode = 'import';
+	$oParams->oRawData = $oVal;
+	$oTmpRst = $oItemConsumer->loadHeader($oParams);
+	if (!$oTmpRst->toBool())
+		return new Object(-1,'msg_invalid_item_request');
+	unset($oTmpRst);
+	
+	$oApplyRst = $oItemConsumer->applyPromotionForCatalog($oSvpromotionModel);
+	if (!$oApplyRst->toBool())
+		return $oApplyRst;
+	unset($oApplyRst);
+
+	$aItemOnCatalog[] = $oItemConsumer;
+}
+unset($output->data);
+$output->data = $aItemOnCatalog;
+$output->add('catalog_info', $oCatalog);
+return $output;
+
+./svitem.model.php::getCurrencyInfo() 제거
+./svitem.model.php::getOptions() 제거
+./svitem.model.php::getBundlings() 제거
+./svitem.model.php::getItemInfoByDocumentSrl() 제거
+
+./svitem.model.php::getDisplayConf() 추가
+
+3. 미사용 코드 제거
+./svitem.model.php::getNpayScriptBySvcartMid() 제거
+
+4. 카탈로그 화면에 장바구니, 찜하기 버튼 표시 선택 기능 추가
+./tpl/disp_list_setup.html에 아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="display">{$lang->item_code} {$lang->display_or_not}</label>
+	<div class="x_controls">
+		<label class="x_inline"><input type="radio" id="display_itemcode_catalog" name="display_itemcode_catalog" value="Y" checked="checked"|cond="!$config->display_itemcode_catalog || $config->display_itemcode_catalog=='Y'" />{$lang->display}</label>
+		<label class="x_inline"><input type="radio" id="display_itemcode_catalog" name="display_itemcode_catalog" value="N" checked="checked"|cond="$config->display_itemcode_catalog=='N'"/>{$lang->not_display}</label>
+		<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+	</div>
+	<label class="x_control-label" for="display">{$lang->buy_button} {$lang->display_or_not}(미구현)</label>
+	<div class="x_controls">
+		<label class="x_inline"><input type="radio" id="display_buy_btn_catalog" name="display_buy_btn_catalog" value="Y" checked="checked"|cond="!$config->display_buy_btn_catalog || $config->display_buy_btn_catalog=='Y'" />{$lang->display}</label>
+		<label class="x_inline"><input type="radio" id="display_buy_btn_catalog" name="display_buy_btn_catalog" value="N" checked="checked"|cond="$config->display_buy_btn_catalog=='N'"/>{$lang->not_display}</label>
+		<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+	</div>
+	<label class="x_control-label" for="display">{$lang->cart_buttons} {$lang->display_or_not}(미구현)</label>
+	<div class="x_controls">
+		<label class="x_inline"><input type="radio" id="display_cart_btn_catalog" name="display_cart_btn_catalog" value="Y" checked="checked"|cond="!$config->display_cart_btn_catalog || $config->display_cart_btn_catalog=='Y'" />{$lang->display}</label>
+		<label class="x_inline"><input type="radio" id="display_cart_btn_catalog" name="display_cart_btn_catalog" value="N" checked="checked"|cond="$config->display_cart_btn_catalog=='N'"/>{$lang->not_display}</label>
+		<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+	</div>
+	<label class="x_control-label" for="display">{$lang->favorite_button} {$lang->display_or_not}</label>
+	<div class="x_controls">
+		<label class="x_inline"><input type="radio" id="display_favorite_btn_catalog" name="display_favorite_btn_catalog" value="Y" checked="checked"|cond="!$config->display_favorite_btn_catalog || $config->display_favorite_btn_catalog=='Y'"/>{$lang->display}</label>
+		<label class="x_inline"><input type="radio" id="display_favorite_btn_catalog" name="display_favorite_btn_catalog" value="N" checked="checked"|cond="$config->display_favorite_btn_catalog=='N'"/>{$lang->not_display}</label>
+		<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+	</div>
+</div>
+<div class="x_control-group"></div>
+
+./svitem.admin.controller.php::_insertDisplayConfig()에 아래의 코드 추가
+if( $sPageType == 'catalog' )
+{
+	if($nModuleSrl)
+	{
+		$oArgs = Context::getRequestVars();
+		return $this->_updateMidLevelConfig($oArgs);
+	}
+	else
+		return new Object(-1, 'msg_invalid_module_srl1');
+}
+
+./svitem.view.php::dispSvitemItemList()에 아래의 코드 추가
+$oSvitemModel = &getModel('svitem');
+$oConfig = $oSvitemModel->getMidLevelConfig($this->module_info->module_srl);
+Context::set('config', $oConfig);
+
+./svitem.admin.view.php::dispSvitemAdminListDisplaySetup()에 아래의 코드 추가
+$oMidConfig = $oSvitemModel->getMidLevelConfig( $this->module_info->module_srl);
+$aVarsToCancel = ['module_srl', 'module', 'module_category_srl', 'use_mobile', 'mlayout_srl', 'site_srl', 'mid', 'is_skin_fix', 
+					'skin', 'is_mskin_fix', 'mskin', 'browser_title', 'description', 'is_default', 'content', 'mcontent',
+					'open_rss', 'header_text', 'footer_text', 'regdate', 'category_display', 'delivery_info', 'layout_srl', 'menu_srl', 'primary_key'];
+foreach( $aVarsToCancel as $nIdx => $sVarTitle )
+	unset( $oMidConfig->{$sVarTitle} );
+Context::set('mid_config',$oMidConfig);
+
+5. 코드 오류 수정
+./svitem.admin.controller.php::procSvitemAdminInsertModInst() 수정
+
+v 4.0.1
+18th, Aug 2020
+1. 엑셀을 이용하여 신규 품목 일괄 등록 기능 추가
+./ext_class/PHPMailer-6.0.7 추가
+./ext_class/excel 추가
+./svitem.admin.controller.php::procSvitemAdminBulkInsertViaExcel() 추가
+./svitem.admin.controller.php에 SpecialValueBinder class 추가
+
+./tpl/bulkitems.html에 아래의 코드 추가
+<form method="post" action="./" class="x_form-horizontal" enctype="multipart/form-data">
+	<input name="module" type="hidden" value="{$module}" />
+	<input name="act" type="hidden" value="procSvitemAdminBulkInsertViaExcel" />
+	<input name="module_srl" type="hidden" value="{$module_srl}" />
+	<h1>{$lang->title_product_basicinfo}</h1>
+	PHPExcel이 긴 숫자 문자열을 과학부동소수로 읽지 않으려면 ini_set('precision', '17'); 로 변경해야 함 기본값은 14
+	<div class="x_control-group">
+		<label class="x_control-label" for="img_abs_path">서버의 바코드 이미지 절대 경로</label>
+		<div class="x_controls">
+			<input type="text" id="img_abs_path" name="img_abs_path" value='C:/AutoSet9/public_html/files/svitem/thumb_imgs/'/>
+			<a href="#img_abs_path_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="img_abs_path_help" class="x_help-block" hidden>{$lang->about_img_abs_path}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="thumbnail_image">{$lang->thumbnail}</label>
+		<div class="x_controls">
+			<input type="file" id="excel_filename" name="excel_filename" />
+			<a href="#thumbnail_image_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="thumbnail_image_help" class="x_help-block" hidden>{$lang->about_thumbnail_image}</p>
+		</div>
+	</div>
+	<div class="x_clearfix btnArea">
+		<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+	</div>
+</form>
+
+./svitem.admin_admin.php::_insertItem()에서 아래의 코드를
+if(is_uploaded_file($this->_g_oNewItemHeader->thumbnail_image['tmp_name']))
+{
+	$oFileController = &getController('file');
+	$oFileRst = $oFileController->insertFile($this->_g_oNewItemHeader->thumbnail_image, $this->_g_oNewItemHeader->module_srl, $this->_g_oNewItemHeader->item_srl);
+	if(!$oFileRst || !$oFileRst->toBool())
+		return $oFileRst;
+	$oFileController->setFilesValid($this->_g_oNewItemHeader->item_srl);
+	unset($oFileController);
+	$oArgs->thumb_file_srl = $oFileRst->get('file_srl');
+}
+
+아래와 같이 변경
+if($this->_g_oNewItemHeader->thumbnail_image['tmp_name']) 
+{
+	$oFileController = &getController('file');
+	if(is_uploaded_file($this->_g_oNewItemHeader->thumbnail_image['tmp_name'])) // single upload via web interface mode
+	{
+		$oFileRst = $oFileController->insertFile($this->_g_oNewItemHeader->thumbnail_image, $this->_g_oNewItemHeader->module_srl, $this->_g_oNewItemHeader->item_srl);
+		if(!$oFileRst || !$oFileRst->toBool())
+			return $oFileRst;
+		$oFileController->setFilesValid($this->_g_oNewItemHeader->item_srl);
+		$oArgs->thumb_file_srl = $oFileRst->get('file_srl');
+		unset($oFileRst);
+		unset($oFileController);
+	}
+	elseif( $this->_g_oNewItemHeader->thumbnail_image['size'] ) // excel bulk mode
+	{
+		echo 'yes img->'.$this->_g_oNewItemHeader->thumbnail_image['name'].'<BR>';
+		$oFileRst = $oFileController->insertFile($this->_g_oNewItemHeader->thumbnail_image, $this->_g_oNewItemHeader->module_srl, $this->_g_oNewItemHeader->item_srl, 0, true);
+		if(!$oFileRst || !$oFileRst->toBool())
+			return $oFileRst;
+		$oFileController->setFilesValid($this->_g_oNewItemHeader->item_srl);
+		$oArgs->thumb_file_srl = $oFileRst->get('file_srl');
+		unset($oFileRst);
+		unset($oFileController);
+	}
+	else
+	{
+		echo 'no img->'.$oArgs->thumbnail_image['name'].'<BR>';
+		$oArgs->thumb_file_srl = 0;
+	}
+}
+
+2. 물류 바코드와 원가 이력 관리 기능 추가
+./tpl/insertitem.html에 아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="barcode">{$lang->barcode}</label>
+	<div class="x_controls">
+		<input name="barcode" type="text" value="" />
+		<a href="#barcode_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="barcode_help" class="x_help-block" hidden>{$lang->about_barcode}</p>
+	</div>
+</div>
+
+./tpl/updatetitem.html에 아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="barcode">{$lang->barcode}</label>
+	<div class="x_controls">
+		<input name="barcode" type="text" class="inputTypeText w300" value="{$item_info->barcode}" />
+		<a href="#barcode_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="barcode_help" class="x_help-block" hidden>{$lang->about_barcode}</p>
+	</div>
+</div>
+
+./queries/insertItem.xml에 아래의 코드 추가
+<column name="barcode" var="barcode" notnull="notnull" />
+
+./queries/updateAdminItem.xml에 아래의 코드 추가
+<column name="barcode" var="barcode" />
+
+./svitem.item_admin.php::_insertItem()에 아래의 코드 추가
+$oArgs->barcode = $this->_g_oNewItemHeader->barcode;
+
+./svitem.item_admin.php::_updateItem()에 아래의 코드 추가
+if( $this->_g_oNewItemHeader->item_code )
+	$oArgs->barcode = $this->_g_oNewItemHeader->barcode;
+
+./svitem.admin.view.php::dispSvitemAdminBarcodeMgmt() 추가
+./svitem.admin.controller.php::procSvitemAdminBarcodeMgmt() 추가
+
+./tpl/barcode_ddl.html 추가
+./tpl/js/barcode_ddl.js 추가
+
+./schemas/svitem_items.xml에 아래의 코드 추가
+<column name="barcode" type="varchar" size="64" notnull="notnull" />
+
+./svitem.item_admin.php에 아래의 코드 추가
+private $_g_oBarcodeInfo = NULL;
+
+./schemas/svitem_finance_info.xml 추가
+./queries/getLatestProductionCostByTag.xml 추가
+
+./svitem.model.php::getProductionCostByTag() 추가
+
+v 4.0.2
+11th, Sep 2020
+1. 카탈로그 관리 화면에서 표시 순번 변경 기능 오류 수정
+./svitem.item_admin.php::_updateItem()에 아래의 코드 추가
+if( $this->_g_oNewItemHeader->list_order )
+	$oArgs->list_order = $this->_g_oNewItemHeader->list_order;
+
+2. 카탈로그 관리 화면에서 수정 후 1페이지로 돌아가는 오류 수정
+./svitem.admin.controller.php::procSvitemAdminUpdateItemList()에서 아래의 코드를
+$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module')
+	,'act', 'dispSvitemAdminItemListByModule','module_srl',Context::get('module_srl')
+	,'category',Context::get('category'),'search_item_name',Context::get('search_item_name'));
+
+아래와 같이 변경
+$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module',Context::get('module')
+	,'act', 'dispSvitemAdminItemListByModule','module_srl',Context::get('module_srl'),'page',Context::get('page')
+	,'category',Context::get('category'),'search_item_name',Context::get('search_item_name'));
+
+./tpl/itemlist.html에 아래의 코드 추가
+<input cond="$page" type="hidden" name="page" value="{$page}" />
+
+3. 카탈로그 관리 화면에서 변경 시 개발자용 상세페이지 설정 초기화 오류 수정
+./svitem.item_admin.php::_updateItem()에서 아래의 코드를
+if( $this->_g_oNewItemHeader->description_skin_pc )
+	$oEnhancedItemInfo->description_skin_pc = $this->_g_oNewItemHeader->description_skin_pc;
+
+if( $this->_g_oNewItemHeader->description_skin_mob )
+	$oEnhancedItemInfo->description_skin_mob = $this->_g_oNewItemHeader->description_skin_mob;
+
+아래와 같이 변경
+$oEnhancedItemInfo->description_skin_pc = $this->_g_oNewItemHeader->description_skin_pc ? $this->_g_oNewItemHeader->description_skin_pc : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_pc;
+$oEnhancedItemInfo->description_skin_mob = $this->_g_oNewItemHeader->description_skin_mob ? $this->_g_oNewItemHeader->description_skin_mob : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_mob;
+
+v 4.0.3
+14th, Sep 2020
+1. 제품 상세 정보 관리 화면에서 개발자 상세페이지 스킨 지정 취소 기능 추가
+./svitem.item_admin.php::_updateItem()에서 아래의 코드를
+$oEnhancedItemInfo->description_skin_pc = $this->_g_oNewItemHeader->description_skin_pc ? $this->_g_oNewItemHeader->description_skin_pc : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_pc;
+$oEnhancedItemInfo->description_skin_mob = $this->_g_oNewItemHeader->description_skin_mob ? $this->_g_oNewItemHeader->description_skin_mob : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_mob;
+
+아래와 같이 변경
+$oEnhancedItemInfo->description_skin_pc = $this->_g_oNewItemHeader->description_skin_pc ? $this->_g_oNewItemHeader->description_skin_pc : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_pc;
+if( $oEnhancedItemInfo->description_skin_pc == 'use_each_pc' )
+	$oEnhancedItemInfo->description_skin_pc = null;
+$oEnhancedItemInfo->description_skin_mob = $this->_g_oNewItemHeader->description_skin_mob ? $this->_g_oNewItemHeader->description_skin_mob : $this->_g_oOldItemHeader->enhanced_item_info->description_skin_mob;
+if( $oEnhancedItemInfo->description_skin_mob == 'use_each_mob' )
+	$oEnhancedItemInfo->description_skin_mob = null;
+
+./tpl/updateitem.html에서 아래의 코드를
+<select id="description_skin_mob" name="description_skin_mob">
+	<option value="">{$lang->choose_each_description_skin_mob}</option>
+	<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_mob==$val">{$val}</option>
+</select>
+
+<select id="description_skin_pc" name="description_skin_pc">
+	<option value="">{$lang->choose_each_description_skin_pc}</option>
+	<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_pc==$val">{$val}</option>
+</select>
+	
+아래와 같이 변경
+<select id="description_skin_mob" name="description_skin_mob">
+	<option value="use_each_mob">{$lang->choose_each_description_skin_mob}</option>
+	<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_mob==$val">{$val}</option>
+</select>
+
+<select id="description_skin_pc" name="description_skin_pc">
+	<option value="use_each_pc">{$lang->choose_each_description_skin_pc}</option>
+	<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_pc==$val">{$val}</option>
+</select>
+
+v 4.0.4
+24th, Nov 2020
+1. 제품 상세 페이지 구매하기 버튼 -> 외부몰 레이어 팝업시 현재창에서 외부몰 표시; 새창 표시도 팝업 차단됨
+./svitem.model.php::getSvitemDetailPageAction()에서 아래의 코드를
+$sMarketOutlinkHtml .= '<A HREF="'.$val->url.'" target="_new" onclick=\'checkNonEcConversionGatk("/go_extmall_to_buy.html", "go_extmall_to_buy");\'>'.$val->title.' 구매하러 가기 클릭!</A><BR><BR>';
+
+아래와 같이 변경
+$sMarketOutlinkHtml .= '<A HREF="'.$val->url.'" onclick=\'checkNonEcConversionGatk("/go_extmall_to_buy.html", "go_extmall_to_buy");\'>'.$val->title.' 구매하러 가기 클릭!</A><BR><BR>';
+
+v 4.1.0
+20th, Dec 2020
+1. php v7.4.13에 대응
+모든 new Object()를 new BaseObject()로 변경
+
+v 4.1.1
+11th, Jan 2021
+1. php v7.4.13에 대응
+./svitem.item_consumer.php에서 아래의 코드를
+public function svitemItemConsumer($oParams) 
+
+아래와 같이 변경
+public function svitemItemConsumer($oParams=null) 
+
+./svitem.item_consumer.php에서 아래의 코드를
+public function patchImpression($oParams)
+
+아래와 같이 변경
+public function patchImpression($oParams=null)
+
+./svitem.item_admin.php에서 아래의 코드를
+private function svitemItemAdmin($oParams)
+
+아래와 같이 변경
+public function svitemItemAdmin(&$oParams=null) 
+
+./svitem.item_admin.php에서 아래의 코드를
+private function _consturctExtraVars($oParams)
+
+아래와 같이 변경
+private function _consturctExtraVars($oParams = null)
+
+./svitem.item_consumer.php::_setSkeletonSvitemHeader()에 아래의 코드 추가
+$this->_g_oOldItemHeader->related_items = svitem::S_NULL_SYMBOL;
+
+v 4.1.2
+28th, Jan 2021
+1. php v7.4.13에 대응
+./svitem.item_consumer.php::_setSkeletonSvitemHeader()에 아래의 코드 추가
+$this->_g_oOldItemHeader->category_id = svitem::S_NULL_SYMBOL;
+
+v 4.1.3
+19th, Feb 2021
+1. 초기 설정 시 변수 오류 완화
+./svitem.item_consumer.php::_setSkeletonSvitemHeader()에 아래의 코드 추가
+$this->_g_oOldItemHeader->extra_vars = svitem::S_NULL_SYMBOL;
+
+./svitem.item_consumer.php::__get()에서 아래의 코드를
+debugPrint($sName);
+trigger_error('Undefined property or method: '.$sName);
+
+아래와 같이 변경
+if( $sName != 'aGalleryImg' ) // 초기 설정 시 썸네일 전혀 없으면 예외 발생 방지
+{
+	debugPrint($sName);
+	trigger_error('Undefined property or method: '.$sName);
+}
+
+v 4.1.4
+14th, Mar 2021
+1. 상품을 태그로 검색하는 기능 추가
+./schemas/svitem_items.xml에 아래의 코드 추가
+<column name="sv_tags" type="text" />
+
+./svitem.item_consumer.php::_setSkeletonSvitemHeader()에 아래의 코드 추가
+$this->_g_oOldItemHeader->sv_tags = svitem::S_NULL_SYMBOL;
+
+./svitem.item_admin.php::_setSkeletonHeader()에서 아래의 코드를
+$aBasicAttr = ['item_srl', 'module_srl', 'document_srl', 'description', // open graph / pc detail page / mob detail page
+		'disp_module_srl', 'category_node_srl', 'thumb_file_srl', 'gallery_doc_srl', 'mob_doc_srl', 'mob_description', 
+		'pc_doc_srl', 'pc_description', 'item_code', 'barcode', 'enhanced_item_info', 'item_name', 'price', 'taxfree',
+		'display', 'sales_count', 'current_stock', 'safe_stock', 'list_order', 'updatetime', 'regdate'];
+
+아래와 같이 변경
+$aBasicAttr = ['item_srl', 'module_srl', 'document_srl', 'description', // open graph / pc detail page / mob detail page
+		'disp_module_srl', 'category_node_srl', 'thumb_file_srl', 'gallery_doc_srl', 'mob_doc_srl', 'mob_description', 
+		'pc_doc_srl', 'pc_description', 'item_code', 'barcode', 'enhanced_item_info', 'item_name', 'price', 'taxfree',
+		'display', 'sales_count', 'current_stock', 'safe_stock', 'sv_tags', 'list_order', 'updatetime', 'regdate'];
+
+./tpl/updateitme.html에 아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="search_tags">{$lang->search_tags}</label>
+	<div class="x_controls">
+		<input name="search_tags" type="text" class="inputTypeText w100" value="{$item_info->tags}" />
+		<a href="#search_tags_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+		<p id="search_tags_help" class="x_help-block" hidden>{$lang->about_search_tags}</p>
+	</div>
+</div>
+
+./svitem.item_admin.php::_updateItem()에 아래의 코드 추가
+if( $this->_g_oNewItemHeader->sv_tags )
+	$oArgs->sv_tags = $this->_g_oNewItemHeader->sv_tags;
+
+./queries/updateAdminItem.xml에 아래의 코드 추가
+<column name="sv_tags" var="sv_tags" />
+
+./svitem.model.php::_compileTagItemListCache() 추가
+
+./queries/getTaggedItemList.xml 추가
+
+./svitem.model.php::extractItemListForListPage()에서 아래의 코드를
+if( $nCatalogSrl ) // 카테고리 입력되면, category_node_srl 검색 
+	$args->category_node_srls = $oCatalog->displaying_catalog_srls;
+
+if( is_null( $args->page ) )
+	$args->page = 1;
+
+$sCatalogItemListCacheFile = FileHandler::readFile('./files/cache/svitem/catalog_itemlist.'.$nModuleSrl.'.'.$nCatalogSrl.'.'.$args->page.'.cache.php');
+if($sCatalogItemListCacheFile)
+	$output = unserialize( $sCatalogItemListCacheFile );
+else
+	$output = $this->_compileCatalogItemListCache($nModuleSrl, $nCatalogSrl, $args);
+
+아래와 같이 변경
+$oCatalog = $this->getCatalog($nModuleSrl, $nCatalogSrl);
+if($sSearchTags) // 검색 태그 입력되면, 태그 검색 모드
+{
+	$aSearchTag = explode(',', $sSearchTags);
+	$oRst = $this->_compileTagItemListCache($nModuleSrl, $aSearchTag, $args);
+}
+else // 카탈로그 모드가 기본
+{
+	if( $nCatalogSrl ) // 카테고리 입력되면, category_node_srl 검색
+		$args->category_node_srls = $oCatalog->displaying_catalog_srls;
+
+	$sCatalogItemListCacheFile = FileHandler::readFile('./files/cache/svitem/catalog_itemlist.'.$nModuleSrl.'.'.$nCatalogSrl.'.'.$args->page.'.cache.php');
+	if($sCatalogItemListCacheFile)
+		$oRst = unserialize( $sCatalogItemListCacheFile );
+	else
+		$oRst = $this->_compileCatalogItemListCache($nModuleSrl, $nCatalogSrl, $args);
+}
+
+./svitem.view.php::dispSvitemItemList()에서 아래의 코드를
+$nCatalogSrl = (int)Context::get('catalog');
+$oListRst = $oSvitemModel->extractItemListForListPage($nModuleSrl, $nCatalogSrl );
+
+아래와 같이 변경
+$oParam = new stdClass();
+$oParam->nModuleSrl = $nModuleSrl;
+$oParam->nCatalogSrl = (int)Context::get('catalog');
+$oParam->sSearchTags = Context::get('tags');
+$oListRst = $oSvitemModel->extractItemListForListPage($oParam);
+
+2. svitem 기본 필드 정보가 null 이면 __get 메소드에서 예외 발생하는 오류 개선
+./svitem.item_admin.php::_matchOldItemInfo()에서 아래의 코드를
+if( $this->_g_oOldItemHeader->{$sTitle} == svitem::S_NULL_SYMBOL )
+	$this->_g_oOldItemHeader->{$sTitle} = $sVal;
+
+아래와 같이 변경
+if( $this->_g_oOldItemHeader->{$sTitle} == svitem::S_NULL_SYMBOL )
+{
+	if( $sVal )
+		$this->_g_oOldItemHeader->{$sTitle} = $sVal;
+}
+
+v 4.1.5
+24th, Mar 2021
+1. 모바일 스킨 코드 오류 수정
+./m.skins/trendshop/list_list.html에서 아래의 코드를
+<SCRIPT TYPE='text/javascript'>
+gatkList.queueItemInfo( '{$oItem-->item_srl}', '{$oItem-->item_name}', '{$oItem-->enhanced_item_info->ga_category_name}', '{$oItem-->enhanced_item_info->ga_brand_name}', '{$oItem-->enhanced_item_info->ga_variation_name}' );
+</SCRIPT>
+
+아래와 같이 변경
+<SCRIPT TYPE='text/javascript'>
+gatkList.queueItemInfo( '{$oItem->item_srl}', '{$oItem->item_name}', '{$oItem->enhanced_item_info->ga_category_name}', '{$oItem->enhanced_item_info->ga_brand_name}', '{$oItem->enhanced_item_info->ga_variation_name}' );
+</SCRIPT>
+
+v 4.1.6
+5th, Jul 2021
+1. 모바일 레이아웃 코드 오류 수정
+./tpl/skin.js/handler_item.js::calculate_sum()에서 아래의 코드를
+var related_sum = g_discounted_price;
+
+아래와 같이 변경
+if (typeof(g_discounted_price)=='undefined')
+	var related_sum = 0;
+else
+	var related_sum = g_discounted_price;
+
+v 4.1.7
+28th, Jul 2021
+1. GAv4용 gaectk.js 대응
+./skins/에서 gatk 를 gaectk로 변경
+./tpl/skin.js/handler_item.js::addItemsToCartInDetailPage()에서 아래의 코드를
+gatkDetail.patchBuyImmediately( 1 );
+gatkDetail.patchAddToCart( nQty );
+
+아래와 같이 변경
+gaectkDetail.patchBuyImmediately( 1 );
+gaectkDetail.patchAddToCart( nQty );
+
+./tpl/skin.js/handler_item.js::onClickNaverpayBuy()에서 아래의 코드를
+gatkDetail.patchBuyImmediately( 1 );
+gatkDetail.patchBuyImmediately( nQty );
+
+아래와 같이 변경
+gaectkDetail.patchBuyImmediately( 1 );
+gaectkDetail.patchBuyImmediately( nQty );
+
+./tpl/skin.js/handler_item.js::orderItemsInDetailPage()에서 아래의 코드를
+gatkDetail.patchBuyImmediately( 1 );
+gatkDetail.patchBuyImmediately( nQty );
+
+아래와 같이 변경
+gaectkDetail.patchBuyImmediately( 1 );
+gaectkDetail.patchBuyImmediately( nQty );
+
+v 4.1.8
+3rd, Sep 2021
+1. gaectk.js v1.2.1 대응
+모든 skin의 list.html에서 아래의 코드를
+gaectkList.init( '{$mid}', '{$page}', '{$module_info->list_count}' );
+
+아래와 같이 변경
+gaectkList.init( '{$page}', '{$module_info->list_count}' );
+
+2. gaectk prefix에 통일
+./tpl/skin.js/layer_popup.js::_orderItemsDirectly()에서 아래의 코드를
+params['mode'] = 'bi'; // buy immediately
+
+아래와 같이 변경
+params['mode'] = 'bn'; // buy Now
+
+./svitem.controller.php::procSvitemAddItemsToCartObj()에서 아래의 코드를
+case 'bi': // in case of buy immediately
+
+아래와 같이 변경
+case 'bn': // in case of buy now
+
+3.외부몰 가기 레이어 팝업 오류 수정
+./tpl/skin.js/layer_popup.js에서 아래의 코드를
+sendClickEventGatk( 'button', 'svitem_extmall_logger_popup_close', '#' );
+
+아래와 같이 변경
+sendClickEventGaectk( 'button', 'svitem_extmall_logger_popup_close', '#' );
+
+v 4.1.9
+10th, Sep 2021
+1. gaectk.js v1.2.4 대응
+모든 skin의 list.html에서 아래의 코드를
+gaectkList.queueItemInfo( '{$oItem->item_srl}', '{$oItem->item_name}', '{$oItem->enhanced_item_info->ga_category_name}', '{$oItem->enhanced_item_info->ga_brand_name}', '{$oItem->enhanced_item_info->ga_variation_name}' );
+
+아래와 같이 변경
+gaectkList.queueItemInfo( '{$oItem->item_srl}', '{$oItem->item_name}', '{$oItem->enhanced_item_info->ga_category_name}', '{$oItem->enhanced_item_info->ga_brand_name}', '{$oItem->enhanced_item_info->ga_variation_name}', '{$oItem->price}' );
+
+-------------------- todo -------------------------------
+svitem_item->barcode 정보가 입력되면 naver_ep_barcode와 연계
+
+Options 설정 기능을 item class로 이동
+
+./svitem.model.php::_unserializeItemInfo() 사용자 정의 변수와 관련된 비효율 개선 후 제거
+
+./svitem.model.php::getItemStock() 제거
+
+
+스킨에서 svcart_mid를 가져오지 말고 svitem_srl이 속한 svitem_module_srl에서 svcart_mid를 확인해야 함
+이 데이터 불러오는 이유가 오직 장바구니를 확인하겠습니까 물어보기 위한 것일 뿐. 이 설정을 svitem으로 옮기면 안되나?
+어떤 svcart_mid로 갈지는 svitem_module_info에 저장되어 있음.
+
+./svitem.model.php::getItemStock()을 getItemInfoByItemSrl()의 종속 메소드로 변경해야 하나?
+
+제품을 가상 쇼핑몰 페이지 사이 이동 기능 -> 기본적으로 svitem tbl과 document tbl의 module_srl 변경해야 함
+
+./tpl/skin.js/itemdetail.js::_orderItemsDirectly()에서 svcart_mid를 별수로 입력하지 말고 svitem module srl만 입력하면 cart는 내부적으로 판단
+./tpl/skin.js/itemdetail.js::_addItemsToCartObj()에서 svcart_mid를 별수로 입력하지 말고 svitem module srl만 입력하면 cart는 내부적으로 판단
+
+카탈로그 단축 URL에 -> 카테고리 영문명 기능?
+
+프로모션 정보가 naver, daum EP에 반영되도록 해야 함
+
+tbl::xe_svitem_display_categories과 xe_svitem_display_items는 show window 개념으로 설계한 듯 -> namespace를 개념에 맞게 변경해줘야 함
+svitem_display_categories tbl -> show_window_tabs 로 변경
+svitem_display_category_item tbl -> show_window_item 로 변경
+
+관리자 제품 상세 페이지 스킨 선택상자의 경로를 detail_page로 수정
+
+getSvitemAdminGetCategoryListAjax()에서 getCatalog 사용으로 변경
+
+tbl svtiem_items::category_node_srl을 catalog_node_srl로 변경할 때 daum_ep.txt 스킨에 반영해야 함
+
+queries/updateCurrentStockCount.xml 관련 기능 조회하고 삭제
+./svitem.controller.php::setItemStock() 관련 기능 정리해야 함 -> svcart에 걸쳐서 svorder까지 연관
+
+svpromotionAdminView::dispSvpromotionAdminItemDiscountList()에서 호출하는 getSvitemAdminItemList()->_getItemList()의 인수를
+context:get()에서 $oArgs 인수 입력으로 변경해야 함
+
+동일 아이템에 대해 별도 색상 입력 기능
+옵션을 아이템으로 연결
+
+./svitem.model.php::getDaumEpList()과 ./svitem.model.php::getNaverEpList() 결합
+
+item information을 XML로 변경 -> 후에 shopify와 같이 admin과 skin을 완전히 분리하기 위한 준비 작업

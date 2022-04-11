@@ -1,0 +1,25 @@
+<div class="sc-db">
+	<ul class="rows clearfix">
+		<li class="large-3 medium-3 small-6 columns" loop="$list=>$no,$val">
+			<!---form action="/cart/add" method="post">
+				<input type="hidden" name="id" class="variant-id" value="939112813" />
+				<input type="hidden" name="varprice" class="varprice" value="$29.99" />
+				<input type="hidden" name="varname" class="varname" value="Default" /---->
+				<div class="mp-item">
+					<a class="mp-thumb-hook" href="#" onclick="_gaProductDetailClick( {$val->item_srl}, '{$val->item_name}', {$no}, '{getUrl('mid',$mid,'document_srl',$val->document_srl,'act','')}', 'mobile_shop' ); return !ga.loaded;"><img class="mp-thumb-{$val->item_srl}" src="{$val->getThumbnail($module_info->list_thumbnail_width,$module_info->list_thumbnail_height,$module_info->list_thumbnail_type)}"  alt="thumbnail-{$val->item_code}" /></a>
+					<ul class="variant-selection">
+						<li></li>
+					</ul>
+					<div class="mp-info-small-only">
+						<h3 STYLE='font-size:1.0em; height:40px;'>{$val->item_name}</h3>
+					</div>
+					<!---div class="btn-wrap">
+						<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+					</div--->
+				</div>
+			<!---/form---->
+		</li>
+	</ul>
+</div>
+
+<SCRIPT TYPE='text/javascript' SRC='./modules/svitem/skins/inbody/js/itemlist.small_only.js' ></SCRIPT>

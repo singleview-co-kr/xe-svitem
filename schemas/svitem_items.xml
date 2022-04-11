@@ -1,0 +1,27 @@
+<table name="svitem_items">
+	<column name="item_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="module_srl" type="number" size="11" default="0" notnull="notnull" index="idx_module_srl" />
+	<column name="document_srl" type="number" size="11" default="0" notnull="notnull" index="idx_document_srl" />
+	<column name="list_order" type="number" size="11" notnull="notnull" default="1" index="idx_list_order" />
+	<column name="category_node_srl" type="number" size="11" default="0" notnull="notnull" index="idx_category_node_srl" />
+	<column name="thumb_file_srl" type="number" size="11" default="0" notnull="notnull" />
+	<column name="gallery_doc_srl" type="number" size="11" default="0" notnull="notnull" />
+	<column name="mob_doc_srl" type="number" size="11" default="0" notnull="notnull" />
+	<column name="mob_description" type="text" />
+	<column name="pc_doc_srl" type="number" size="11" default="0" notnull="notnull" />
+	<column name="pc_description" type="text" />
+	<column name="item_code" type="varchar" size="64" notnull="notnull" />
+	<column name="barcode" type="varchar" size="64" />
+	<column name="enhanced_item_info" type="text" />
+	<column name="item_name" type="varchar" size="64" notnull="notnull" />
+	<column name="price" type="number" size="11" default="0" notnull="notnull" index="idx_price" />
+	<column name="taxfree" type="char" size="1" default="N" notnull="notnull" />
+	<column name="display" type="char" size="1" default="N" notnull="notnull" />
+	<column name="sales_count" type="number" size="11" default="0" notnull="notnull" index="idx_sales_count" />
+	<column name="current_stock" type="number" size="11" default="0" notnull="notnull" />
+	<column name="safe_stock" type="number" size="11" default="0" notnull="notnull" />
+	<column name="extmall_log_conf" type="text" />
+	<column name="sv_tags" type="text" />
+	<column name="updatetime" type="date" />
+	<column name="regdate" type="date" notnull="notnull" />
+</table>

@@ -1,0 +1,14 @@
+<query id="insertBundle" action="insert">
+	<tables>
+		<table name="svitem_bundles" />
+	</tables>
+	<columns>
+		<column name="bundle_srl" var="bundle_srl" filter="number" notnull="notnull" />
+		<column name="item_srl" var="item_srl" filter="number" notnull="notnull" />
+		<column name="bundle_items" var="bundle_items" notnull="notnull" />
+		<column name="bundle_price" var="bundle_price" notnull="notnull" />
+		<column name="bundle_quantity" var="bundle_quantity" notnull="notnull" />
+		<column name="list_order" var="list_order" />
+		<column name="regdate" var="regdate" default="curdate()" />
+	</columns>
+</query>

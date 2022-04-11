@@ -1,0 +1,23 @@
+<query id="getShowWindowCatalogList" action="select">
+	<tables>
+		<table name="svitem_display_categories" />
+	</tables>
+	<columns>
+		<column name="category_srl" />
+		<column name="module_srl" />
+		<column name="category_name" />
+		<column name="list_order" />
+		<column name="thumbnail_width" />
+		<column name="thumbnail_height" />
+		<column name="num_columns" />
+		<column name="num_rows" />
+		<column name="regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" filter="number" notnull="notnull" />
+		<condition operation="equal" column="category_srl" var="category_srl" filter="number" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="list_order" order="asc" />
+	</navigation>
+</query>

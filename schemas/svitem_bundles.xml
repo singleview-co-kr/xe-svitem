@@ -1,0 +1,9 @@
+<table name="svitem_bundles">
+	<column name="bundle_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="item_srl" type="number" size="11" index="idx_item_srl" />
+    <column name="bundle_items" type="varchar" size="250" />
+	<column name="bundle_quantity" type="number" size="11" notnull="notnull" default="0" />
+	<column name="bundle_price" type="number" size="11" notnull="notnull" default="0" />
+    <column name="list_order" type="number" size="11" notnull="notnull" />
+	<column name="regdate" type="date" notnull="notnull" index="idx_regdate" />
+</table>

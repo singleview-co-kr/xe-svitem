@@ -1,0 +1,19 @@
+<query id="getTaggedItemList" action="select">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" />
+		<condition operation="like" column="sv_tags" var="sv_tags" pipe="and" />
+		<condition operation="equal" column="display" var="display" default="Y" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="item_srl" order="asc" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

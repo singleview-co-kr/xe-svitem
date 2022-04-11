@@ -1,0 +1,15 @@
+<query id="getCatalogNodeInfo" action="select">
+	<tables>
+		<table name="svitem_category_node" />
+	</tables>
+	<columns>
+		<column name="parent_srl" />
+		<column name="category_node_srl" />
+		<column name="category_name" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="category_node_srl" var="category_node_srl" notnull="notnull" />
+		<condition operation="equal" column="module_srl" var="module_srl" notnull="notnull" pipe="AND"/>
+	</conditions>
+	<navigation />
+</query>

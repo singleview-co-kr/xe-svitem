@@ -1,0 +1,23 @@
+<response>
+<block loop="$list=>$no,$val">
+	<item id="{$val->item_srl}"> <!-- 상품 ID -->
+		<name><![CDATA[{$val->item_name}]]></name>
+		<url>{$val->item_page_url}</url> <!-- 상품 설명 페이지 url -->
+		<description><![CDATA[{$val->extra_var_objs->desc->value}]]></description>
+		<image>{$val->item_image}</image> <!-- 상품 image url -->
+		<thumb>{$val->item_thumbnail}</thumb> <!-- 상품 썸네일 image url -->
+		<price>{$val->price}</price> <!-- 정상 가격 -->
+		<quantity>{$val->current_stock}</quantity> <!-- 재고량 -->
+<block cond="$val->category_1st">
+		<category> <!-- 카테고리 -->
+			<first>{$val->category_1st}</first> <!-- 최상위 카테고리 이름 -->
+			<second cond="$val->category_2nd">{$val->category_2nd}</second> <!-- 차상위 카테고리 이름 -->
+			<third cond="$val->category_3rd">{$val->category_3rd}</third> <!-- 차상위 카테고리 이름 -->
+			<fourth cond="$val->category_4th">{$val->category_4th}</fourth> <!-- 차상위 카테고리 이름 -->
+			<!-- 최대 4단계 카테고리까지 표시 가능하다. (first ~ fourth) -->
+		</category>
+</block>
+	</item>
+</block>
+<!-- 여러 개의 상품 정보를 요청하면 그 개수만큼의 item element가 필요하다. -->
+</response>

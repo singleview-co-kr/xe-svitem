@@ -1,0 +1,896 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="ga_brand_name">
+		<value xml:lang="ko"><![CDATA[GA 인식 브랜드명]]></value>
+	</item>
+	<item name="about_ga_brand_name">
+		<value xml:lang="ko"><![CDATA[GA EEC에 표시될 브랜드명을 입력해 주세요.]]></value>
+	</item>
+	<item name="ga_category_name">
+		<value xml:lang="ko"><![CDATA[GA 인식 카테고리명]]></value>
+	</item>
+	<item name="about_naver_ep_event_words">
+		<value xml:lang="ko"><![CDATA[100자 이내, 사용 예시, 10 주년 10% 할인 이벤트, 탭/엔터문자 및 프로그래밍 언어 금지, 상품 관련 기획전 /이벤트 정보로 제한, 노출 여부는 ‘쇼핑파트너존’을 통하여 별도 요청하여야 합니다.]]></value>
+	</item>
+	<item name="about_naver_ep_sv_campaign2">
+		<value xml:lang="ko"><![CDATA[공란이면 utm_campaign=NV_PS_CPC_NVSHOP_00_00으로 처리, 숫자와영문만 입력하면 첫번째 00을 대체함]]></value>
+	</item>
+	<item name="about_naver_ep_sv_campaign3">
+		<value xml:lang="ko"><![CDATA[공란이면 utm_campaign=NV_PS_CPC_NVSHOP_00_00으로 처리, 숫자와영문만 입력하면 두번째 00을 대체함]]></value>
+	</item>
+	<item name="msg_invalid_naverep_sv_campaign_code">
+		<value xml:lang="ko"><![CDATA[naver EP로 전송할 SV 캠페인코드는 영문 숫자만 허용됩니다.]]></value>
+	</item>
+	<item name="msg_invalid_item_request">
+		<value xml:lang="ko"><![CDATA[유효하지 않은 제품입니다.]]></value>
+	</item>
+	<item name="about_ga_category_name">
+		<value xml:lang="ko"><![CDATA[GA EEC에 표시될 카테고리명을 입력해 주세요. 공란이면 최하위 분류명이 입력됩니다.]]></value>
+	</item>
+	<item name="ga_variation_name">
+		<value xml:lang="ko"><![CDATA[GA 인식 베리에이션명]]></value>
+	</item>
+	<item name="about_ga_variation_namee">
+		<value xml:lang="ko"><![CDATA[GA EEC에 표시될 Variation명을 입력해 주세요.]]></value>
+	</item>
+	<item name="default_setting">
+		<value xml:lang="ko"><![CDATA[기본설정]]></value>
+	</item>
+	<item name="product_management">
+		<value xml:lang="ko"><![CDATA[상품관리]]></value>
+	</item>
+	<item name="shoppingmall_product">
+		<value xml:lang="ko"><![CDATA[쇼핑몰 일반상품]]></value>
+	</item>
+
+	<item name="cmd_barcode">
+		<value xml:lang="ko"><![CDATA[바코드 설정]]></value>
+	</item>
+	<item name="part_description">
+		<value xml:lang="ko"><![CDATA[파트 설명]]></value>
+	</item>
+	<item name="part_length">
+		<value xml:lang="ko"><![CDATA[파트 길이]]></value>
+	</item>
+	<item name="part_cost_tag">
+		<value xml:lang="ko"><![CDATA[원가 추적 태그]]></value>
+	</item>
+	<item name="tagged">
+		<value xml:lang="ko"><![CDATA[포함시킴]]></value>
+	</item>
+	<item name="not_tagged">
+		<value xml:lang="ko"><![CDATA[제외시킴]]></value>
+	</item>
+	<item name="title_barcode_ddl">
+		<value xml:lang="ko"><![CDATA[바코드 구성 요소 정의]]></value>
+	</item>
+	<item name="msg_barcode_ddl_exist">
+		<value xml:lang="ko"><![CDATA[개 바코드 파트가 존재합니다.]]></value>
+	</item>
+
+	<item name="basic_settings">
+		<value xml:lang="ko"><![CDATA[기본설정]]></value>
+	</item>
+	<item name="page_list">
+		<value xml:lang="ko"><![CDATA[페이지 목록]]></value>
+	</item>
+	<item name="page_creation">
+		<value xml:lang="ko"><![CDATA[페이지 생성]]></value>
+	</item>
+	<item name="page_management">
+		<value xml:lang="ko"><![CDATA[페이지 관리]]></value>
+	</item>
+	<item name="page_configuration">
+		<value xml:lang="ko"><![CDATA[페이지설정]]></value>
+	</item>
+	<item name="fielddisplay_settings">
+		<value xml:lang="ko"><![CDATA[목록페이지 출력항목설정]]></value>
+	</item>
+	<item name="detailpage_fielddisplay_settings">
+		<value xml:lang="ko"><![CDATA[상세페이지 출력항목설정]]></value>
+	</item>
+	<item name="msg_invalid_item">
+		<value xml:lang="ko"><![CDATA[등록되지 않은 상품입니다.]]></value>
+	</item>
+	<item name="skin_settings">
+		<value xml:lang="ko"><![CDATA[스킨설정]]></value>
+	</item>
+	<item name="additional_settings">
+		<value xml:lang="ko"><![CDATA[추가설정]]></value>
+	</item>
+	<item name="create_show_window_category">
+		<value xml:lang="ko"><![CDATA[쇼윈도우 생성]]></value>
+	</item>
+	<item name="read_review_in_detail">
+		<value xml:lang="ko"><![CDATA[자세히 보기]]></value>
+	</item>
+	<item name="naver_ep_setting">
+		<value xml:lang="ko"><![CDATA[네이버 EP 연동 설정]]></value>
+	</item>
+	<item name="naver_ep_use">
+		<value xml:lang="ko"><![CDATA[네이버 EP 사용 여부]]></value>
+	</item>
+	<item name="please_select">
+		<value xml:lang="ko"><![CDATA[선택하세요]]></value>
+	</item>
+	<item name="naver_ep_use_htaccess">
+		<value xml:lang="ko"><![CDATA[중요! https 서버이면 .htaccess 첫 줄에 아래의 코드를 추가해서 이미지는 http 접근 허용해야 함.<BR>#if the request does not end with .gif,.png or jpg<BR>RewriteCond %{REQUEST_URI} !(\.gif|\.jpg|\.png)$ [NC]<BR># enforce https<BR>RewriteCond %{HTTPS} off<BR>RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]<BR><BR>.htaccess 마지막 줄에 아래의 코드를 추가하면 짧은주소를 사용할 수 있습니다.<BR>#naver EP<BR>RewriteRule  ^naver_ep\.tsv index.php?module=svitem&act=dispSvitemNaverEp &#91;L,QSA&#93;]]></value>
+	</item>
+	<item name="naver_ep_on">
+		<value xml:lang="ko"><![CDATA[네이버 EP ON]]></value>
+	</item>
+	<item name="naver_ep_off">
+		<value xml:lang="ko"><![CDATA[네이버 EP OFF]]></value>
+	</item>
+	<item name="title_extmall_registration">
+		<value xml:lang="ko"><![CDATA[외부몰 등록]]></value>
+	</item>
+	<item name="extmall_type">
+		<value xml:lang="ko"><![CDATA[외부몰 유형]]></value>
+	</item>
+	<item name="extmall_shop">
+		<value xml:lang="ko"><![CDATA[외부 쇼핑몰]]></value>
+	</item>
+	<item name="extmall_market">
+		<value xml:lang="ko"><![CDATA[외부 오픈마켓]]></value>
+	</item>
+	<item name="extmall_title">
+		<value xml:lang="ko"><![CDATA[외부몰 이름]]></value>
+	</item>
+	<item name="extmall_url">
+		<value xml:lang="ko"><![CDATA[외부몰 URL]]></value>
+	</item>
+	
+	<item name="about_naver_ep">
+		<value xml:lang="ko"><![CDATA[네이버 EP는 네이버쇼핑에 CPC 형태로 입점하기 위한 매체입니다. 상품 정보를 네이버 DB에 직접 연동합니다.]]></value>
+	</item>
+	<item name="naver_ep_extract_module">
+		<value xml:lang="ko"><![CDATA[네이버 EP 추출 대상 svitem 모듈]]></value>
+	</item>
+	<item name="about_naver_ep_extract_mid">
+		<value xml:lang="ko"><![CDATA[네이버 EP와 연동시킬 상품모듈을 선택할 수 있습니다.]]></value>
+	</item>	
+
+	<item name="daum_ep_setting">
+		<value xml:lang="ko"><![CDATA[다음 EP 연동 설정]]></value>
+	</item>
+	<item name="daum_ep_use">
+		<value xml:lang="ko"><![CDATA[다음 EP 사용 여부]]></value>
+	</item>
+	<item name="daum_ep_use_htaccess">
+		<value xml:lang="ko"><![CDATA[중요! .htaccess 마지막 줄에 아래의 코드를 추가하면 짧은주소를 사용할 수 있습니다.<BR>#naver EP<BR>RewriteRule  ^naver_ep\.tsv index.php?module=svitem&act=dispSvitemNaverEp &#91;L,QSA&#93;]]></value>
+	</item>
+	<item name="daum_ep_on">
+		<value xml:lang="ko"><![CDATA[다음 EP ON]]></value>
+	</item>
+	<item name="daum_ep_off">
+		<value xml:lang="ko"><![CDATA[다음 EP OFF]]></value>
+	</item>
+	<item name="about_daum_ep">
+		<value xml:lang="ko"><![CDATA[다음 EP는 다음쇼핑하우에 CPC 형태로 입점하기 위한 매체입니다. 상품 정보를 다음 DB에 직접 연동합니다.]]></value>
+	</item>
+	<item name="daum_ep_extract_module">
+		<value xml:lang="ko"><![CDATA[다음 EP 추출 대상 svitem 모듈]]></value>
+	</item>
+	<item name="about_daum_ep_extract_mid">
+		<value xml:lang="ko"><![CDATA[다음 EP와 연동시킬 상품모듈을 선택할 수 있습니다.]]></value>
+	</item>
+	<item name="show_window_catalog">
+		<value xml:lang="ko"><![CDATA[쇼윈도우 카탈로그]]></value>
+	</item>
+	<item name="permission_settings">
+		<value xml:lang="ko"><![CDATA[권한설정]]></value>
+	</item>
+	<item name="extended_var_setting">
+		<value xml:lang="ko"><![CDATA[확장변수 관리]]></value>
+	</item>
+	<item name="product_list">
+		<value xml:lang="ko"><![CDATA[상품목록]]></value>
+	</item>
+	<item name="product_registration">
+		<value xml:lang="ko"><![CDATA[상품등록]]></value>
+	</item>
+	<item name="product_modification">
+		<value xml:lang="ko"><![CDATA[상품수정]]></value>
+	</item>
+	<item name="bulk_registration">
+		<value xml:lang="ko"><![CDATA[일괄등록]]></value>
+	</item>
+	<item name="address">
+		<value xml:lang="ko"><![CDATA[주소]]></value>
+	</item>
+	<item name="star_point">
+		<value xml:lang="ko"><![CDATA[평점]]></value>
+	</item>
+	<item name="item_name">
+		<value xml:lang="ko"><![CDATA[상품명]]></value>
+	</item>
+	<item name="product_name">
+		<value xml:lang="ko"><![CDATA[상품명]]></value>
+	</item>
+	<item name="npay_button">
+		<value xml:lang="ko"><![CDATA[네이버페이 버튼]]></value>
+	</item>
+	<item name="item_code">
+		<value xml:lang="ko"><![CDATA[상품코드]]></value>
+	</item>
+	<item name="barcode">
+		<value xml:lang="ko"><![CDATA[유통바코드]]></value>
+	</item>
+	<item name="about_barcode">
+		<value xml:lang="ko"><![CDATA[유통바코드를 입력합니다.]]></value>
+	</item>
+	<item name="excelfile_download">
+		<value xml:lang="ko"><![CDATA[엑셀파일다운]]></value>
+	</item>
+	<item name="item">
+		<value xml:lang="ko"><![CDATA[상품]]></value>
+	</item>
+	<item name="home">
+		<value xml:lang="ko"><![CDATA[홈]]></value>
+	</item>
+	<item name="rsp">
+		<value xml:lang="ko"><![CDATA[가격]]></value>
+	</item>
+	<item name="bundle_qty">
+		<value xml:lang="ko"><![CDATA[번들 수량]]></value>
+	</item>
+	<item name="extmall_promo_memo">
+		<value xml:lang="ko"><![CDATA[외부몰 프로모션 메모]]></value>
+	</item>
+	<item name="item_price">
+		<value xml:lang="ko"><![CDATA[상품가격]]></value>
+	</item>
+	<item name="sales_price">
+		<value xml:lang="ko"><![CDATA[판매가]]></value>
+	</item>
+	<item name="fb_like_promotion">
+		<value xml:lang="ko"><![CDATA[좋아요 혜택]]></value>
+	</item>
+	<item name="discount">
+		<value xml:lang="ko"><![CDATA[할인]]></value>
+	</item>
+	<item name="sum">
+		<value xml:lang="ko"><![CDATA[합계]]></value>
+	</item>
+	<item name="order">
+		<value xml:lang="ko"><![CDATA[주문하기]]></value>
+	</item>
+	<item name="stock">
+		<value xml:lang="ko"><![CDATA[수량/재고]]></value>
+	</item>
+	<item name="image">
+		<value xml:lang="ko"><![CDATA[사진]]></value>
+	</item>
+	<item name="checkbox">
+		<value xml:lang="ko"><![CDATA[체크박스]]></value>
+	</item>
+	<item name="discounted_price">
+		<value xml:lang="ko"><![CDATA[할인구매가]]></value>
+	</item>
+	<item name="order_quantity">
+		<value xml:lang="ko"><![CDATA[구매수량]]></value>
+	</item>
+	<item name="quantity">
+		<value xml:lang="ko"><![CDATA[수량]]></value>
+	</item>
+	<item name="gallery_thumbnail">
+		<value xml:lang="ko"><![CDATA[갤러리 썸네일]]></value>
+	</item>
+	<item name="gallery_representative_thumbnail">
+		<value xml:lang="ko"><![CDATA[갤러리 대표 썸네일]]></value>
+	</item>
+	<item name="about_gallery_representative_thumbnail">
+		<value xml:lang="ko"><![CDATA[2번째 이후의 첨부파일을 대표 썸네일로 지정합니다. 0번이 첫번째 첨부파일입니다.]]></value>
+	</item>
+	<item name="description">
+		<value xml:lang="ko"><![CDATA[상세 페이지]]></value>
+	</item>
+	<item name="item_brief">
+		<value xml:lang="ko"><![CDATA[상품 간략 설명]]></value>
+	</item>
+	<item name="about_item_brief">
+		<value xml:lang="ko"><![CDATA[HTML이 포함된 간략 설명을 상세페이지에 표시합니다. %%OG%%만 적으면 OG 소재 표시)]]></value>
+	</item>
+	<item name="select_description_skin_pc_from_archive">
+		<value xml:lang="ko"><![CDATA[저장소의 PC 상세 페이지 소재 선택]]></value>
+	</item>
+	<item name="choose_each_description_skin_pc">
+		<value xml:lang="ko"><![CDATA[이 상품의 별도 PC 상세 페이지를 사용합니다.]]></value>
+	</item>
+	<item name="select_description_skin_mob_from_archive">
+		<value xml:lang="ko"><![CDATA[저장소의 MOB 상세 페이지 소재 선택]]></value>
+	</item>
+	<item name="choose_each_description_skin_mob">
+		<value xml:lang="ko"><![CDATA[이 상품의 별도 모바일 상세 페이지를 사용합니다.]]></value>
+	</item>
+	<item name="contents">
+		<value xml:lang="ko"><![CDATA[내용]]></value>
+	</item>
+	<item name="cmd_extmall_logger">
+		<value xml:lang="ko"><![CDATA[상품평]]></value>
+	</item>
+	<item name="reviews">
+		<value xml:lang="ko"><![CDATA[상품평]]></value>
+	</item>
+	<item name="cmd_extmall_logger">
+		<value xml:lang="ko"><![CDATA[외부가격 추적]]></value>
+	</item>
+	<item name="qna">
+		<value xml:lang="ko"><![CDATA[상품문의]]></value>
+	</item>
+	<item name="cancel_delivery">
+		<value xml:lang="ko"><![CDATA[반품/교환/배송정보]]></value>
+	</item>
+	<item name="cancel_refund">
+		<value xml:lang="ko"><![CDATA[취소/환불]]></value>
+	</item>
+	<item name="per30">
+		<value xml:lang="ko"><![CDATA[30개씩]]></value>
+	</item>
+	<item name="per60">
+		<value xml:lang="ko"><![CDATA[60개씩]]></value>
+	</item>
+	<item name="connecting_qna_board_title">
+		<value xml:lang="ko"><![CDATA[QNA게시판 연결]]></value>
+	</item>
+	<item name="connecting_review_board_title">
+		<value xml:lang="ko"><![CDATA[후기게시판 연결]]></value>
+	</item>
+	<item name="max_reviews_cnt_title">
+		<value xml:lang="ko"><![CDATA[후기글 총 출력수]]></value>
+	</item>
+	<item name="reviews_per_page_title">
+		<value xml:lang="ko"><![CDATA[페이지 당 후기글 출력수]]></value>
+	</item>
+	<item name="max_qnas_cnt_title">
+		<value xml:lang="ko"><![CDATA[QNA 총 출력수]]></value>
+	</item>
+	<item name="qnas_per_page_title">
+		<value xml:lang="ko"><![CDATA[페이지 당 QNA 출력수]]></value>
+	</item>
+	<item name="board_disconnect">
+		<value xml:lang="ko"><![CDATA[게시판 연결끊기]]></value>
+	</item>
+	<item name="selected_items">
+		<value xml:lang="ko"><![CDATA[선택된 상품]]></value>
+	</item>
+	<item name="amount">
+		<value xml:lang="ko"><![CDATA[금액]]></value>
+	</item>
+	<item name="total_amount">
+		<value xml:lang="ko"><![CDATA[상품금액]]></value>
+	</item>
+	<item name="payment_amount">
+		<value xml:lang="ko"><![CDATA[최종결제금액]]></value>
+	</item>
+	<item name="discounted_amount">
+		<value xml:lang="ko"><![CDATA[할인적용금액]]></value>
+	</item>
+	<item name="svcart_mid">
+		<value xml:lang="ko"><![CDATA[장바구니 페이지]]></value>
+	</item>
+	<item name="order_status">
+		<value xml:lang="ko"><![CDATA[주문상태]]></value>
+	</item>
+	<item name="receipt">
+		<value xml:lang="ko"><![CDATA[영수증]]></value>
+	</item>
+	<item name="order_complete">
+		<value xml:lang="ko"><![CDATA[주문완료]]></value>
+	</item>
+	<item name="purchaser">
+		<value xml:lang="ko"><![CDATA[구매자]]></value>
+	</item>
+	<item name="order_date">
+		<value xml:lang="ko"><![CDATA[주문일자]]></value>
+	</item>
+	<item name="items">
+		<value xml:lang="ko"><![CDATA[품목갯수]]></value>
+	</item>
+	<item name="sales">
+		<value xml:lang="ko"><![CDATA[판매]]></value>
+	</item>
+	<item name="sales_count">
+			<value xml:lang="ko"><![CDATA[판매수량]]></value>
+	</item>
+	<item name="buy_button">
+			<value xml:lang="ko"><![CDATA[바로구매 버튼]]></value>
+	</item>
+	<item name="cart_buttons">
+			<value xml:lang="ko"><![CDATA[장바구니 버튼]]></value>
+	</item>
+	<item name="favorite_button">
+			<value xml:lang="ko"><![CDATA[찜하기 버튼]]></value>
+	</item>
+	<item name="cancelation_policy">
+		<value xml:lang="ko"><![CDATA[반품,교환,배송정보,취소,환불]]></value>
+	</item>
+	<item name="tax_or_not">
+		<value xml:lang="ko"><![CDATA[과세여부]]></value>
+	</item>
+	<item name="display_or_not">
+		<value xml:lang="ko"><![CDATA[진열여부]]></value>
+	</item>
+	<item name="price">
+		<value xml:lang="ko"><![CDATA[판매가격]]></value>
+	</item>	
+	<item name="taxation">
+		<value xml:lang="ko"><![CDATA[과세]]></value>
+	</item>
+	<item name="no_taxation">
+		<value xml:lang="ko"><![CDATA[비과세]]></value>
+	</item>
+	<item name="display">
+		<value xml:lang="ko"><![CDATA[진열]]></value>
+	</item>
+	<item name="not_display">
+		<value xml:lang="ko"><![CDATA[진열안함]]></value>
+	</item>
+	<item name="serial_number">
+		<value xml:lang="ko"><![CDATA[제품일련번호]]></value>
+	</item>
+	<item name="extmall_logger_toggle">
+		<value xml:lang="ko"><![CDATA[외부몰 가격 추적 on/off]]></value>
+	</item>
+	<item name="each">
+		<value xml:lang="ko"><![CDATA[개]]></value>
+	</item>
+	<item name="order_options">
+		<value xml:lang="ko"><![CDATA[구매옵션]]></value>
+	</item>
+	<item name="search_tags">
+		<value xml:lang="ko"><![CDATA[제품전용 검색태그]]></value>
+	</item>
+	<item name="about_search_tags">
+		<value xml:lang="ko"><![CDATA[,로 구분하세요.]]></value>
+	</item>
+	<item name="order_bundlings">
+		<value xml:lang="ko"><![CDATA[선택제품]]></value>
+	</item>
+	<item name="connect_external_stock_server">
+		<value xml:lang="ko"><![CDATA[재고 데이터 서버 연결 설정]]></value>
+	</item>
+	<item name="select_server">
+		<value xml:lang="ko"><![CDATA[재고 데이터 서버 선택]]></value>
+	</item>
+	<item name="connect_internal_stock_server">
+		<value xml:lang="ko"><![CDATA[내부 재고 데이터 서버 연결]]></value>
+	</item>
+	<item name="about_connecting_board">
+		<value xml:lang="ko"><![CDATA[연결할 게시판을 선택합니다. 게시판에는 분류가 설정되어 있어야 합니다.]]></value>
+	</item>
+	<item name="about_select_server">
+		<value xml:lang="ko"><![CDATA[아이템별 재고 정보를 불러오는 서버를 선택함]]></value>
+	</item>
+	<item name="default_safe_stock">
+		<value xml:lang="ko"><![CDATA[기본 안전 재고]]></value>
+	</item>
+	<item name="about_default_safe_stock">
+		<value xml:lang="ko"><![CDATA[기본 안전 재고를 설정합니다. 현재재고가 안전재고보다 적으면 품절 표시합니다. 아이템별 안전재고가 우선입니다.]]></value>
+	</item>
+	<item name="item_current_stock">
+		<value xml:lang="ko"><![CDATA[현재 재고]]></value>
+	</item>
+	<item name="item_safe_stock">
+		<value xml:lang="ko"><![CDATA[안전 재고]]></value>
+	</item>
+	<item name="about_default_safe_stock">
+		<value xml:lang="ko"><![CDATA[기본 안전 재고를 설정합니다. 현재재고가 안전재고보다 적으면 품절 표시합니다. 아이템별 안전재고가 우선입니다.]]></value>
+	</item>
+	<item name="currency_settings">
+		<value xml:lang="ko"><![CDATA[통화설정]]></value>
+	</item>
+	<item name="select_currency">
+		<value xml:lang="ko"><![CDATA[통화선택]]></value>
+	</item>
+	<item name="currency_format">
+		<value xml:lang="ko"><![CDATA[통화부호 출력형식]]></value>
+	</item>
+	<item name="decimal_place">
+		<value xml:lang="ko"><![CDATA[소수점 자릿수]]></value>
+	</item>
+	<item name="display_page">
+		<value xml:lang="ko"><![CDATA[진열페이지]]></value>
+	</item>
+	<item name="mandatory">
+		<value xml:lang="ko"><![CDATA[필수여부]]></value>
+	</item>
+	<item name="option_title">
+		<value xml:lang="ko"><![CDATA[옵션제목]]></value>
+	</item>
+	<item name="extra_price">
+		<value xml:lang="ko"><![CDATA[추가가격]]></value>
+	</item>
+	<item name="bundle_price">
+		<value xml:lang="ko"><![CDATA[번들가격]]></value>
+	</item>
+	<item name="bundle_quantity">
+		<value xml:lang="ko"><![CDATA[번들수량]]></value>
+	</item>
+	<item name="ratio">
+		<value xml:lang="ko"><![CDATA[비율]]></value>
+	</item>
+	<item name="product_category_management">
+		<value xml:lang="ko"><![CDATA[상품분류 관리]]></value>
+	</item>
+	<item name="category_management">
+		<value xml:lang="ko"><![CDATA[카테고리 관리]]></value>
+	</item>
+	<item name="default_item_catalog">
+		<value xml:lang="ko"><![CDATA[미분류]]></value>
+	</item>
+	<item name="default_item_category">
+		<value xml:lang="ko"><![CDATA[상품기본분류]]></value>
+	</item>
+	<item name="add_into_category">
+		<value xml:lang="ko"><![CDATA[선택상품&darr;]]></value>
+	</item>
+	<item name="add_category">
+		<value xml:lang="ko"><![CDATA[분류추가]]></value>
+	</item>
+	<item name="category">
+		<value xml:lang="ko"><![CDATA[분류]]></value>
+	</item>
+	<item name="category_name">
+		<value xml:lang="ko"><![CDATA[분류명]]></value>
+	</item>
+	<item name="thumbnail">
+		<value xml:lang="ko"><![CDATA[썸네일]]></value>
+	</item>
+	<item name="contents_file">
+		<value xml:lang="ko"><![CDATA[콘텐츠 파일]]></value>
+	</item>
+	<item name="refund_policy">
+		<value xml:lang="ko"><![CDATA[취소환불정책]]></value>
+	</item>
+	<item name="category_display">
+		<value xml:lang="ko"><![CDATA[카테고리 출력]]></value>
+	</item>
+	<item name="display">
+		<value xml:lang="ko"><![CDATA[출력함]]></value>
+	</item>
+	<item name="not_display">
+		<value xml:lang="ko"><![CDATA[출력하지 않음]]></value>
+	</item>
+	<item name="batch_mode">
+		<value xml:lang="ko"><![CDATA[일괄적용]]></value>
+	</item>
+	<item name="individual_mode">
+		<value xml:lang="ko"><![CDATA[개별적용]]></value>
+	</item>
+	<item name="print_on_top">
+		<value xml:lang="ko"><![CDATA[상단출력]]></value>
+	</item>
+	<item name="print_on_bottom">
+		<value xml:lang="ko"><![CDATA[하단출력]]></value>
+	</item>
+	<item name="default_reg_field">
+		<value xml:lang="ko"><![CDATA[<span style="color:red;">* 기본 필드(삭제하지마세요)</span>]]></value>
+	</item>
+	<item name="item_to_delete">
+		<value xml:lang="ko"><![CDATA[삭제 항목]]></value>
+	</item>
+	<item name="list_order">
+       	<value xml:lang="ko"><![CDATA[순번]]></value>
+	</item>
+	<item name="title_qna_board_mgmt">
+		<value xml:lang="ko"><![CDATA[QNA게시판 관리]]></value>
+	</item>
+	<item name="title_review_board_mgmt">
+		<value xml:lang="ko"><![CDATA[후기게시판 관리]]></value>
+	</item>
+	<item name="title_naver_ep_info">
+		<value xml:lang="ko"><![CDATA[네이버 EP 연동 정보]]></value>
+	</item>
+	<item name="title_daum_ep_info">
+		<value xml:lang="ko"><![CDATA[다음 EP 연동 정보]]></value>
+	</item>
+	<item name="title_order_payment">
+		<value xml:lang="ko"><![CDATA[주문/결제]]></value>
+	</item>
+	<item name="title_input_address">
+		<value xml:lang="ko"><![CDATA[배송정보 입력]]></value>
+	</item>
+	<item name="title_item_extra">
+		<value xml:lang="ko"><![CDATA[상품등록폼 추가항목 입력]]></value>
+	</item>
+	<item name="title_option">
+		<value xml:lang="ko"><![CDATA[옵션 관리]]></value>
+	</item>
+	<item name="title_bundlings">
+		<value xml:lang="ko"><![CDATA[번들 구성]]></value>
+	</item>
+	<item name="bundling_item">
+		<value xml:lang="ko"><![CDATA[번들 제품]]></value>
+	</item>
+	<item name="title_extra_options">
+		<value xml:lang="ko"><![CDATA[기타 정보]]></value>
+	</item>
+	<item name="title_group_discount">
+		<value xml:lang="ko"><![CDATA[그룹할인설정]]></value>
+	</item>
+	<item name="title_product_basicinfo">
+		<value xml:lang="ko"><![CDATA[상품기본정보]]></value>
+	</item>
+	<item name="cart_tab_quantity">
+		<value xml:lang="ko"><![CDATA[장바구니 (<span class="cartQuantity">0</span>개)]]></value>
+	</item>
+	<item name="cart_tab_favorites">
+		<value xml:lang="ko"><![CDATA[관심상품(<span class="favoriteQuantity">0</span>개)]]></value>
+	</item>
+	<item name="cart_total_amount">
+		<value xml:lang="ko"><![CDATA[장바구니 총 금액 (<span class="cartPrice"><strong>0</strong></span>]]></value>
+	</item>
+	<item name="cmd_open">
+		<value xml:lang="ko"><![CDATA[열기]]></value>
+	</item>
+	<item name="cmd_close">
+		<value xml:lang="ko"><![CDATA[닫기]]></value>
+	</item>
+	<item name="cmd_goto_cart">
+		<value xml:lang="ko"><![CDATA[장바구니로 이동]]></value>
+	</item>
+	<item name="cmd_goto_favorites">
+		<value xml:lang="ko"><![CDATA[관심상품으로 이동]]></value>
+	</item>
+	<item name="cmd_goto_pay">
+		<value xml:lang="ko"><![CDATA[]]></value>
+	</item>
+	<item name="cmd_change">
+		<value xml:lang="ko"><![CDATA[변경]]></value>
+	</item>
+	<item name="cmd_ask_question">
+		<value xml:lang="ko"><![CDATA[문의남기기]]></value>
+	</item>
+	<item name="cmd_qna_board_mgmt">
+		<value xml:lang="ko"><![CDATA[QNA게시판 설정]]></value>
+	</item>
+	<item name="cmd_review_board_mgmt">
+		<value xml:lang="ko"><![CDATA[후기게시판 설정]]></value>
+	</item>
+	<item name="cmd_direct_order">
+		<value xml:lang="ko"><![CDATA[바로구매]]></value>
+	</item>
+	<item name="cmd_cart">
+		<value xml:lang="ko"><![CDATA[장바구니 담기]]></value>
+	</item>
+	<item name="cmd_cart_management">
+		<value xml:lang="ko"><![CDATA[장바구니 관리]]></value>
+	</item>
+	<item name="cmd_favorites">
+		<value xml:lang="ko"><![CDATA[관심상품]]></value>
+	</item>
+	<item name="cmd_view_list">
+		<value xml:lang="ko"><![CDATA[목록보기]]></value>
+	</item>
+	<item name="cmd_download">
+		<value xml:lang="ko"><![CDATA[다운로드]]></value>
+	</item>
+	<item name="cmd_remove">
+		<value xml:lang="ko"><![CDATA[삭제하기]]></value>
+	</item>
+	<item name="cmd_add_cart">
+		<value xml:lang="ko"><![CDATA[장바구니 담기]]></value>
+	</item>
+	<item name="cmd_add_favorites">
+		<value xml:lang="ko"><![CDATA[관심상품 담기]]></value>
+	</item>
+	<item name="cmd_order">
+		<value xml:lang="ko"><![CDATA[주문하기]]></value>
+	</item>
+	<item name="cmd_order_lowprice">
+		<value xml:lang="ko"><![CDATA[낮은가격순]]></value>
+	</item>
+	<item name="cmd_order_highprice">
+		<value xml:lang="ko"><![CDATA[높은가격순]]></value>
+	</item>
+	<item name="cmd_order_bestsell">
+		<value xml:lang="ko"><![CDATA[구매자 많은순]]></value>
+	</item>
+	<item name="cmd_order_review">
+		<value xml:lang="ko"><![CDATA[상품평 많은순]]></value>
+	</item>
+	<item name="cmd_select">
+		<value xml:lang="ko"><![CDATA[선택하세요]]></value>
+	</item>
+	<item name="cmd_append_field">
+		<value xml:lang="ko"><![CDATA[항목추가]]></value>
+	</item>
+	<item name="msg_invalid_item_srl">
+		<value xml:lang="ko"><![CDATA[잘못된 상품 일련번호입니다.]]></value>
+	</item>
+	<item name="msg_login_required">
+		<value xml:lang="ko"><![CDATA[로그인 후 사용하실 수 있습니다]]></value>
+	</item>
+	<item name="msg_node_name_required">
+		<value xml:lang="ko"><![CDATA[공백은 카테고리 이름이 될 수 없습니다.]]></value>
+	</item>
+	<item name="msg_no_items">
+		<value xml:lang="ko"><![CDATA[상품이 없습니다]]></value>
+	</item>
+	<item name="msg_no_reviews">
+		<value xml:lang="ko"><![CDATA[등록된 상품평이 없습니다]]></value>
+	</item>
+	<item name="msg_no_questions">
+		<value xml:lang="ko"><![CDATA[등록된 상품문의가 없습니다]]></value>
+	</item>
+	<item name="msg_no_registered_items">
+		<value xml:lang="ko"><![CDATA[등록된 상품이 없습니다.]]></value>
+	</item>
+	<item name="msg_select_option">
+		<value xml:lang="ko"><![CDATA[옵션을 선택해 주세요]]></value>
+	</item>
+	<item name="msg_item_already_classified">
+		<value xml:lang="ko"><![CDATA[이미 분류되어 미처리한 상품: %s]]></value>
+	</item>
+	<item name="msg_not_enough_stock">
+		<value xml:lang="ko"><![CDATA[상품(%s)의 재고가 부족합니다]]></value>
+	</item>
+	<item name="msg_put_item_in_cart">
+		<value xml:lang="ko"><![CDATA[장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?]]></value>
+	</item>
+	<item name="msg_items_exist_in_catalog">
+		<value xml:lang="ko"><![CDATA[해당 카테고리에 등록된 상품을 먼저 삭제하세요.]]></value>
+	</item>
+	<item name="msg_items_exist_in_subcatalog">
+		<value xml:lang="ko"><![CDATA[해당 카테고리 하위에 등록된 상품을 먼저 삭제하세요.]]></value>
+	</item>
+	<item name="msg_subcategory_exist_in_category">
+		<value xml:lang="ko"><![CDATA[하위 분류를 먼저 삭제하세요.]]></value>
+	</item>
+	<item name="msg_input_more_than_one">
+		<value xml:lang="ko"><![CDATA[수량은 1개 이상 입력해 주세요.]]></value>
+	</item>
+	<item name="msg_cannot_update_root">
+		<value xml:lang="ko"><![CDATA[최상위 분류는 수정할 수 없습니다.]]></value>
+	</item>
+	<item name="msg_sure_to_delete">
+		<value xml:lang="ko"><![CDATA[정말 삭제하시겠습니까?]]></value>
+	</item>
+	<item name="msg_invalid_column_name">
+		<value xml:lang="ko"><![CDATA[사용할 수 없는 입력항목 이름입니다.]]></value>
+	</item>
+	<item name="msg_no_bundling_item_selected">
+		<value xml:lang="ko"><![CDATA[선택제품을 선택해주세요.]]></value>
+	</item>
+	<item name="msg_bundling_item_quantity_not_match">
+		<value xml:lang="ko"><![CDATA[선택제품 수량이 맞지 않습니다.]]></value>
+	</item>
+	<item name="about_qna">
+		<value xml:lang="ko"><![CDATA[무엇이 궁금하세요?]]></value>
+	</item>
+	<item name="about_review_bonus">
+		<value xml:lang="ko"><![CDATA[상품평(후기)을 남기시면 %s원을 마일리지로 적립해 드립니다. (구매 후 최초 1회)]]></value>
+	</item>
+	<item name="about_qna_board_mgmt">
+		<value xml:lang="ko"><![CDATA[QNA 게시판과 관련된 여러가지 설정을 관리합니다.]]></value>
+	</item>
+	<item name="about_review_board_mgmt">
+		<value xml:lang="ko"><![CDATA[후기게시판과 관련된 여러가지 설정을 관리합니다.]]></value>
+	</item>
+	<item name="about_review">
+		<value xml:lang="ko"><![CDATA[상품평(후기)을 남겨주세요]]></value>
+	</item>
+	<item name="about_cancelation_policy">
+		<value xml:lang="ko"><![CDATA[반품/교환/배송정보/취소/환불에 관련된 정책을 입력해 주세요]]></value>
+	</item>
+	<item name="about_bulk_registration">
+		<value xml:lang="ko"><![CDATA[상품코드<span style="color:red;">[TAB]</span>상품명<span style="color:red;">[TAB]</span>과세여부<span style="color:red;">[TAB]</span>진열여부<span style="color:red;">[TAB]</span>가격 순으로 붙여넣기 하시고 확인 클릭]]></value>
+	</item>
+	<item name="about_select_currency">
+		<value xml:lang="ko"><![CDATA[통화를 선택하세요.]]></value>
+	</item>
+	<item name="about_currency_format">
+		<value xml:lang="ko"><![CDATA[통화 선택 후 표기방식을 $과 USD 두가지 중에서 선택합니다.]]></value>
+	</item>
+	<item name="about_decimal_place">
+		<value xml:lang="ko"><![CDATA[입력된 가격을 소수점으로 처리할 자리수를 입력해 주세요. 달러의 경우 센트(cent)를 소수점 두자리로 표현하므로 2를 입력합니다.]]></value>
+	</item>
+	<item name="about_register_category">
+		<value xml:lang="ko"><![CDATA[선택된 분류의 하위분류를 등록합니다.]]></value>
+	</item>
+	<item name="about_column_name">
+		<value xml:lang="ko"><![CDATA[영문으로만 띄어쓰기 없이 입력해 주세요.]]></value>
+	</item>
+	<item name="about_column_title">
+		<value xml:lang="ko"><![CDATA[항목 제목을 입력해 주세요.]]></value>
+	</item>
+	<item name="about_mandatory">
+		<value xml:lang="ko"><![CDATA[필수 여부를 선택해 주세요]]></value>
+	</item>
+	<item name="about_group_discount">
+		<value xml:lang="ko"><![CDATA[개별 상품에 대해 그룹별 할인을 적용할 수 있습니다. 비율 5를 입력했을 때 원가격에 5%가 할인되고 가격 5000을 입력했을 때 5000원이 일괄적으로 할인됩니다.]]></value>
+	</item>
+	<item name="about_product_name">
+		<value xml:lang="ko"><![CDATA[상품명을 입력해 주세요.]]></value>
+	</item>
+	<item name="about_product_code">
+		<value xml:lang="ko"><![CDATA[미입력시 자동 입력됩니다.]]></value>
+	</item>
+	<item name="about_thumbnail_image">
+		<value xml:lang="ko"><![CDATA[상품 이미지를 선택해주세요.]]></value>
+	</item>
+	<item name="about_contents_file">
+		<value xml:lang="ko"><![CDATA[콘텐츠상품인 경우에 입력하세요.]]></value>
+	</item>
+	<item name="about_display_or_not">
+		<value xml:lang="ko"><![CDATA[진열여부를 선택해 주세요.]]></value>
+	</item>
+	<item name="about_price">
+		<value xml:lang="ko"><![CDATA[가격을 입력해 주세요.]]></value>
+	</item>
+	<item name="about_taxation">
+		<value xml:lang="ko"><![CDATA[구매시 결제금액에는 영향을 미치지 않습니다. 부가세표시에 적용됩니다.]]></value>
+	</item>
+	<item name="about_category_display">
+		<value xml:lang="ko"><![CDATA[상단에 카탈로그 선택 UI를 출력합니다.]]></value>
+	</item>
+	<item name="about_svcart_mid">
+		<value xml:lang="ko"><![CDATA[장바구니 이동시 설정된 장바구니 페이지로 이동합니다.]]></value>
+	</item>
+	<item name="about_cancelation_policy2">
+		<value xml:lang="ko"><![CDATA[상품정보를 개별적으로 입력하려면 개별적용으로 설정합니다. 일괄적용시 개별 입력된 정보는 무시됩니다.]]></value>
+	</item>
+	<item name="about_print_on_top">
+		<value xml:lang="ko"><![CDATA[상품목록, 상품상세페이지 상단에 출력합니다.]]></value>
+	</item>
+	<item name="about_print_on_bottom">
+		<value xml:lang="ko"><![CDATA[상품목록, 상품상세페이지 하단에 출력합니다.]]></value>
+	</item>
+	<item name="about_showwindow_categories">
+		<value xml:lang="ko"><![CDATA[메인 페이지에 진열할 상품을 카탈로그별로 추가하세요. 원하는 탭을 선택하고 "선택상품▼" 버튼을 클릭하세요.<br />svitem의 카탈로그 기능을 사용하려면 .htaccess 파일에 # trackback 명령 바로 다음에<BR>#svshop / mid / Catalog / product<BR>RewriteRule ^([a-zA-Z0-9_]+)/Catalog/([a-zA-Z0-9_\.-]+)$ ./index.php?mid=$1&catalog=$2 [L,QSA]을 추가해야 합니다.]]></value>
+	</item>
+	<item name="currency_list" type="array">
+		<item name="KRW">
+			<value xml:lang="ko"><![CDATA[원]]></value>
+		</item>
+		<item name="USD">
+			<value xml:lang="ko"><![CDATA[미국달러]]></value>
+		</item>
+		<item name="JPY">
+			<value xml:lang="ko"><![CDATA[엔]]></value>
+		</item>
+		<item name="taiwan_twd">
+			<value xml:lang="ko"><![CDATA[대만위엔달러]]></value>
+		</item>
+		<item name="PHP">
+			<value xml:lang="ko"><![CDATA[필리핀(페소)]]></value>
+		</item>
+	</item>
+	<item name="currency_code" type="array">
+		<item name="KRW">
+			<value xml:lang="ko"><![CDATA[원]]></value>
+		</item>
+		<item name="USD">
+			<value xml:lang="ko"><![CDATA[USD]]></value>
+		</item>
+		<item name="JPY">
+			<value xml:lang="ko"><![CDATA[엔]]></value>
+		</item>
+		<item name="NTD">
+			<value xml:lang="ko"><![CDATA[NTD]]></value>
+		</item>
+		<item name="PHP">
+			<value xml:lang="ko"><![CDATA[PHP]]></value>
+		</item>
+	</item>
+
+	<item name="currency_sign" type="array">
+		<item name="KRW">
+			<value xml:lang="ko"><![CDATA[₩]]></value>
+		</item>
+		<item name="USD">
+			<value xml:lang="ko"><![CDATA[$]]></value>
+		</item>
+		<item name="JPY">
+			<value xml:lang="ko"><![CDATA[¥]]></value>
+		</item>
+		<item name="NTD">
+			<value xml:lang="ko"><![CDATA[NT$]]></value>
+		</item>
+		<item name="PHP">
+			<value xml:lang="ko"><![CDATA[₱]]></value>
+		</item>
+	</item>
+</lang>

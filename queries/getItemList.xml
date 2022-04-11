@@ -1,0 +1,17 @@
+<query id="getItemList" action="select">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" />
+		<condition operation="equal" column="category_node_srl" var="category_node_srl" pipe="and" />
+		<condition operation="equal" column="display" var="display" pipe="and" />
+		<condition operation="like" column="item_name" var="item_name" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="item_srl" order="desc" />
+	</navigation>
+</query>

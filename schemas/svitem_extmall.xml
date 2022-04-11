@@ -1,0 +1,9 @@
+<table name="svitem_extmall">
+	<column name="ext_mall_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment"/>
+	<column name="item_srl" type="number" size="11" default="0" notnull="notnull" index="idx_item_srl" unique="unique_item_type_title"/>
+	<column name="type" type="varchar" size="10" notnull="notnull" unique="unique_item_type_title"/>
+	<column name="title" type="varchar" size="50" notnull="notnull" unique="unique_item_type_title"/>
+	<column name="url" type="text" notnull="notnull" />
+	<column name="is_active" type="char" size="10" default="Y" notnull="notnull" />
+	<column name="regdate" type="date" notnull="notnull" />
+</table>

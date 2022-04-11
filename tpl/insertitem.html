@@ -1,0 +1,90 @@
+<load target="js/script.js" />
+
+<style>
+	.x_controls ul { list-style:none; margin:0; padding:0; }
+	.x_controls ul li { float:left; margin-right:10px;}
+	.x_control-group .x_controls select.category { min-width:140px; }
+</style>
+
+<form method="post" action="./" class="x_form-horizontal" enctype="multipart/form-data">
+	<input name="module" type="hidden" value="{$module}" />
+	<input name="act" type="hidden" value="procSvitemAdminInsertItem" />
+	<input name="module_srl" type="hidden" value="{$module_srl}" />
+	<h1>{$lang->title_product_basicinfo}</h1>
+	<div class="x_control-group">
+		<label class="x_control-label" for="item_code">{$lang->ga_brand_name}</label>
+		<div class="x_controls">
+			<input name="ga_brand_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_brand_name}" />
+			<a href="#item_code_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="item_code_help" class="x_help-block" hidden>{$lang->about_ga_brand_name}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="ga_category_name">{$lang->ga_category_name}</label>
+		<div class="x_controls">
+			<input name="ga_category_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_category_name}" />
+			<a href="#ga_category_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="ga_category_name_help" class="x_help-block" hidden>{$lang->about_ga_category_name}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="item_name">{$lang->product_name} <em style="color:red">*</em></label>
+		<div class="x_controls">
+			<input name="item_name" type="text" value="" />
+			<a href="#item_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="item_name_help" class="x_help-block" hidden>{$lang->about_product_name}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="item_code">{$lang->ga_variation_name}</label>
+		<div class="x_controls">
+			<input name="ga_variation_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_variation_name}" />
+			<a href="#ga_variation_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="ga_variation_name_help" class="x_help-block" hidden>{$lang->about_ga_variation_namee}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="item_code">{$lang->item_code}</label>
+		<div class="x_controls">
+			<input name="item_code" type="text" value="" />
+			<a href="#item_code_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="item_code_help" class="x_help-block" hidden>{$lang->about_product_code}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="barcode">{$lang->barcode}</label>
+		<div class="x_controls">
+			<input name="barcode" type="text" value="" />
+			<a href="#barcode_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="barcode_help" class="x_help-block" hidden>{$lang->about_barcode}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="thumbnail_image">{$lang->thumbnail}</label>
+		<div class="x_controls">
+			<input type="file" name="thumbnail_image" />
+			<a href="#thumbnail_image_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="thumbnail_image_help" class="x_help-block" hidden>{$lang->about_thumbnail_image}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="price">{$lang->price} <em style="color:red">*</em></label>
+		<div class="x_controls">
+			<input name="price" type="text" value="" />
+			<a href="#price_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="price_help" class="x_help-block" hidden>{$lang->about_price}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="taxfree">{$lang->tax_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" name="taxfree" value="N" checked="checked" />{$lang->taxation}</label>
+			<label class="x_inline"><input type="radio" name="taxfree" value="Y" />{$lang->no_taxation}</label>
+			<a href="#taxfree_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="taxfree_help" class="x_help-block" hidden>{$lang->about_taxation}</p>
+		</div>
+	</div>
+	<div class="x_clearfix btnArea">
+		<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+	</div>
+</form>

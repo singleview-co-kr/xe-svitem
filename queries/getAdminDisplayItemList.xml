@@ -1,0 +1,15 @@
+<query id="getAdminDisplayItemList" action="select">
+	<tables>
+		<table name="svitem_display_items" />
+	</tables>
+	<columns>
+		<column name="item_srl" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" />
+		<condition operation="equal" column="category_srl" var="category_srl" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="list_order" order="asc" />
+	</navigation>
+</query>

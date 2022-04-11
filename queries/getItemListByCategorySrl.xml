@@ -1,0 +1,13 @@
+<query id="getItemListByCategorySrl" action="select">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="item_srl" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" filter="number"/>
+		<condition operation="equal" column="display" var="display" pipe="and" />
+		<condition operation="equal" column="category_node_srl" var="category_node_srl" filter="number" pipe="and" />
+	</conditions>
+</query>

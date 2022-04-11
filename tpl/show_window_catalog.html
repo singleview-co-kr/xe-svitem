@@ -1,0 +1,64 @@
+<load target="js/show_window_catalog.js" />
+<load target="filter/update_show_window_catalog.xml" />
+
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div>
+	<ul id="categories" class="x_unstyled">
+		<li loop="$list=>$no,$val" id="record_{$val->category_srl}" class="x_nav-list">
+			<span class="iconMoveTo"></span>
+			<span class="category_name">{htmlspecialchars($val->category_name)} [{$val->category_srl}]</span>
+			<a href="#" class="delete" onclick="delete_show_window_catalog({$val->category_srl}); return false;" style="float:right;">{$lang->cmd_delete}</a>
+			<a href="#editCategory" class="modify modalAnchor _edit" style="float:right;margin-right:10px;">{$lang->cmd_modify}</a>
+		</li>
+	</ul>
+	<p class="btnArea">
+		<a href="#insertCatalog" class="x_btn modalAnchor _add">{$lang->add_category}</a>
+	</p>
+</div>
+
+<form action="./" id="insertCatalog" class="x_modal" ruleset="insertCatalog" method="post">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminUpdateShowWindowCatalog" />
+	<input type="hidden" name="module_srl" value="{$module_srl}" />
+	<input type="hidden" name="mode" value="insert" />
+	<div class="x_modal-header">
+		<h1>{$lang->add_category}</h1>
+	</div>
+	<div class="x_modal-body x_form-horizontal">
+		<div class="x_control-group">
+			<label for="category_name" class="x_control-label">{$lang->category_name}</label>
+			<div class="x_controls">
+				<input type="text" id="category_name" name="category_name" value="" />
+			</div>
+		</div>
+	</div>
+	<div class="x_modal-footer">
+		<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_save}</button>
+	</div>
+</form>
+
+<form action="./" id="editCategory" class="x_modal" ruleset="insertCatalog" method="post">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminUpdateShowWindowCatalog" />
+	<input type="hidden" name="module_srl" value="{$module_srl}" />
+	<input type="hidden" name="mode" value="insert" />
+	<input type="hidden" name="catalog_srl" value="" />
+	<div class="x_modal-header">
+		<h1>{$lang->add_category}</h1>
+	</div>
+	<div class="x_modal-body x_form-horizontal">
+		<div class="x_control-group">
+			<label for="category_name" class="x_control-label">{$lang->category_name}</label>
+			<div class="x_controls">
+				<input type="text" id="category_name" name="category_name" value="" />
+			</div>
+		</div>
+	</div>
+	<div class="x_modal-footer">
+		<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_save}</button>
+	</div>
+</form>

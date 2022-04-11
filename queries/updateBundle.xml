@@ -1,0 +1,13 @@
+<query id="updateBundle" action="update">
+	<tables>
+		<table name="svitem_bundles" />
+	</tables>
+	<columns>
+		<column name="bundle_items" var="bundle_items" notnull="notnull" />
+		<column name="bundle_price" var="bundle_price" notnull="notnull" />
+		<column name="bundle_quantity" var="bundle_quantity" notnull="notnull" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="bundle_srl" var="bundle_srl" notnull="notnull" />
+	</conditions>
+</query>

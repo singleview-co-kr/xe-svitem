@@ -1,0 +1,79 @@
+<load target="../../module/tpl/js/multi_order.js" />
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<h3 class="h3">{$lang->cmd_list_setting}</h3>
+<p>{$lang->about_list_config}</p>
+<form class="x_form-horizontal" action="./" method="post">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminSaveDisplayConfig" />
+	<input type="hidden" name="module_srl" value="{$module_srl}" />
+	<input type="hidden" name="page_type" value="detail" />
+	<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+{@
+$list = array_keys($aDisplayingVars);
+}
+	<input type="hidden" name="list" value="{implode(',', $list)}" />
+	<div class="x_control-group">
+		<label class="x_control-label" for="display">{$lang->item_code} {$lang->display_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" id="display_itemcode_detail" name="display_itemcode_detail" value="Y" checked="checked"|cond="!$config->display_itemcode_detail || $config->display_itemcode_detail=='Y'" />{$lang->display}</label>
+			<label class="x_inline"><input type="radio" id="display_itemcode_detail" name="display_itemcode_detail" value="N" checked="checked"|cond="$config->display_itemcode_detail=='N'"/>{$lang->not_display}</label>
+			<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+		</div>
+		<label class="x_control-label" for="display">{$lang->npay_button} {$lang->display_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline">네이버페이 버튼 표시는 svcart에서 설정합니다. </label>
+		</div>
+		<label class="x_control-label" for="display">{$lang->buy_button} {$lang->display_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" id="display_buy_btn_detail" name="display_buy_btn_detail" value="Y" checked="checked"|cond="!$config->display_buy_btn_detail || $config->display_buy_btn_detail=='Y'" />{$lang->display}</label>
+			<label class="x_inline"><input type="radio" id="display_buy_btn_detail" name="display_buy_btn_detail" value="N" checked="checked"|cond="$config->display_buy_btn_detail=='N'"/>{$lang->not_display}</label>
+			<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+		</div>
+		<label class="x_control-label" for="display">{$lang->cart_buttons} {$lang->display_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" id="display_cart_btn_detail" name="display_cart_btn_detail" value="Y" checked="checked"|cond="!$config->display_cart_btn_detail || $config->display_cart_btn_detail=='Y'" />{$lang->display}</label>
+			<label class="x_inline"><input type="radio" id="display_cart_btn_detail" name="display_cart_btn_detail" value="N" checked="checked"|cond="$config->display_cart_btn_detail=='N'"/>{$lang->not_display}</label>
+			<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+		</div>
+		<label class="x_control-label" for="display">{$lang->favorite_button} {$lang->display_or_not}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" id="display_favorite_btn_detail" name="display_favorite_btn_detail" value="Y" checked="checked"|cond="!$config->display_favorite_btn_detail || $config->display_favorite_btn_detail=='Y'"/>{$lang->display}</label>
+			<label class="x_inline"><input type="radio" id="display_favorite_btn_detail" name="display_favorite_btn_detail" value="N" checked="checked"|cond="$config->display_favorite_btn_detail=='N'"/>{$lang->not_display}</label>
+			<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+		</div>
+	</div>
+	<div class="x_control-group"></div>
+
+	<select class="multiorder_show" size="8" multiple="multiple" style="width:290px;height:290px;vertical-align:top">
+		<option loop="$aHiddenVars => $key, $val" value="{$key}">{$val}</option>
+	</select>
+	<button type="button" class="x_btn multiorder_add">{$lang->cmd_insert}</button>
+	<select class="multiorder_selected" size="8" multiple="multiple" style="width:290px;height:290px;vertical-align:top">
+		<option loop="$aDisplayingVars => $key, $val" value="{$key}">{$val}</option>
+	</select>
+	<button type="button" class="x_btn multiorder_up">{$lang->cmd_move_up}</button>
+	<button type="button" class="x_btn multiorder_down">{$lang->cmd_move_down}</button>
+	<button type="button" class="x_btn multiorder_del">{$lang->cmd_delete}</button>
+	<script type="text/javascript">
+		xe.registerApp(new xe.MultiOrderManager('list'));
+	</script>
+	<BR><BR><BR>
+	<div class="x_control-group">
+		<div class="x_control-label" for="">3rd party script with skin vars </div>
+		<div class="x_controls">
+			<textarea name="ext_script">{$ext_script}</textarea>
+		</div>
+	</div>
+	<div class="x_clearfix btnArea">
+		<input type="submit" class="x_btn x_btn-primary" value="{$lang->cmd_save}" />
+	</div>
+</form>

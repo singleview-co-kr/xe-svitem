@@ -1,0 +1,30 @@
+<query id="getAdminItemList" action="select">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="item_srl" />
+		<column name="item_code" />
+		<column name="item_name" />
+		<column name="module_srl" />
+		<column name="document_srl" />
+		<column name="thumb_file_srl" />
+		<column name="price"/>
+		<column name="display" />
+		<column name="sales_count" />
+		<column name="current_stock" />
+		<column name="list_order" />
+		<column name="regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" />
+		<condition operation="equal" column="category_node_srl" var="category_node_srl" pipe="and" />
+		<condition operation="like" column="item_name" var="item_name" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="list_order" order="asc" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

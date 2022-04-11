@@ -1,0 +1,672 @@
+{@
+// 관리자에서 진열여부 -> 출력하지 않음 선택하면, 20150915
+$bPriceUndecided = 0;
+}
+<block loop="$extra_vars=>$key,$val">
+{@
+if( $val->name == 'is_price_undecided' && $val->value[0] == 'Y' )
+	$bPriceUndecided = 1;
+}
+<!---127,000
+143,000---->
+</block>
+
+<link rel="stylesheet" href="/modules/svitem/skins/singleskushop/css/swiper.min.css" />	
+
+<!--@if($item_info->display == 'N' )-->
+<p align='center'><BR><BR>제품 출시 전입니다.</p>
+<!--@else-->
+<div itemscope itemtype='http://schema.org/Product'>
+	<meta itemprop='url' content='http://www.balanceseat.co.kr/products/'>
+	<meta itemprop='image' content=''>
+	<div class='grid'>
+<!-- PRODUCT DESCRIPTION -->
+		<div class="grid-item item-product-info"><!-- cicron margin-top:100px;-->
+			<BR>
+<SCRIPT TYPE='text/javascript'>
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+gaectkDetail.init();
+gaectkDetail.loadItemInfo( '{$item_info->item_srl}', '{$item_info->item_name}', '{$item_info->item_name}', '{$item_info->item_name}', '', '{$item_info->discounted_price}' );
+gaectkDetail.patchDetail();
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+</SCRIPT>
+<script type="text/javascript">
+function layer_open(el){
+	sendClickEventGaectk( 'button', 'exchange_sale_promotion', '#' );
+	var temp = $('#' + el);		//레이어의 id를 temp변수에 저장
+	var bg = temp.prev().hasClass('bg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+
+	if(bg){
+		$('.layer').fadeIn();
+	}else{
+		temp.fadeIn();	//bg 클래스가 없으면 일반레이어로 실행한다.
+	}
+
+	// 화면의 중앙에 레이어를 띄운다.
+	//if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()/2+'px');
+	//else temp.css('top', '0px');
+	temp.css('top', '100px');
+	if (temp.outerWidth() < $(document).width() ) temp.css('margin-left', '-'+temp.outerWidth()/2+'px');
+	else temp.css('left', '0px');
+
+	temp.find('a.cbtn').click(function(e){
+		if(bg){
+			$('.layer').fadeOut();
+		}else{
+			temp.fadeOut();		//'닫기'버튼을 클릭하면 레이어가 사라진다.
+		}
+		e.preventDefault();
+	});
+
+	$('.layer .bg').click(function(e){
+		$('.layer').fadeOut();
+		e.preventDefault();
+	});
+}				
+</script>
+<!--@if( Mobile::isMobileCheckByAgent() )-->
+<style type="text/css">
+.pop-layer {display:none; position: absolute; top: 50%; left: 50%; width: 100%; height:auto;  background-color:#fff; border: 5px solid #3571B5; z-index: 10;}	
+.pop-layer .pop-container {padding: 20px 25px;}
+.pop-layer p.ctxt {color: #666; line-height: 25px;}
+.pop-layer .btn-r {width: 100%; margin:10px 0 20px; padding-top: 10px; border-top: 1px solid #DDD; text-align:right;}
+a.cbtn {display:inline-block; height:25px; padding:0 14px 0; border:1px solid #304a8a; background-color:#3f5a9d; font-size:13px; color:#fff; line-height:25px;}	
+a.cbtn:hover {border: 1px solid #091940; background-color:#1f326a; color:#fff;}
+</style>
+			<div id='' STYLE='margin:0; padding:0; border:none;'><img src="/img_assets/20150921/mob_1_detail_header_150921_400x472.png" WIDTH='100%'/></div>
+			<div id='mob_1_detail_promotion_header_20151014'><a href="#" class="btn-example" onclick="layer_open('layer1');return false;"><img src='/img_assets/20151110/mob_exchange_sale_event_banner_151110.png' WIDTH='100%'></A></DIV>
+			<div id="layer1" class="pop-layer">
+				<div class="pop-container">
+					<div class="pop-conts">
+						<!--content //-->
+						<div class="btn-r">
+							<a href="#" class="cbtn">Close</a>
+						</div>
+						<div id='pc_00_detail_promotion_20151014'><img src="http://balanceseat.co.kr/img_assets/20151117/mob_exchange_sale_event_main_151117.png" /></div>
+						<!--// content-->
+					</div>
+				</div>
+			</div>
+<!--@else-->
+<style type="text/css">
+.pop-layer {display:none; position: absolute; top: 50%; left: 50%; width: 810px; height:auto;  background-color:#fff; border: 5px solid #3571B5; z-index: 10;}	
+.pop-layer .pop-container {padding: 20px 25px;}
+.pop-layer p.ctxt {color: #666; line-height: 25px;}
+.pop-layer .btn-r {width: 100%; margin:10px 0 20px; padding-top: 10px; border-top: 1px solid #DDD; text-align:right;}
+
+a.cbtn {display:inline-block; height:25px; padding:0 14px 0; border:1px solid #304a8a; background-color:#3f5a9d; font-size:13px; color:#fff; line-height:25px;}	
+a.cbtn:hover {border: 1px solid #091940; background-color:#1f326a; color:#fff;}
+</style>
+			<CENTER>
+				<div id='' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_01_detail_header_20151026.png" /></div>
+				<div id='pc_1_detail_promotion_20151014'><a href="#" class="btn-example" onclick="layer_open('layer1');return false;"><img src="/img_assets/20151110/pc_exchange_sale_event_banner_wt_btn_860_151110.png" /></a></div>
+			</CENTER>
+			<div id="layer1" class="pop-layer">
+				<div class="pop-container">
+					<div class="pop-conts">
+						<!--content //-->
+						<div id='pc_00_detail_promotion_20151014'><img src="http://balanceseat.co.kr/img_assets/20151117/pc_exchange_sale_event_main_151117.png" /></div>
+						<div class="btn-r">
+							<a href="#" class="cbtn">Close</a>
+						</div>
+						<!--// content-->
+					</div>
+				</div>
+			</div>
+<!--@end-->
+			<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<form class="form-add-to-cart form-horizontal" id="addToCartForm">
+				<input type="hidden" name="hidden_discount_price" id="hidden_discount_price" value="{$discounted_price}1" />
+				<input type="hidden" name="hidden_discount_price" id="hidden_base_price" value="{$item_info->price}" />
+				<input type="hidden" name="hidden_discount_amount" id="hidden_discount_amount" value="{$item_info->discount_amount}1" />
+				<input type="hidden" name="hidden_item_name" id="hidden_item_name" value="{$item_info->item_name}" />
+					<div cond="count($options)" class="selector-wrapper">
+						<label for="productSelect-option-0">{$lang->order_options}</label>
+						<select class="single-option-selector" data-option="option1" id="item_options"></select>
+					</div>
+					<!--div class="selector-wrapper">
+						<label for="productSelect-option-1">사이즈</label>
+						<select class="single-option-selector" data-option="option2" id="productSelect-option-1">
+							<option value="X-Small">Medium</option>
+							<option value="X-Large">Large</option>
+						</select>
+					</div--->
+					<div class="qty-container">
+						<label for="quantity" class="quantity-selector">{$lang->order_quantity}</label>
+						<input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+					</div>
+					<div cond="!$bPriceUndecided" class="form-item-container price-container">
+						<span id="productPriceKR" class="product-price" itemprop="price">
+							<small>
+<block cond="!$item_info->discount_amount">
+							<span id="productPriceNumber">{number_format($item_info->price)}</span> 원
+</block>
+<block cond="$item_info->discount_amount">
+							<strike><span id="productPriceNumber">{number_format($item_info->price)}</span></strike> 원<span id="discountInfo"><FONT SIZE='2'>({$item_info->discount_info}가: <span id='discountedPirce'>{number_format($discounted_price)}</span>원</span>,&nbsp;<span><span id='discountedAmount'>{number_format($item_info->discount_amount)}</span>원 할인)</span></FONT>
+</block>
+							</small>
+						</span>
+					</div>
+	<!--@if( !$bPriceUndecided )-->
+					<div class="form-item-container add-to-cart-container" STYLE='display:inline-block;padding:5px 5px;margin:0;line-height:1.42;text-decoration:none;text-align:center;vertical-align:middle;white-space:nowrap;cursor:pointer;border:1px solid transparent;-moz-appearance:none;border-radius:3px;-webkit-transition:background-color 0.2s ease-out;-moz-transition:background-color 0.2s ease-out;-ms-transition:background-color 0.2s ease-out;-o-transition:background-color 0.2s ease-out;transition:background-color 0.2s ease-out;background-color:#222;color:#fff'>
+						<button type="button" name="add" id="addToC1art" onclick="orderItemsInDetailPage('{$item_info->item_srl}', '{$module_info->svcart_mid}', '{$bPriceUndecided}' ); return false;" STYLE='background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; color:white; font-size:15px; font-weight:bold;'>{$lang->cmd_direct_order}</button>
+						<div class="low-stock-container icon-fallback-text" style="display: none;">
+							<span class="icon icon-warning" aria-hidden="true"><span class="fallback-text">warning</span></span>
+							<span id="variantQuantity" class="variant-quantity"></span>
+						</div>
+					</div>
+					<div class="form-item-container add-to-cart-container" STYLE='display:inline-block;padding:5px 5px;margin:0;line-height:1.42;text-decoration:none;text-align:center;vertical-align:middle;white-space:nowrap;cursor:pointer;border:1px solid transparent;-moz-appearance:none;border-radius:3px;-webkit-transition:background-color 0.2s ease-out;-moz-transition:background-color 0.2s ease-out;-ms-transition:background-color 0.2s ease-out;-o-transition:background-color 0.2s ease-out;transition:background-color 0.2s ease-out;background-color:#222;color:#fff'>
+						<button type="submit" name="add" id="addToCart" onclick="addItemsToCartInDetailPage('{$item_info->item_srl}', '{$bPriceUndecided}'); return false;" STYLE='background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; color:white; font-size:15px; font-weight:bold;'>{$lang->cmd_cart}</button>
+						<div class="low-stock-container icon-fallback-text" style="display: none;">
+							<span class="icon icon-warning" aria-hidden="true"><span class="fallback-text">warning</span></span>
+							<span id="variantQuantity" class="variant-quantity"></span>
+						</div>
+					</div>
+					<div cond="$item_info->item_name=='밸런스시트(L)' || $item_info->item_name=='밸런스시트(M)'" class="form-item-container add-to-cart-container" STYLE='display:inline-block;padding:5px 5px;margin:0;line-height:1.42;text-decoration:none;text-align:center;vertical-align:middle;white-space:nowrap;cursor:pointer;border:1px solid transparent;-moz-appearance:none;border-radius:3px;-webkit-transition:background-color 0.2s ease-out;-moz-transition:background-color 0.2s ease-out;-ms-transition:background-color 0.2s ease-out;-o-transition:background-color 0.2s ease-out;transition:background-color 0.2s ease-out;background-color:#222;color:#fff'>
+<block cond="$item_info->item_name=='밸런스시트(L)'">
+						<button type="submit" name="add" id="addToCart" onclick="window.location = '/Product/1234';return false;" STYLE='background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; color:white; font-size:15px; font-weight:bold;'>M사이즈 보러가기</button>
+</block>
+<block cond="$item_info->item_name=='밸런스시트(M)'">
+						<button type="submit" name="add" id="addToCart" onclick="window.location = '/Product/2409'; return false;" STYLE='background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; color:white; font-size:15px; font-weight:bold;'>L사이즈 보러가기</button>
+</block>
+					</div>
+	<!--@end-->
+				</form>
+			</div>
+		</div>
+		<div class="grid-item item-social-sharing">
+			<div class="social-sharing " data-permalink="<?=$_SERVER[SCRIPT_URI]?>" style="margin-bottom:40px;"><!-- cicron -->
+				<a target="_blank" href="//www.facebook.com/sharer.php?u=<?=$_SERVER[SCRIPT_URI]?>" class="share-product share-facebook">
+					<span class="icon icon-facebook" aria-hidden="true"></span>
+					<span class="share-title">Share</span>
+					<span class="share-count">0</span>
+				</a>
+				<a target="_blank" href="//twitter.com/share?url=<?=$_SERVER[SCRIPT_URI]?>&amp;text=BalanceSeat" class="share-product share-twitter">
+					<span class="icon icon-twitter" aria-hidden="true"></span>
+					<span class="share-title">Tweet</span>
+					<span class="share-count">0</span>
+				</a>
+				<a target="_blank" href="//pinterest.com/pin/create/button/?url=<?=$_SERVER[SCRIPT_URI]?>&amp;media=http://balanceseat.co.kr/img_assets/mob_teaser_2_product_orange_400x449.png&amp;description=BalanceSeat" class="share-product share-pinterest">
+					<span class="icon icon-pinterest" aria-hidden="true"></span>
+					<span class="share-title">Pin it</span>
+					<span class="share-count">0</span>
+				</a>
+				<a target="_blank" href="//plus.google.com/share?url=<?=$_SERVER[SCRIPT_URI]?>" class="share-product share-google">
+					<!-- Cannot get Google+ share count with JS yet -->
+					<span class="icon icon-google" aria-hidden="true"></span>
+					<span class="share-count">+1</span>
+				</a><BR>
+			</div>
+		</div>
+		<div class="rte item-product-description grid-item" style="font-size: 0;" itemprop="description">
+		<CENTER><FONT SIZE='4'><STRONG>{$item_info->item_name}</STRONG></FONT></CENTER>
+<style type="text/css" media="screen">
+<!--
+.product-content 
+{
+	padding: 0px;
+}
+-->
+</style>
+<!--@if( Mobile::isMobileCheckByAgent() )-->
+	
+<div id='mob_3_detail_letsbalanceseat_20150930'><img src='/img_assets/20150921/mob_3_detail_letsbalanceseat_150921_400x472.png' WIDTH='100%'></DIV>
+<div class='swiper-container'>
+	<div class='swiper-wrapper'>
+<block cond="$item_info->item_name=='밸런스시트(M)'">
+		<div ID='teaser_2_product_orange_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_orange_400x450.png' WIDTH='100%'></div>
+		<div ID='teaser_2_product_green_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_green_400x450.png' WIDTH='100%'></div>
+		<div ID='teaser_2_product_grey_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_gray_400x450.png' WIDTH='100%'></div>
+</block>
+<block cond="$item_info->item_name=='밸런스시트(L)'">
+		<div ID='teaser_2_product_orange_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_large_gray_400x450.png' WIDTH='100%'></div>
+</block>
+	</div>
+	<div class='swiper-pagination'></div>
+</div>
+	
+<div id='mob_03_detail_vetagel_eyecatching_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_03_detail_vetagel_eyecatching_20151026.png" WIDTH='100%'/></div>
+<div id='mob_04_whats_different_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='whats_different_img' src="http://balanceseat.co.kr/img_assets/20151026/mob_04_whats_different_closed_20151026.png" WIDTH='100%'/></div>
+<div id='material_table' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_05_detail_material_table_20151026.png" WIDTH='100%'/></div>
+<div id='mob_05_pressed_blood_vessel_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='pressed_blood_vessel_img' src="http://balanceseat.co.kr/img_assets/20151026/mob_06_pressed_blood_vessel_closed_20151026.png" WIDTH='100%'/></div>
+<div id='anti_twist_tech' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_07_detail_anti_twist_tech_20151026.png" WIDTH='100%'/></div>
+<div id='mob_06_rounding_tip_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='rounding_tip_img' src="http://balanceseat.co.kr/img_assets/20151026/mob_08_rounding_tip_closed_20151026.png" WIDTH='100%'/></div>
+<div id='direction_design' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_09_detail_direction_design_20151026.png" WIDTH='100%'/></div>
+<div id='mob_10_detail_hextagonal_cell_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_10_detail_hextagonal_cell_20151026.png" WIDTH='100%'/></div>
+<div id='mob_11_whats_airpumping_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='whats_airpumping_img' src="http://balanceseat.co.kr/img_assets/20151026/mob_11_whats_airpumping_closed_20151026.png" WIDTH='100%'/></div>
+<div id='synergetic_mesh_cover' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_12_detail_synergetic_mesh_cover_20151026.png" WIDTH='100%'/></div>
+<div id='mob_13_detail_nst_1000_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_13_detail_nst_1000_20151026.png" WIDTH='100%'/></div>
+<div id='mob_14_see_usecase_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='see_usecase_img' src="http://balanceseat.co.kr/img_assets/20151026/mob_14_see_usecase_closed_20151026.png" WIDTH='100%'/></div>
+<div id='onthechair' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_15_detail_onthechair_20151026.png" WIDTH='100%'/></div>
+<div id='mob_16_detail_semi_permanent_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_16_detail_semi_permanent_20151026.png" WIDTH='100%'/></div>
+<div id='mob_17_detail_clean_strong_vetagel_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/mob_17_detail_clean_strong_vetagel_20151026.png" WIDTH='100%'/></div>
+<div id='mob_18_detail_endorser_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151111/mob_18_detail_endorser_20151111.png" WIDTH='100%'/></div>
+<div id='mob_19_detail_footer_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151111/mob_19_detail_footer_20151111.png" WIDTH='100%'/></div>
+
+<script>
+$(window).scroll(function()
+{
+	checkVisibilityGaectk( $('#mob_03_detail_vetagel_eyecatching_20151111') );
+	checkVisibilityGaectk( $('#mob_04_whats_different_btn_20151111') );
+	checkVisibilityGaectk( $('#mob_05_pressed_blood_vessel_btn_20151111') );
+	checkVisibilityGaectk( $('#mob_06_rounding_tip_btn_20151111') );
+	checkVisibilityGaectk( $('#mob_10_detail_hextagonal_cell_20151111') );
+	checkVisibilityGaectk( $('#mob_11_whats_airpumping_btn_20151111') );
+	checkVisibilityGaectk( $('#mob_13_detail_nst_1000_20151111') );
+	checkVisibilityGaectk( $('#mob_14_see_usecase_btn_20151111') );
+	checkVisibilityGaectk( $('#mob_16_detail_semi_permanent_20151111') );
+	checkVisibilityGaectk( $('#mob_17_detail_clean_strong_vetagel_20151111') );
+	checkVisibilityGaectk( $('#mob_18_detail_endorser_20151111') );
+	checkVisibilityGaectk( $('#mob_19_detail_footer_20151111') );
+});
+
+var bWdToggled = false;
+jQuery('#mob_04_whats_different_btn_20151111').click(function() {
+	jQuery('#material_table').slideToggle('slow', function() {
+		if( !bWdToggled )
+		{
+			jQuery('#whats_different_img').attr('src', '/img_assets/20151026/mob_04_whats_different_opened_20151026.png');
+			bWdToggled = true;
+			sendClickEventGaectk( 'button', 'mob_04_whats_different_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#whats_different_img').attr('src', '/img_assets/20151026/mob_04_whats_different_closed_20151026.png');
+			bWdToggled = false;
+			sendClickEventGaectk( 'button', 'mob_04_whats_different_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bPbvToggled = false;
+jQuery('#mob_05_pressed_blood_vessel_btn_20151111').click(function() {
+	jQuery('#anti_twist_tech').slideToggle('slow', function() {
+		if( !bPbvToggled )
+		{
+			jQuery('#pressed_blood_vessel_img').attr('src', '/img_assets/20151026/mob_06_pressed_blood_vessel_opened_20151026.png');
+			bPbvToggled = true;
+			sendClickEventGaectk( 'button', 'mob_05_pressed_blood_vessel_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#pressed_blood_vessel_img').attr('src', '/img_assets/20151026/mob_06_pressed_blood_vessel_closed_20151026.png');
+			bPbvToggled = false;
+			sendClickEventGaectk( 'button', 'mob_05_pressed_blood_vessel_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bRtToggled = false;
+jQuery('#mob_06_rounding_tip_btn_20151111').click(function() {
+	jQuery('#direction_design').slideToggle('slow', function() {
+		if( !bRtToggled )
+		{
+			jQuery('#rounding_tip_img').attr('src', '/img_assets/20151026/mob_08_rounding_tip_opened_20151026.png');
+			bRtToggled = true;
+			sendClickEventGaectk( 'button', 'mob_06_rounding_tip_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#rounding_tip_img').attr('src', '/img_assets/20151026/mob_08_rounding_tip_closed_20151026.png');
+			bRtToggled = false;
+			sendClickEventGaectk( 'button', 'mob_06_rounding_tip_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bWaToggled = false;
+jQuery('#mob_11_whats_airpumping_btn_20151111').click(function() {
+	jQuery('#synergetic_mesh_cover').slideToggle('slow', function() {
+		if( !bWaToggled )
+		{
+			jQuery('#whats_airpumping_img').attr('src', '/img_assets/20151026/mob_11_whats_airpumping_opened_20151026.png');
+			bWaToggled = true;
+			sendClickEventGaectk( 'button', 'mob_11_whats_airpumping_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#whats_airpumping_img').attr('src', '/img_assets/20151026/mob_11_whats_airpumping_closed_20151026.png');
+			bWaToggled = false;
+			sendClickEventGaectk( 'button', 'mob_11_whats_airpumping_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bSucToggled = false;
+jQuery('#mob_14_see_usecase_btn_20151111').click(function() {
+	jQuery('#onthechair').slideToggle('slow', function() {
+		if( !bSucToggled )
+		{
+			jQuery('#see_usecase_img').attr('src', '/img_assets/20151026/mob_14_see_usecase_opened_20151026.png');
+			bSucToggled = true;
+			sendClickEventGaectk( 'button', 'mob_14_see_usecase_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#see_usecase_img').attr('src', '/img_assets/20151026/mob_14_see_usecase_closed_20151026.png');
+			bSucToggled = false;
+			sendClickEventGaectk( 'button', 'mob_14_see_usecase_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+</script>
+<!--@else-->
+<div class='swiper-container'>
+	<div class='swiper-wrapper'>
+<block cond="$item_info->item_name=='밸런스시트(M)'">
+		<div ID='teaser_2_product_orange_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_orange_400x450.png' WIDTH='50%'></div>
+		<div ID='teaser_2_product_green_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_green_400x450.png' 
+		WIDTH='50%'></div>
+		<div ID='teaser_2_product_grey_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_medium_gray_400x450.png' WIDTH='50%'></div>
+</block>
+<block cond="$item_info->item_name=='밸런스시트(L)'">
+		<div ID='teaser_2_product_orange_mob_20150813' class='swiper-slide'><IMG SRC='/img_assets/20151008/product_large_gray_400x450.png' WIDTH='50%'></div>
+</block>
+	</div>
+	<div class='swiper-pagination'></div>
+</div>
+	
+<div id='pc_03_detail_vetagel_eyecatching_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_03_detail_vetagel_eyecatching_20151026.png" /></div>
+<div id='pc_04_whats_different_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='whats_different_img' src="http://balanceseat.co.kr/img_assets/20151026/pc_04_whats_different_closed_20151026.png" /></div>
+<div id='material_table' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_05_detail_material_table_20151026.png" /></div>
+<div id='pc_05_pressed_blood_vessel_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='pressed_blood_vessel_img' src="http://balanceseat.co.kr/img_assets/20151026/pc_06_pressed_blood_vessel_closed_20151026.png" /></div>
+<div id='anti_twist_tech' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_07_detail_anti_twist_tech_20151026.png" /></div>
+<div id='pc_06_rounding_tip_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='rounding_tip_img' src="http://balanceseat.co.kr/img_assets/20151026/pc_08_rounding_tip_closed_20151026.png" /></div>
+<div id='direction_design' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_09_detail_direction_design_20151026.png" /></div>
+<div id='pc_10_detail_hextagonal_cell_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_10_detail_hextagonal_cell_20151026.png" /></div>
+<div id='pc_11_whats_airpumping_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='whats_airpumping_img' src="http://balanceseat.co.kr/img_assets/20151026/pc_11_whats_airpumping_closed_20151026.png" /></div>
+<div id='synergetic_mesh_cover' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_12_detail_synergetic_mesh_cover_20151026.png" /></div>
+<div id='pc_13_detail_nst_1000_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_13_detail_nst_1000_20151026.png" /></div>
+<div id='pc_14_see_usecase_btn_20151111' STYLE='margin:0; padding:0; border:none;'><img id='see_usecase_img' src="http://balanceseat.co.kr/img_assets/20151026/pc_14_see_usecase_closed_20151026.png" /></div>
+<div id='onthechair' STYLE='margin:0; padding:0; border:none; display: none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_15_detail_onthechair_20151026.png" /></div>
+<div id='pc_16_detail_semi_permanent_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_16_detail_semi_permanent_20151026.png" /></div>
+<div id='pc_17_detail_clean_strong_vetagel_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151026/pc_17_detail_clean_strong_vetagel_20151026.png" /></div>
+<div id='pc_18_detail_endorser_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151111/pc_18_detail_endorser_20151111.png" /></div>
+<div id='pc_19_detail_footer_20151111' STYLE='margin:0; padding:0; border:none;'><img src="http://balanceseat.co.kr/img_assets/20151111/pc_19_detail_footer_20151111.png" /></div>
+
+<script>
+$(window).scroll(function()
+{
+	checkVisibilityGaectk( $('#pc_03_detail_vetagel_eyecatching_20151111') );
+	checkVisibilityGaectk( $('#pc_04_whats_different_btn_20151111') );
+	checkVisibilityGaectk( $('#pc_05_pressed_blood_vessel_btn_20151111') );
+	checkVisibilityGaectk( $('#pc_06_rounding_tip_btn_20151111') );
+	checkVisibilityGaectk( $('#pc_10_detail_hextagonal_cell_20151111') );
+	checkVisibilityGaectk( $('#pc_11_whats_airpumping_btn_20151111') );
+	checkVisibilityGaectk( $('#pc_13_detail_nst_1000_20151111') );
+	checkVisibilityGaectk( $('#pc_14_see_usecase_btn_20151111') );
+	checkVisibilityGaectk( $('#pc_16_detail_semi_permanent_20151111') );
+	checkVisibilityGaectk( $('#pc_17_detail_clean_strong_vetagel_20151111') );
+	checkVisibilityGaectk( $('#pc_18_detail_endorser_20151111') );
+	checkVisibilityGaectk( $('#pc_19_detail_footer_20151111') );
+});
+
+var bWdToggled = false;
+jQuery('#pc_04_whats_different_btn_20151111').click(function() {
+	jQuery('#material_table').slideToggle('slow', function() {
+		if( !bWdToggled )
+		{
+			jQuery('#whats_different_img').attr('src', '/img_assets/20151026/pc_04_whats_different_opened_20151026.png');
+			bWdToggled = true;
+			sendClickEventGaectk( 'button', 'pc_04_whats_different_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#whats_different_img').attr('src', '/img_assets/20151026/pc_04_whats_different_closed_20151026.png');
+			bWdToggled = false;
+			sendClickEventGaectk( 'button', 'pc_04_whats_different_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bPbvToggled = false;
+jQuery('#pc_05_pressed_blood_vessel_btn_20151111').click(function() {
+	jQuery('#anti_twist_tech').slideToggle('slow', function() {
+		if( !bPbvToggled )
+		{
+			jQuery('#pressed_blood_vessel_img').attr('src', '/img_assets/20151026/pc_06_pressed_blood_vessel_opened_20151026.png');
+			bPbvToggled = true;
+			sendClickEventGaectk( 'button', 'pc_05_pressed_blood_vessel_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#pressed_blood_vessel_img').attr('src', '/img_assets/20151026/pc_06_pressed_blood_vessel_closed_20151026.png');
+			bPbvToggled = false;
+			sendClickEventGaectk( 'button', 'pc_05_pressed_blood_vessel_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bRtToggled = false;
+jQuery('#pc_06_rounding_tip_btn_20151111').click(function() {
+	jQuery('#direction_design').slideToggle('slow', function() {
+		if( !bRtToggled )
+		{
+			jQuery('#rounding_tip_img').attr('src', '/img_assets/20151026/pc_08_rounding_tip_opened_20151026.png');
+			bRtToggled = true;
+			sendClickEventGaectk( 'button', 'pc_06_rounding_tip_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#rounding_tip_img').attr('src', '/img_assets/20151026/pc_08_rounding_tip_closed_20151026.png');
+			bRtToggled = false;
+			sendClickEventGaectk( 'button', 'pc_06_rounding_tip_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bWaToggled = false;
+jQuery('#pc_11_whats_airpumping_btn_20151111').click(function() {
+	jQuery('#synergetic_mesh_cover').slideToggle('slow', function() {
+		if( !bWaToggled )
+		{
+			jQuery('#whats_airpumping_img').attr('src', '/img_assets/20151026/pc_11_whats_airpumping_opened_20151026.png');
+			bWaToggled = true;
+			sendClickEventGaectk( 'button', 'pc_11_whats_airpumping_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#whats_airpumping_img').attr('src', '/img_assets/20151026/pc_11_whats_airpumping_closed_20151026.png');
+			bWaToggled = false;
+			sendClickEventGaectk( 'button', 'pc_11_whats_airpumping_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+
+var bSucToggled = false;
+jQuery('#pc_14_see_usecase_btn_20151111').click(function() {
+	jQuery('#onthechair').slideToggle('slow', function() {
+		if( !bSucToggled )
+		{
+			jQuery('#see_usecase_img').attr('src', '/img_assets/20151026/pc_14_see_usecase_opened_20151026.png');
+			bSucToggled = true;
+			sendClickEventGaectk( 'button', 'pc_14_see_usecase_btn_to_open_20151111', '#' );
+		}
+		else
+		{
+			jQuery('#see_usecase_img').attr('src', '/img_assets/20151026/pc_14_see_usecase_closed_20151026.png');
+			bSucToggled = false;
+			sendClickEventGaectk( 'button', 'pc_14_see_usecase_btn_to_close_20151111', '#' );
+		}
+	  // 객체가 다 펼치지거나 접히고 나면 여기에 든 내용이 실행된다.
+	});
+});
+</script>
+	
+<!--@end-->
+		</div>
+	</div>
+</div>
+<script src="/modules/svitem/skins/singleskushop/js/swiper.min.js" type="text/javascript"></script>
+<script src="/modules/svitem/skins/singleskushop/js/ui_execution.js" type="text/javascript"></script>
+
+<!---script src="/modules/svitem/skins/singleskushop/js/option_selection.js" type="text/javascript"></script>
+<script src="./modules/svitem/skins/singleskushop/js/shopify.js" type="text/javascript"></script-->
+
+
+<!--@end-->
+
+<SCRIPT TYPE='text/javascript'>
+// initialize cart object before re-load data;
+var itemOptions = [];
+
+{@
+$nIdx = 0;
+}
+<block loop="$options=>$key,$val">
+	itemOptions[{$nIdx++}] = { 'opt_srl':{$val->option_srl}, 'title': '{$val->title}', 'price': {$val->price} } 
+</block>
+
+addOption();
+
+function addOption()
+{
+	var initial_target_html = "<OPTION VALUE=''>{$lang->cmd_select}</OPTION>"; //Initial prompt for target select
+	
+//console.log( itemOptions.length);
+	var nPrice = 0;
+	var nOptCnt = itemOptions.length;
+	for ( var i = 0; i < nOptCnt; i++ )
+	{
+		nPrice = parseInt( itemOptions[i].price );
+		initial_target_html += "<option value='" + itemOptions[i].opt_srl + "' data-title='" + itemOptions[i].title + "' data-price='" + nPrice + "'>" + itemOptions[i].title;
+		
+		if( nPrice > 0 )
+			initial_target_html += '<span>+</span><span>' + formatNumber( nPrice ) + '원</span>';
+		
+		initial_target_html += '</option>';
+	}
+
+ 	$('#item_options').html(initial_target_html); //Give the target select the prompt option
+}
+
+$('#item_options').on('change', function() {
+	var nBasePrice = jQuery('#hidden_base_price').val();
+	var nCurrentQty = jQuery('#quantity').val();
+	var nCalculatedPrice = 0;
+	var nOptCnt = itemOptions.length;
+	for ( var i = 0; i < nOptCnt; i++ )
+	{
+		if( itemOptions[i].opt_srl == this.value )
+		{
+			nCalculatedPrice = ( parseInt( nBasePrice ) + parseInt( itemOptions[i].price ) ) * nCurrentQty;
+			$('#productPriceNumber').html( formatNumber( nCalculatedPrice ) );
+		}
+	}
+});
+
+/**
+ * add items into cart
+ */
+function addItemsToCartInDetailPage( item_srl, bPriceUndecided ) 
+{
+	var param = getCartParamsInDetailPage(item_srl);
+	if( bPriceUndecided == 1 )
+		alert( '판매 제품이 아닙니다.');
+	else
+		addItemsToCartObj( param );
+
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+	var nQty = jQuery('#quantity').val();
+	gaectkDetail.patchAddToCart( nQty );
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+}
+
+/**
+ * add items into cart (new)
+ * @param args format [ {item_srl:x, option_srl:x, quantity:x} , {item_srl:x, option_srl:x, quantity:x},...  ]
+ *        item_srl is required.
+ */
+function addItemsToCartObj( args ) 
+{
+	if( typeof(args)=='undefined' )
+		return;
+
+	if( !jQuery.isArray( args ) ) 
+		args = [args];
+
+	var params = new Array();
+	params['data'] = JSON.stringify(args);
+//console.log(params);
+	exec_xml( 'svitem', 'procSvitemAddItemsToCartObj', params, function( ret_obj ){
+		getCart( buildCart );
+	});
+}
+
+/*
+ * direct order
+ */
+function orderItemsInDetailPage( item_srl, svcart_mid, bPriceUndecided )
+{
+	var param = getCartParamsInDetailPage( item_srl );
+
+	if( bPriceUndecided == 1 )
+		alert( '판매 제품이 아닙니다.');
+	else
+		orderItemsDirectly( param, svcart_mid );
+	
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+	var nQty = jQuery('#quantity').val();
+//alert( nQty );
+	gaectkDetail.patchBuyNow( nTotalQuantity );
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+}
+
+function orderItemsDirectly( args, svcart_mid )
+{
+	if( typeof( args ) == 'undefined' ) 
+		return;
+
+	if (!jQuery.isArray(args))
+		args = [args];
+
+	var params = new Array();
+	params['data'] = JSON.stringify(args);
+
+	var response_tags = new Array('error','message','cart_srl');
+	exec_xml('svitem', 'procSvitemAddItemsToCartObj', params, function(ret_obj) {
+		var cart_srl = ret_obj['cart_srl'];
+		current_url = current_url.setQuery('document_srl', '');
+		if (typeof(svcart_mid) == 'undefined' || svcart_mid == '') 
+		{
+			alert('SVCART MID is not defined.');
+			return;
+		}
+		location.href = current_url.setQuery('mid', svcart_mid).setQuery('act','dispSvcartOrderItems').setQuery('cartnos',cart_srl);
+	}, response_tags);
+}
+
+/**
+ * return cart parameter formatted string.
+ * format [ {item_srl:x, option_srl:x, quantity:x} , {item_srl:x, option_srl:x, quantity:x},...  ]
+ */
+function getCartParamsInDetailPage( item_srl ) 
+{
+	var param = new Array();
+
+	var item = new Object();
+	item.item_srl = item_srl;
+	item.quantity = jQuery('#quantity').val();
+	item.price = jQuery('#hidden_discount_price').val();
+	item.name = jQuery('#hidden_item_name').val();
+	item.option_srl = jQuery( "#item_options" ).val();
+	param[param.length] = item;
+	return param;
+}
+</SCRIPT>
+
+<!---script src="/modules/svitem/skins/singleskushop/js/jquery.lazyload.js?v=1.9.1"></script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+	$("img.lazy").lazyload();
+});
+</script--->

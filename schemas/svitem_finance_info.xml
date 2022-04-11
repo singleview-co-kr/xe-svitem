@@ -1,0 +1,9 @@
+<table name="svitem_finance_info">
+	<column name="finance_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment"/>
+	<column name="fianance_tag" type="varchar" size="20" default="0" notnull="notnull" index="idx_fianance_tag" />
+	<column name="production_cost" type="number" size="11" notnull="notnull" />
+	<column name="normal_price" type="number" size="11" notnull="notnull" />
+	<column name="sell_in_qty" type="number" size="11" />
+	<column name="sell_out_qty" type="number" size="11" />
+	<column name="regdate" type="date" />
+</table>

@@ -1,0 +1,13 @@
+<query id="insertAdminCategoryNode" action="insert">
+	<tables>
+		<table name="svitem_category_node" />
+	</tables>
+	<columns>
+		<column name="category_node_srl" var="category_node_srl" filter="number" notnull="notnull" />
+		<column name="module_srl" var="module_srl" notnull="notnull" />
+		<column name="parent_srl" var="parent_srl" notnull="notnull" />
+		<column name="category_name" var="category_name" notnull="notnull" />
+		<column name="listorder" var="listorder" default="0" filter="number" notnull="notnull" />
+		<column name="regdate" var="regdate" default="curdate()" />
+	</columns>
+</query>

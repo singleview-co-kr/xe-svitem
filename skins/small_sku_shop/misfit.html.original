@@ -1,0 +1,674 @@
+<div class="content">
+	<div class="panel-container">
+		<section class="banner" id="slider-panel-0" data-magellan-destination="app">
+			<div class="flexslider" id="home-top-banner-slider">
+			<!-- For slider (if more than one banner currently showed) -->
+				<div class="timer timer-dark">
+					<span class="mask mask-dark">
+						<span class="rotator rotator-dark"></span>
+					</span>
+				</div> 
+			
+				<div class="pause_div pause_div_dark play"></div>
+				<ul class="slides">
+<!-- Let you move more, InLab -->
+					<li class="slide-item" id="techtee" STYLE='background-image:url(./layouts/inbody/img/key_visual_inlab.jpg);'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+											<div class="o-content">
+												<p>당신을 더 움직이게 합니다.</p>
+												<p><em>InLab</em></p>
+												<p style="margin-top:35px;"><a class="mfs-btn font-medium" href="/products/tech-tee">자세히 보기</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+<!-- do Inbody at home now, InBody Dial -->
+					<li class="slide-item" id="vs_store_page_banner_bloom" STYLE='background-image:url(./layouts/inbody/img/key_visual_inbody_dial_brown.jpg);'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="vs-banner-bloom-title">
+											<div class="o-content">
+												<div class="white-text vs-bloom-text">
+													<em>InBody Dial</em>
+												</div>
+												<div class="white-text font-light vs-bloom-intro">
+													이제 집에서도 인바디하세요.
+												</div>
+												<!-- <div class="white-text" style="margin-top: 10px;">
+													<span class="font-bold">$79.99</span>
+													<span class="font-bold">$69.99</span> 
+												</div> -->
+												<div style="margin-top: 40px;"><a class="mfs-btn white-border-btn font-medium" href="/products/bloom">자세히 보기</a></div>
+												<!---div class="white-text font-medium" style="font-size: 12px; margin-top: 25px;">InBody 전용 모니터링 App 포함</div--->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+<STYLE TYPE='text/css'>
+.apps-field{padding-left:20px;clear:both;}
+.apps-list{ list-style: none outside none; margin:0; padding: 0; text-align: center }
+.apps-list li{ display: inline; margin: 0 0px; }
+.apps-list li img{width:auto;height:50px}
+</STYLE>
+					<li class="slide-item" id="vs_store_page_banner" STYLE='background-image:url(./layouts/inbody/img/key_visual_inbody_app.jpg);'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+											<div class="o-content">
+												<p>건강관리의 시작과 끝</p>
+												<p><em>InBody App</em></p>
+												<!---p><BR>
+													<ul class="apps-list clearfix" >
+														<li>
+														<a href="http://redirect.inbody.com/shineappstore" target="_blank" class="appstore-button">
+														<img src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/badge_appstore.gif?v=1415760576" STYLE='width:165px; height:50px;'>
+														</a>
+														</li>
+														<li>
+														<a href="https://play.google.com/store/apps/details?id=com.inbodywearables.prometheus" target="_blank" class="appstore-button">
+														<img src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/badge_googleplay.gif?v=1415760576" STYLE='width:165px; height:50px;'>
+														</a>
+														</li>
+														<li>
+														<a href="http://www.windowsphone.com/en-us/store/app/inbody/040923cc-e1bd-46c0-b2b1-7d3680aa6f99" target="_blank" class="appstore-button">
+														<img src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/badge_windows.gif?v=1415760576" STYLE='width:165px; height:50px;'>
+														</a>
+														</li>
+													</ul>
+												</p--->												
+												<p style="margin-top:35px;"><a class="mfs-btn font-medium" href="/products/tech-tee">자세히 보기</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!---li class="slide-item" id="vs_store_page_banner">
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track"><div class="o-item s1 slick-slide slick-active" 
+										id="vs-banner-title">
+										<div class="o-content">
+											<p>
+												<img src= "./img/inbody_dial_phrase_healthy.png" class = "vs-shine-logo"/>
+											</p>
+											<p style="margin-top:35px;"><a class="mfs-btn white-border-btn font-medium" href="./add_to_cart.html">자세히 보기</a></p>
+										</div>
+								</div></div></div>
+							</div>
+						</div>
+					</li---->
+				</ul>
+			</div>
+		</section>
+	</div>		
+	
+	<div class="store-hp">
+<!---- showcase for tablet and desktop begin ---->
+		<div class="show-for-medium-up showcase-item main-product">
+			<div class="container row">
+				<div class="sc-hd">
+					<h2><strong>InBody</strong>와 함께 지금부터 시작하세요!</h2>
+					<p class="brief">Works with the InBody App for iOS or Android.</p>
+				</div>
+				<div class="sc-db">
+					<ul class="main-product-list rows clearfix">
+						<li class="large-3 medium-3 small-3 columns">
+							<form action="/cart/add" method="post">
+							<input type="hidden" name="id" class="variant-id" value="1000413136" />
+							<input type="hidden" name="varprice" class="varprice" value="$99.99" />
+							<input type="hidden" name="varname" class="varname" value="Pink" />
+							<div class="mp-item">
+								<a class="mp-thumb-hook" href="./add_to_cart.html"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20b_264x208.jpg" alt="thumbnail-dial-h20b" /></a>
+								<div class="variant-selection font-medium vs-title-color">BEST SELLER!</div>
+								<div class="mp-info">
+									<h3> White</h3>
+									<p class="mp-desc">InBody H20B</p>
+								</div>
+								<div class="btn-wrap">
+									<a href="./add_to_cart.html" class="button mfs-btn">자세히 보기</a>
+								</div>
+							</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-3 columns">
+							<form action="/cart/add" method="post">
+							<input type="hidden" name="id" class="variant-id" value="1000872368" />
+							<input type="hidden" name="varprice" class="varprice" value="$99.99" />
+							<input type="hidden" name="varname" class="varname" value="Pink" />
+							<div class="mp-item">
+								<a class="mp-thumb-hook" href="/products/inbody-shine"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20_264x208.jpg" alt="thumbnail-dial-h20" /></a>
+								<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+								<!---ul class="variant-selection">
+									<li>
+										<a class="color-button  grey" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_grey_small_dc8576bc-2a26-479f-880a-5121de5afd7f_large.jpg?v=1415053577" data-varid="270461900" data-varname="Grey" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  jet" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_jet_small_4ba6f6d6-a95a-4849-812d-2ad92868e152_large.jpg?v=1415053577" data-varid="387232624" data-varname="Jet" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  topaz" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_topaz_small_63aa3732-3981-420e-b6db-b2f6b07c72ee_large.jpg?v=1415053577" data-varid="387231980" data-varname="Topaz" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  champagne" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_champagne_small_ce889824-ef1b-49d9-87db-19aaf8b4b7af_large.jpg?v=1415053577" data-varid="387232558" data-varname="Champagne" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  storm" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_storm_small_bbaf954b-f50b-45e8-896d-a6773f2bcf89_large.jpg?v=1415053577" data-varid="744287293" data-varname="Storm" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  coral" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_coral_small_b453260a-b6da-4ce6-bb7a-8813e5fa9d8e_large.jpg?v=1415053577" data-varid="744287397" data-varname="Coral" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  wine" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_wine_small_13de0a7e-f093-4463-96c6-b94f8d67c5a5_large.jpg?v=1415053577" data-varid="798636409" data-varname="Wine" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  sea-glass" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_seaglass_small_f783bbdd-8bac-4d1d-8398-194f6e4bdfc6_large.jpg?v=1415053577" data-varid="798636433" data-varname="Sea Glass" data-varprice="$99.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  red" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_red_small_29e938ff-87c2-4e36-9e76-8e4c1746e4ff_large.jpg?v=1415053577" data-varid="944240101" data-varname="Red" data-varprice="$99.99"><i></i></a>
+									</li>
+								</ul--->
+								<div class="mp-info">
+									<h3>White</h3>
+									<p class="mp-desc">InBody H20</p>
+								</div>
+								<div class="btn-wrap">
+									<input type="submit" class="button mfs-btn addtocart-btn" value="자세히 보기" />
+								</div>
+							</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-3 columns">
+							<form action="/cart/add" method="post">
+							<input type="hidden" name="id" class="variant-id" value="943588065" />
+							<input type="hidden" name="varprice" class="varprice" value="$49.99" />
+							<input type="hidden" name="varname" class="varname" value="Onyx" />
+							<div class="mp-item">
+								<a class="mp-thumb-hook" href="./add_to_cart.html"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_black_264x208.jpg" alt="thumbnail-inlab-black" /></a>
+								<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+								<!---ul class="variant-selection">
+									<li>
+										<a class="color-button active onyx" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_onyx_small_272f7191-93be-47a1-9e90-42f07443f7ef_large.jpg?v=1411650956" data-varid="943588065" data-varname="Onyx" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  frost" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_frost_small_2455c962-7b0c-4b52-971d-ab81bf91ef06_large.jpg?v=1411650956" data-varid="943588061" data-varname="Frost" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  fuchsia" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_fuchsia_small_cea61d16-0fc1-4659-9cf6-49f203d66eec_large.jpg?v=1411650956" data-varid="943588069" data-varname="Fuchsia" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  zest" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_zest_small_228cb319-befe-405e-94fe-2efbc6a8aad1_large.jpg?v=1411650956" data-varid="943588073" data-varname="Zest" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  wave" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_wave_small_f585d057-a94a-4361-a32f-17d72e458e23_large.jpg?v=1411650956" data-varid="943588077" data-varname="Wave" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  reef" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_reef_small_e3bceb8c-0cdc-4c2d-a4ff-2f6f840ad1ee_large.jpg?v=1411650956" data-varid="943588081" data-varname="Reef" data-varprice="$49.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  red" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_red_small_be03e31a-4f93-4c97-be05-b5522d27925e_large.jpg?v=1411650956" data-varid="943588085" data-varname="Red" data-varprice="$49.99"><i></i></a>
+									</li>
+								</ul--->
+								<div class="mp-info">
+									<h3>Black</h3>
+									<p class="mp-desc">InLab</p>
+								</div>
+								<div class="btn-wrap">
+									<a href="./add_to_cart.html" class="button mfs-btn">자세히 보기</a>
+								</div>
+							</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-3 columns">
+							<form action="/cart/add" method="post">
+							<input type="hidden" name="id" class="variant-id" value="837337501" />
+							<input type="hidden" name="varprice" class="varprice" value="$149.99" />
+							<input type="hidden" name="varname" class="varname" value="White" />
+							<div class="mp-item">
+								<a class="mp-thumb-hook" href="./add_to_cart.html"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_white_264x208.jpg" alt="thumbnail-inlab-white" /></a>
+								<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+								<!---ul class="variant-selection">
+									<li>
+										<a class="color-button active white" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/beddit_white_small_f8f3a4b1-3e6b-4111-a60d-d8b026dc15fa_large.jpg?v=1411650620" data-varid="837337501" data-varname="White" data-varprice="$149.99"><i></i></a>
+									</li>
+									<li>
+										<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/beddit_black_small_80ddd884-cc57-442a-8284-1e954ee2b611_large.jpg?v=1411650620" data-varid="837337505" data-varname="Black" data-varprice="$149.99"><i></i></a>
+									</li>
+								</ul--->
+								<div class="mp-info">
+									<h3>White</h3>
+									<p class="mp-desc">InLab</p>
+								</div>
+								<div class="btn-wrap">
+									<input type="submit" class="button mfs-btn addtocart-btn" value="자세히 보기" />
+								</div>
+							</div>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+<!---- showcase for tablet and desktop end ---->
+<!---- showcase for mobile begin ---->
+		<div class="show-for-small-only showcase-item product-loop">
+			<div class="container row">
+				<div class="sc-hd">
+					<h2><strong>InBody</strong>와 지금 시작하세요!</h2>
+					<!---p class="brief">Wear your inbody Shine how you want, wherever you want for any occasion.</p--->
+				</div>
+				<div class="sc-db">
+					<ul class="rows clearfix">
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="939112813" />
+								<input type="hidden" name="varprice" class="varprice" value="$29.99" />
+								<input type="hidden" name="varname" class="varname" value="Default" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/3colorshinesportbands"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20b_264x208.jpg"  alt="thumbnail-dial-h20b" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>InBody H20B</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="453136357" />
+								<input type="hidden" name="varprice" class="varprice" value="$9.95" />
+								<input type="hidden" name="varname" class="varname" value="Sports Wristband" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/sport-band"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20_264x208.jpg"  alt="thumbnail-dial-h20" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>InBody H20</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="271449676" />
+								<input type="hidden" name="varprice" class="varprice" value="$39.99" />
+								<input type="hidden" name="varname" class="varname" value="Tan" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/leather-band"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_black_264x208.jpg"  alt="thumbnail-inlab-black" /></a>
+									<ul class="variant-selection">
+										<!--li>
+											<a class="color-button active tan" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/leatherband_brown_small_3f94694c-9ed1-4c1d-aa53-e0c8f40343e8_large.jpg?v=1411651477" data-varid="271449676" data-varname="Tan" data-varprice="$39.99"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/leatherband_black_small_c2555533-abdf-4eef-a51c-176adab35de2_large.jpg?v=1411651477" data-varid="271449484" data-varname="Black" data-varprice="$39.99"><i></i></a>
+										</li--->
+									</ul>
+									<div class="mp-info">
+										<h3>InLab Black</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="849930773" />
+								<input type="hidden" name="varprice" class="varprice" value="$49.99" />
+								<input type="hidden" name="varname" class="varname" value="Tan" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/pebbled"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_white_264x208.jpg"  alt="thumbnail-inlab-white" /></a>
+									<ul class="variant-selection">
+										<!---li>
+											<a class="color-button active tan" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/pebble_brown_small_7e9e144a-8ad0-433c-803a-af29c5e3c41f_large.jpg?v=1411651647" data-varid="849930773" data-varname="Tan" data-varprice="$49.99"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/pebble_black_small_f7a0a133-3166-478c-b32f-77e0329680ae_large.jpg?v=1411651647" data-varid="849932501" data-varname="Black" data-varprice="$49.99"><i></i></a>
+										</li---->
+									</ul>
+									<div class="mp-info">
+										<h3>InLab White</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<!---li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="922572165" />
+								<input type="hidden" name="varprice" class="varprice" value="$49.99" />
+								<input type="hidden" name="varname" class="varname" value="Black" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/meshband"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/meshband_black_small_59b2cbfc-e2a5-4f56-a68f-b4355e8d8a0c_large.jpg?v=1411651992"  alt="thumbnail-black" /></a>
+									<ul class="variant-selection">
+										<li>
+											<a class="color-button active black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/meshband_black_small_59b2cbfc-e2a5-4f56-a68f-b4355e8d8a0c_large.jpg?v=1411651992" data-varid="922572165" data-varname="Black" data-varprice="$49.99"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  silver" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/meshband_white_small_a3d63719-9290-4122-9542-ff7c0cec26a6_large.jpg?v=1411652001" data-varid="922572169" data-varname="Silver" data-varprice="$49.99"><i></i></a>
+										</li>
+									</ul>
+									<div class="mp-info">
+										<h3>Metal Mesh Band</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="453136293" />
+								<input type="hidden" name="varprice" class="varprice" value="$3.95" />
+								<input type="hidden" name="varname" class="varname" value="Replacement Clasp" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/replacement-clasp"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/clasp_small_6e7cfc96-d612-4e34-b67e-2c15eb4ffc4c_large.jpg?v=1411651630"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Replacement Clasp</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="271448762" />
+								<input type="hidden" name="varprice" class="varprice" value="$49.95" />
+								<input type="hidden" name="varname" class="varname" value="Default" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/necklace"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/necklake_small_b91f1c40-3247-4fab-85d9-7e81d4ac60dc_large.jpg?v=1411651801"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Sport Necklace</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="704999357" />
+								<input type="hidden" name="varprice" class="varprice" value="$79.99" />
+								<input type="hidden" name="varname" class="varname" value="Default" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/bloom"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/bloom_small_e7c6baac-6b5f-4f3a-a658-afff03c7dd7e_large.jpg?v=1411651021"  alt="thumbnail" /></a>
+									<ul class="variant-selection"---->
+									<!-- 
+										<div class="special-deal">
+											<span class="font-medium special-deal-txt">
+												SPECIAL DEAL
+											</span>
+											<img src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/greenspecialtag.png?14669" class="special-deal-img" />
+										</div>
+									 -->
+									<!---li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Bloom Necklace</h3>
+									</div>
+									<div class="btn-wrap">
+										<input type="submit" class="button mfs-btn addtocart-btn" value="ADD TO CART" />
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="588029293" />
+								<input type="hidden" name="varprice" class="varprice" value="$19.99" />
+								<input type="hidden" name="varname" class="varname" value="Navy" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/classic-tee"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_blue_small_afc79454-7aa5-4dea-bf91-9db9effd4b7d_large.jpg?v=1412580312"  alt="thumbnail-navy" /></a>
+									<ul class="variant-selection">
+										<li>
+											<a class="color-button active navy" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_blue_small_afc79454-7aa5-4dea-bf91-9db9effd4b7d_large.jpg?v=1412580312" data-varid="588029293" data-varname="Navy"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_black_small_8eefd5f4-ecc1-437c-9506-ebb89176499b_large.jpg?v=1412580312" data-varid="588029337" data-varname="Black"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  white" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_white_small_998a652b-354f-462f-b283-ec567174aa22_large.jpg?v=1412580312" data-varid="588029385" data-varname="White"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  teal" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_teal_small_3ebf96a9-1bfb-489b-9348-7297ef2a16a8_large.jpg?v=1412580312" data-varid="588029425" data-varname="Teal"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  grey" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_grey_small_50bce684-98a3-4891-b818-136f4606b793_large.jpg?v=1412580312" data-varid="588029465" data-varname="Grey"><i></i></a>
+										</li>
+									</ul>
+									<div class="mp-info">
+										<h3>Classic Tee</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/classic-tee" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="588029845" />
+								<input type="hidden" name="varprice" class="varprice" value="$19.99" />
+								<input type="hidden" name="varname" class="varname" value="2 Black Crew Socks" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/socks-2-pack"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/socks_small_96ef3f58-4352-4a09-a367-fa2d7a1cb0ff_large.jpg?v=1411651694"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Pack of Socks, 2 Pairs</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/socks-2-pack" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="978199404" />
+								<input type="hidden" name="varprice" class="varprice" value="$39.99" />
+								<input type="hidden" name="varname" class="varname" value="Grey" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/tech-tee"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/technical_tee_small_womens_gray_e1db3242-9ac9-48ec-b961-4dc8e289c4a9_large.jpeg?v=1413452439"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Technical Tee</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/tech-tee" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li---->
+					</ul>
+				</div>
+			</div>
+		</div>
+<!---- showcase for mobile begin ---->
+		<!---div class="showcase-item product-loop">
+			<div class="container row">
+				<div class="sc-hd">
+					<h2><strong>FLASH</strong> UPGRADES</h2>
+					<p class="brief">Wear your inbody Flash Anywhere and Get Fit in a Flash.</p>
+				</div>
+				<div class="sc-db">
+					<ul class="rows clearfix">
+						
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="588029293" />
+								<input type="hidden" name="varprice" class="varprice" value="$19.99" />
+								<input type="hidden" name="varname" class="varname" value="Navy" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/classic-tee"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_blue_small_afc79454-7aa5-4dea-bf91-9db9effd4b7d_large.jpg?v=1412580312"  alt="thumbnail-navy" /></a>
+									<ul class="variant-selection">
+										<li>
+											<a class="color-button active navy" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_blue_small_afc79454-7aa5-4dea-bf91-9db9effd4b7d_large.jpg?v=1412580312" data-varid="588029293" data-varname="Navy"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_black_small_8eefd5f4-ecc1-437c-9506-ebb89176499b_large.jpg?v=1412580312" data-varid="588029337" data-varname="Black"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  white" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_white_small_998a652b-354f-462f-b283-ec567174aa22_large.jpg?v=1412580312" data-varid="588029385" data-varname="White"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  teal" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_teal_small_3ebf96a9-1bfb-489b-9348-7297ef2a16a8_large.jpg?v=1412580312" data-varid="588029425" data-varname="Teal"><i></i></a>
+										</li>
+										<li>
+											<a class="color-button  grey" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shirt_grey_small_50bce684-98a3-4891-b818-136f4606b793_large.jpg?v=1412580312" data-varid="588029465" data-varname="Grey"><i></i></a>
+										</li>
+									</ul>
+									<div class="mp-info">
+										<h3>Classic Tee</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/classic-tee" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="588029845" />
+								<input type="hidden" name="varprice" class="varprice" value="$19.99" />
+								<input type="hidden" name="varname" class="varname" value="2 Black Crew Socks" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/socks-2-pack"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/socks_small_96ef3f58-4352-4a09-a367-fa2d7a1cb0ff_large.jpg?v=1411651694"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Pack of Socks, 2 Pairs</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/socks-2-pack" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li>
+						<li class="large-3 medium-3 small-6 columns">
+							<form action="/cart/add" method="post">
+								<input type="hidden" name="id" class="variant-id" value="978199404" />
+								<input type="hidden" name="varprice" class="varprice" value="$39.99" />
+								<input type="hidden" name="varname" class="varname" value="Grey" />
+								<div class="mp-item">
+									<a class="mp-thumb-hook" href="/products/tech-tee"><img class="mp-thumb" src="//cdn.shopify.com/s/files/1/0208/5970/products/technical_tee_small_womens_gray_e1db3242-9ac9-48ec-b961-4dc8e289c4a9_large.jpeg?v=1413452439"  alt="thumbnail" /></a>
+									<ul class="variant-selection">
+										<li></li>
+									</ul>
+									<div class="mp-info">
+										<h3>Technical Tee</h3>
+									</div>
+									<div class="btn-wrap">
+										<a href="/products/tech-tee" class="button mfs-btn">BUY NOW</a>
+									</div>
+								</div>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div---->
+		<!--div class="showcase-item product-bundle si-last" style="padding-bottom:80px;">
+			<div class="container row">
+				<div class="sc-hd">
+					<h2><strong>SHINE</strong> BUNDLES</h2>
+					<p class="brief">Wear your inbody Shine how you want, wherever you want for any occasion.</p>
+				</div>
+				<div class="sc-db">
+					<ul class="rows clearfix">
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/spring_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>SPRING TRAINING</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/cyclist_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>CYCLIST</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/runner_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>RUNNER'S</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/triathlete_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>TRIATHLETE</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/workoutbuddies_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>WORKOUT BUDDIES</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+						<li class="large-2 medium-2 small-4 columns">
+							<div class="pb-item">
+								<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/teamtrainning_pack.jpg?14669" /></a>
+								<div class="pb-info">
+									<h3><a href="##"><strong>TEAM TRAINING</strong> PACK</a></h3>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div-->
+	</div> <!-- end container -->
+</div> <!-- end content -->

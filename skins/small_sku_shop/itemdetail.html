@@ -1,0 +1,548 @@
+{@
+// 관리자에서 진열여부 -> 출력하지 않음 선택하면, 20141217
+$bPreparingProduct = 0;
+$bPriceUndecided = 0;
+// 관리자에서 입력하면 기본값 대치, 20150212
+$sHowToBuy = '';
+$sBuyNowText = '바로 구매';
+$sBuyNowLink = '';
+}
+<block loop="$extra_vars=>$key,$val">
+{@
+if( $val->name == 'is_preparing' && $val->value[0] == 'Y' )
+	$bPreparingProduct = 1;
+
+if( $val->name == 'how_to_buy' && strlen( $val->value ) > 0 )
+	$sHowToBuy = $val->value;
+
+if( $val->name == 'btn_buy_now_text' && strlen( $val->value ) > 0 )
+	$sBuyNowText = $val->value;
+
+if( $val->name == 'btn_buy_now_link' && strlen( $val->value ) > 0 )
+	$sBuyNowLink = $val->value;
+
+if( $val->name == 'is_price_undecided' && $val->value[0] == 'Y' )
+	$bPriceUndecided = 1;
+}
+</block>
+<!--@if($item_info->display == 'N' && $bPreparingProduct == 1 )-->
+<p align='center'>제품 출시 전입니다.</p>
+<!--@else-->
+	<div class="content">
+		<div class="full-wrap">
+			<div class="product-detail-page" itemscope itemtype="http://data-vocabulary.org/Product" id="product-118521176">
+				<div class="product-detail showcase-item">
+					<div class="container row">
+						<div class="section product_section clearfix ">
+							<img class="lazy" data-src="./img/inbody_dial_h20b_480x330.jpg"/>
+							<div class="large-6 medium-6 columns alpha left-slider">
+								<div class="slider-main row" id="slider-pink" data-colortitle="Pink">
+									<div class="large-2 medium-2 small-12 columns thumbnail-gallery" id="gallery-pink" style="z-index:2;">
+										<div class="thumbnail-gallery-wrap-ctrl">
+											<div class="thumbnail-gallery-wrap">
+												<div class="thumbnail-gallery-show">
+													<a href="#" class="thumbnail-gal-hook" data-image="{$item_info->getThumbnail($module_info->thumbnail_width,$module_info->thumbnail_height,$module_info->thumbnail_type)}" data-zoom-image="zoom.jpg">
+														<div class="thumbnail-gal" style="background-image: url({$item_info->getThumbnail($module_info->thumbnail_width,$module_info->thumbnail_height,$module_info->thumbnail_type)});"></div>
+													</a>
+	<block loop="$extra_vars=>$key,$val">
+	{@
+	$bThumbNail = 0;
+	if( strpos( $val->name, 'thumbnail_' ) !== false && $val->value )
+		$bThumbNail = 1;
+	else
+		$bThumbNail = 0;
+	}
+		<a cond="$bThumbNail==1" href="#" class="thumbnail-gal-hook" data-image="{$val->value}" data-zoom-image="">
+			<div class="thumbnail-gal" style="background-image: url({$val->value});"></div>
+		</a>
+	</block>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="large-10 medium-10 small-12 columns" style="z-index:1;">
+										<div class="slider_container" style="width: 100%; margin: 0 auto;">
+										  <img id="zoom_img" class="mp-thumb-{$item_info->item_srl}" src="{$item_info->getThumbnail($module_info->thumbnail_width,$module_info->thumbnail_height,$module_info->thumbnail_type)}" data-zoom-image="zoom.jpg"/>
+										</div>
+									</div>
+								</div>
+								
+	<script type="text/javascript">
+	$('#gallery-pink a:first .thumbnail-gal').addClass('active');
+	initSliderClickEvent('pink');
+
+	function initSliderClickEvent (nameOfCurrentColor)
+	{
+		$('#gallery-' + nameOfCurrentColor +' a').click(function()
+		{
+			$('#gallery-' + nameOfCurrentColor +' .thumbnail-gal').removeClass('active');
+			$(this).children('.thumbnail-gal').addClass('active');
+			var img_src = $(this).attr('data-image');
+			var zoom_img =  $(this).attr('data-zoom-image');      
+
+			$('#slider-' + nameOfCurrentColor +' #zoom_img').attr('src',img_src);
+			$('.zoomLens img').attr('src',img_src);
+			$('.zoomWindow').css('background-image','url('+ zoom_img +')');
+
+			return false;
+		});
+	}
+	/*
+	function initColorClickEvent()
+	{
+		$('.color-button').click(function()
+		{
+			var self = $(this),
+			nameOfDesColor = self.data('colortitle'),
+			nameOfCurrentColor = $('.slider-main:visible').data('colortitle').toLowerCase().replace(' ','-'),
+			titleOfDesColor = $('#slider-'+ nameOfDesColor).data('colortitle');
+
+			self.addClass('active').siblings().removeClass('active');
+			$('#color-button-'+nameOfDesColor+'-' + nameOfDesColor ).addClass('active');
+
+			//$("#product-select-118521176-option-0 option[value='"+ findTitleOfVariant(nameOfDesColor) + "']").prop('selected',true);
+			//$('#product-select-118521176-option-0').trigger("change");
+
+			$('#slider-'+ nameOfCurrentColor).fadeOut(200, function()
+			{
+				if ($(window).width() > 959)
+				{
+					$('#slider-' + nameOfDesColor +' #zoom_img').elevateZoom({	
+					scrollZoom : true,
+					zoomWindowWidth   : 478,
+					zoomWindowHeight  : 300,
+					zoomWindowOffety  : 0,
+					zoomWindowOffetx  : 30,
+					tint: false,
+					borderSize : 2,
+					borderColour : '#dbdbdb',
+					lensColour : '#fff',
+					lensOpacity : .65,
+					lensFadeIn : 200,
+					lensFadeOut : 200
+					});
+				}
+
+				updateTitleByColor( titleOfDesColor );
+
+				$('#slider-' + nameOfDesColor).fadeIn(200, function(){
+					$('#gallery-'+ nameOfDesColor +' a:first').trigger("click");
+				});
+				$('#gallery-'+ nameOfDesColor +' a:first').trigger("click");
+				//update for US
+			});
+		});
+	}
+	*/
+	/*function updateTitleByColor( nameOfDesColor )
+	{
+	//console.log( nameOfDesColor );
+		nameOfDesColor = 'glossy white';
+		$('.variant-color-name').html(nameOfDesColor.charAt(0).toUpperCase() + nameOfDesColor.slice(1));
+		
+		if( nameOfDesColor == "Pink" )
+		{
+			//$("h1.product_name").html("InBody Dial H20B");
+			$(".modal_price").css("display", "none");
+			$(".vs-order-btn").css("display", "block");
+			$(".misfit_shine_form").css("display", "none");
+			$(".initial-product-description").css("display", "none");
+			$(".vs-product-description").css("display", "block");
+			$('.variant-color-name').html("Glossy White");
+		}
+		else 
+		{
+			//$("h1.product_name").html('InBody Dial H20B');
+			$(".modal_price").css("display", "block");
+			$(".vs-order-btn").css("display", "none");
+			$(".misfit_shine_form").css("display", "block");
+			$(".initial-product-description").css("display", "block");
+			$(".vs-product-description").css("display", "none");
+			if(nameOfDesColor == "Red")
+			{
+				$('.variant-color-name').html("Coca-Cola® Red");
+			}
+		}
+	}
+	  
+	$(document).ready(function($) 
+	{
+		initColorClickEvent();
+		$('.color-button').first().addClass('active');
+		//$('.select').hide();
+		updateTitleByColor('Pink');
+	});
+
+	$('img.lazy').lazy(
+	{
+		bind: "event",
+		visibleOnly: false,
+		effect: "fadeIn",
+		effectTime: 1500,
+		afterLoad : function(element){
+			element.hide();
+			if( $(window).width() > 959 )
+			{	
+				$('#slider-pink #zoom_img').elevateZoom({
+				scrollZoom : true,
+				zoomWindowWidth   : 478,
+				zoomWindowHeight  : 300,
+				zoomWindowOffety  : 0,
+				zoomWindowOffetx  : 30,
+				tint: false,
+				borderSize : 1,
+				borderColour : '#dbdbdb',
+				lensColour : '#fff',
+				lensOpacity : .65,
+				lensFadeIn : 200,
+				lensFadeOut : 200
+				}); 
+			}
+			else
+				$(".zoomContainer").hide();
+		}
+	});*/
+
+		$(window).load(function()
+	{
+		$(".loading_screen").fadeOut();
+	});
+
+	/*$(function()
+	{
+		if (0 != 0)
+			$('#flexslider-118521176-0').fadeOut(500);
+
+		if (1 != 0)
+			$('#flexslider-118521176-1').fadeOut(500);
+
+		if (2 != 0)
+			$('#flexslider-118521176-2').fadeOut(500);
+
+		if (3 != 0)
+			$('#flexslider-118521176-3').fadeOut(500);
+
+		if (4 != 0)
+			$('#flexslider-118521176-4').fadeOut(500);
+
+		if (5 != 0)
+			$('#flexslider-118521176-5').fadeOut(500);
+
+		if (6 != 0)
+			$('#flexslider-118521176-6').fadeOut(500);
+
+		if (7 != 0)
+			$('#flexslider-118521176-7').fadeOut(500);
+
+		if (8 != 0)
+			$('#flexslider-118521176-8').fadeOut(500);
+
+		if (9 != 0)
+			$('#flexslider-118521176-9').fadeOut(500);
+
+		var active_number = 0;
+
+		//$('.single-option-selector').hide();
+
+		function reset()
+		{
+			$('.color-button').removeClass('active');
+		}
+
+		function toggleSlider(index)
+		{
+			$('#flexslider-118521176-'+active_number).fadeOut(500,function(){
+				$('#flexslider-118521176-'+index).fadeIn(500);
+			});  
+		}
+
+		$('#color-button-118521176-0').click(function()
+		{
+			//$('#product-select-118521176').val('1000872368');
+			toggleSlider(0);
+			reset();
+			$(this).addClass('active');
+			active_number = 0;
+			return false;
+		});  
+
+		$('#color-button-118521176-1').click(function()
+		{
+			//$('#product-select-118521176').val('270461900');
+			toggleSlider(1);
+			reset();
+			$(this).addClass('active');
+			active_number = 1;
+			return false;
+		});  
+
+		$('#color-button-118521176-2').click(function()
+		{
+			//$('#product-select-118521176').val('387232624');
+			toggleSlider(2);
+			reset();
+			$(this).addClass('active');
+			active_number = 2;
+			return false;
+		});  
+
+		$('#color-button-118521176-3').click(function()
+		{
+			//$('#product-select-118521176').val('387231980');
+			toggleSlider(3);
+			reset();
+			$(this).addClass('active');
+			active_number = 3;
+			return false;
+		});  
+
+		$('#color-button-118521176-4').click(function()
+		{
+			//$('#product-select-118521176').val('387232558');
+			toggleSlider(4);
+			reset();
+			$(this).addClass('active');
+			active_number = 4;
+			return false;
+		});  
+
+		$('#color-button-118521176-5').click(function()
+		{
+			//$('#product-select-118521176').val('744287293');
+			toggleSlider(5);
+			reset();
+			$(this).addClass('active');
+			active_number = 5;
+			return false;
+		});  
+
+		$('#color-button-118521176-6').click(function()
+		{
+			//$('#product-select-118521176').val('744287397');
+			toggleSlider(6);
+			reset();
+			$(this).addClass('active');
+			active_number = 6;
+			return false;
+		});  
+
+		$('#color-button-118521176-7').click(function()
+		{
+			//$('#product-select-118521176').val('798636409');
+			toggleSlider(7);
+			reset();
+			$(this).addClass('active');
+			active_number = 7;
+			return false;
+		});  
+
+		$('#color-button-118521176-8').click(function()
+		{
+			//$('#product-select-118521176').val('798636433');
+			toggleSlider(8);
+			reset();
+			$(this).addClass('active');
+			active_number = 8;
+			return false;
+		});  
+
+		$('#color-button-118521176-9').click(function()
+		{
+			//$('#product-select-118521176').val('944240101');
+			toggleSlider(9);
+			reset();
+			$(this).addClass('active');
+			active_number = 9;
+			return false;
+		});  
+	});*/
+	</script>
+								<div class="separate-selection-from-zoom-image"></div>
+							</div>
+							<div class="large-6 medium-6 columns omega" id="product_detail">
+								<input type="hidden" class="product_name" name="item_name_{$item_info->item_srl}" id="item_name_{$item_info->item_srl}" value="{$item_info->item_name}" />
+								<h1 class="product_name" itemprop="name" ID='item_name_{$item_info->item_srl}'>{$item_info->item_name}{$item_info->page_type}</h1>
+<!-- Bloom promo special deal -->
+								<p class="modal_price" itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">
+									<meta itemprop="currency" content="KRW" />
+									<meta itemprop="availability" content="in_stock" />
+									<!--span>Price:<span-->
+<block cond="!$bPriceUndecided">
+									<input type="hidden" class="price" name="price" id="price_{$item_info->item_srl}" value="{$item_info->price}" />
+	<block cond="$discount_amount > 0">
+									<span class="was_price font-medium" style="font-size: 16px;color: #d83533">
+									 {$item_info->printPrice()}
+									</span>&nbsp;
+									<img class="price_arrow" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/arrow.gif?17620" style="width: 21px;" />
+	</block>
+									<span itemprop="price" content="{number_format($discounted_price)}" class="current_price">
+									{number_format($discounted_price)}원 
+									</span>
+								</p>
+								<!--form action="/cart/add" method="post" class=" misfit_shine_form" data-money-format="${{amount}}" data-option-index="0" id="product-form-118521176"--->
+									<div class="signle-variant-select select">
+										<div class="quantity-wrapper quantity-wrap-1st">
+											<label for="quantity">{$lang->order_quantity}</label>
+											<input type="number" min="1" size="2" class="quantity" name="quantity" id="quantity_{$item_info->item_srl}" value="1" />
+										</div>
+									</div>
+</block>
+
+									<div class="purchase" STYLE='width:100%;'>
+										<div class="btn-wrap">
+											<input type="button" onclick="addItemsToCartInDetailPage('{$item_info->item_srl}', '{$bPriceUndecided}'); return false;" name="add" id="add-to-cart" class="buynow_action_button" value="&nbsp;&nbsp;&nbsp;장바구니 담기&nbsp;&nbsp;&nbsp;" />
+											<input type="button" onclick="orderItemsInDetailPage('{$item_info->item_srl}', '{$module_info->svcart_mid}', '{$bPriceUndecided}', '{$sBuyNowLink}'); return false;" name="find_store" id="find_a_store" class="findstore_action_button" value="{$sBuyNowText}" />
+										</div>
+									</div>
+								<!---/form--->
+								<!--div class="description product-description" itemprop="description">
+									<div class="initial-product-description">
+										<p>[설 연휴 배송안내]<BR>2월 13일(금) 오후 15시까지 결제 건에 대해 당일 발송되며,<BR>2월 13일(금) 오후 15시 이후 결제 건은 2월 23일(월) 이후 순차적으로 배송됩니다.<BR>행복한 설 연휴 되시길 바랍니다.</p>
+									</div>
+								</div-->
+<!-- 20150212 설 배송 공지 끝 --->
+								<div class="description product-description" itemprop="description">
+									<div class="initial-product-description">
+										<p>{$sHowToBuy}</p>
+									</div>
+								</div>
+								<div class="show-for-small-only product-add-more-wrap">
+									<DIV CLASS="add-more-text"><STRONG>InBody앱<STRONG>은 </STRONG>Android OS 4.0</STRONG> 이상,<BR><STRONG>iPhone 4S</STRONG> 이상에서 사용 가능합니다.</DIV>
+								</div>
+								<div class="show-for-small-only description apps-field">
+									<!--p>Works with the InBody App for IOS, Android and Windows.<BR> <a href="http://www.misfit.com/products/app"><strong>LEARN MORE</strong></a> about the InBody App.</p---> 
+									<p STYLE='display:none;'>본 모델은 수기 입력 제품으로 인바디 검사 결과를 직접 기록하는 제품입니다.</p> 
+									<ul class="apps-list clearfix" style='display:none;'>
+										<li>
+										<a href="#" class="appstore-button">
+										<img src="./modules/svitem/skins/inbody/img/badge_appstore.png">
+										</a>
+										</li>
+										<li>
+										<a href="https://play.google.com/store/apps/details?id=com.inbody2014.inbody&hl=ko" target="_blank" class="appstore-button">
+										<img src="./modules/svitem/skins/inbody/img/badge_googleplay.png">
+										</a>
+										</li>
+										<!---li>
+										<a href="http://www.windowsphone.com/en-us/store/app/misfit/040923cc-e1bd-46c0-b2b1-7d3680aa6f99" target="_blank" class="appstore-button">
+										<img src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/badge_windows.gif?v=1415760576">
+										</a>
+										</li--->
+									</ul>
+								</div>
+								<!---span class="facebookcont fb-like" data-href="http://store.misfit.com/products/misfit-shine" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false"></span>
+								<span class="twittercont"><a href="//twitter.com/share" class="twitter-share-button" data-url="http://bit.ly/XNdrmk" data-text= "check out Misfit Shine:" data-text= "check out Misfit Shine: " data-via="Misfit"  data-count="none">Tweet</a></span>
+								<span class="plusonecont"><g:plusone size="medium" annotation="none"></g:plusone></span>
+								<span><a target="_blank" class="pinterestcount" href="http://pinterest.com/pin/create/button/?url=http://store.misfit.com/products/misfit-shine&amp;media=//cdn.shopify.com/s/files/1/0208/5970/products/01_vspink_sportband_shine_angle_87605cad-dbbd-44f7-87db-3c8b813e837e_grande.jpg?v=1415053577">Pin It</a></span---->
+							</div>
+						</div>
+					</div>
+				</div>
+	<!-- product detail begin -->
+				<div class="showcase-item product-loop si-last">
+					<div class="container row">
+						<div class="sc-hd">
+							{$oDocument->getContent(false)}
+<!-- 20150212 판매 가능한 아이템만 푸터 출력 --->
+<block cond="!$bPriceUndecided">
+							{$module_info->store_bottom}
+</block>
+<!-- 20150212 설 배송 공지 끝 --->
+						</div>
+					</div>
+				</div>
+
+	<!-- product detail end -->
+	<!-- related product begin -->
+				<!--div class="showcase-item product-bundle si-last" style="padding-bottom:80px;">
+					<div class="container row">
+						<div class="sc-hd">
+							<h2><strong>SHINE</strong> BUNDLES</h2>
+							<p class="brief">Wear your Misfit Shine how you want, wherever you want for any occasion.</p>
+						</div>
+						<div class="sc-db">
+							<ul class="rows clearfix">
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/spring_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>SPRING TRAINING</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/cyclist_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>CYCLIST</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/runner_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>RUNNER'S</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/triathlete_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>TRIATHLETE</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/workoutbuddies_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>WORKOUT BUDDIES</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+								<li class="large-2 medium-2 small-4 columns">
+									<div class="pb-item">
+										<a href="##"><img class="pb-thumb" alt="" src="//cdn.shopify.com/s/files/1/0208/5970/t/70/assets/teamtrainning_pack.jpg?v=1415760576" /></a>
+										<div class="pb-info">
+											<h3><a href="##"><strong>TEAM TRAINING</strong> PACK</a></h3>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div-->
+	<!-- related product end -->
+			</div>
+		<!-- container ]]-->
+		</div>
+		<!-- full-wrap ]]-->
+	<script src="./modules/svitem/skins/inbody/js/itemdetail.js" type="text/javascript"></script>
+	</div> <!-- end container -->
+
+	<script src="./modules/svitem/skins/inbody/js/lib_flexslider.js" type="text/javascript"></script>
+	<include target="_footer.html" />
+
+	<link href="./modules/svitem/skins/inbody/css/itemdetail.css" rel="stylesheet" type="text/css"  media="all"  />
+	<a href="#" id="sTop" title="Back to Top" style="display: none;">to the top</a>
+
+	<script type="text/javascript">
+	var sPageUrl = '/item_detail?id={$item_info->item_code}';
+	ga('send', { 'hitType': 'pageview', 'page':sPageUrl, 'title': 'item_detail_page' });
+
+	// Enhanced E-Commerce Tagging Start(20141216) - singleview.co.kr
+	ga('require', 'ec');
+	ga('ec:addProduct', {               // Provide product details in an productFieldObject.
+		'id': '{$item_info->item_srl}',                   // Product ID (string).
+		'name': '{$item_info->item_name}', // Product name (string).
+		'category': '',            // Product category (string).
+		'brand': '',                // Product brand (string).
+		'variant': '',               // Product variant (string).
+		'position': '{$pos}'                    // Product position (number).
+	});
+	ga('ec:setAction', 'detail');       // Detail action.
+	// Enhanced E-Commerce Tagging End(20141216) - singleview.co.kr
+	</SCRIPT>
+<!--@end-->

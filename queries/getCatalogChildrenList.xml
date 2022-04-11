@@ -1,0 +1,18 @@
+<query id="getCatalogChildrenList" action="select">
+	<tables>
+		<table name="svitem_category_node" />
+	</tables>
+	<columns>
+		<column name="category_node_srl" />
+		<column name="parent_srl" />
+		<column name="category_name" />
+		<column name="desc" />
+		<column name="listorder" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="parent_srl" var="parent_srl" notnull="notnull" />
+		<condition operation="equal" column="module_srl" var="module_srl" notnull="notnull" pipe="AND"/>
+	</conditions>
+	<navigation>
+	</navigation>
+</query>

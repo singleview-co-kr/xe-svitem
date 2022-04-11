@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">단품종 매장 제품목록 스킨</title>
+	<description xml:lang="ko">단품종 매장 제품목록 스킨입니다</description>
+	<version>0.1.2</version>
+	<date>2015-09-28</date>
+	<link>http://www.singleview.co.kr</link>
+	<author email_address="root@singleview.co.kr" link="http://www.singleview.co.kr">
+		<name xml:lang="ko">singleview</name>
+	</author>
+	<extra_vars>
+		<var name="list_thumbnail_width" type="text">
+			<title xml:lang="ko">[목록] 썸네일 가로크기</title>
+			<description xml:lang="ko">썸네일 가로크기를 px 단위를 빼고 입력하세요, 기본 80</description>
+		</var>
+		<var name="list_thumbnail_height" type="text">
+			<title xml:lang="ko">[목록] 썸네일 세로크기</title>
+			<description xml:lang="ko">썸네일 세로크기를 px 단위를 빼고 입력하세요, 기본 80</description>
+		</var>
+		<var name="list_thumbnail_type" type="select" default="ratio">
+			<title xml:lang="ko">[목록] 썸네일 생성 방법</title>
+			<description xml:lang="ko">썸네일 생성 방법을 선택할 수 있습니다.</description>
+			<options value="ratio">
+				<title xml:lang="ko">비율 맞추기</title>
+			</options>
+			<options value="crop">
+				<title xml:lang="ko">꽉 채우기</title>
+			</options>
+		</var>
+		<var name="thumbnail_width" type="text" default="140">
+			<title xml:lang="ko">[상세페이지] 썸네일 가로크기</title>
+			<description xml:lang="ko">썸네일 가로크기를 px 단위를 빼고 입력하세요, 기본 140</description>
+		</var>
+		<var name="thumbnail_height" type="text" default="140">
+			<title xml:lang="ko">[상세페이지] 썸네일 세로크기</title>
+			<description xml:lang="ko">썸네일 세로크기를 px 단위를 빼고 입력하세요, 기본 140</description>
+		</var>
+		<var name="thumbnail_type" type="select" default="ratio">
+			<title xml:lang="ko">[상세페이지] 썸네일 생성 방법</title>
+			<description xml:lang="ko">썸네일 생성 방법을 선택할 수 있습니다.</description>
+			<options value="ratio">
+				<title xml:lang="ko">비율 맞추기</title>
+			</options>
+			<options value="crop">
+				<title xml:lang="ko">꽉 채우기</title>
+			</options>
+		</var>
+		
+		<var name="rolling_img_1" type="image">
+			<title xml:lang="ko">첫번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 첫번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="rolling_img_2" type="image">
+			<title xml:lang="ko">두번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 두번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="rolling_img_3" type="image">
+			<title xml:lang="ko">세번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 세번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="rolling_img_4" type="image">
+			<title xml:lang="ko">네번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 네번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="rolling_img_5" type="image">
+			<title xml:lang="ko">다섯번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 다섯번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="rolling_img_6" type="image">
+			<title xml:lang="ko">여섯번째 롤링이미지</title>
+			<description xml:lang="ko">상품목록 화면의 여섯번째 롤링 이미지입니다.</description>
+		</var>
+		<var name="main_description_1" type="textarea">
+			<title xml:lang="ko">메인 설명 1</title>
+			<title xml:lang="en">main description 1</title>
+		</var>
+		<var name="main_description_2" type="textarea">
+			<title xml:lang="ko">메인 설명 2</title>
+			<title xml:lang="en">main description 2</title>
+		</var>
+		<var name="call_to_action" type="textarea">
+			<title xml:lang="ko">콜투액션</title>
+			<title xml:lang="en">call to action</title>
+		</var>
+		<var name="move_to_item_btn_text" type="text">
+			<title xml:lang="ko">제품보기 버튼 텍스트</title>
+			<title xml:lang="en">move to the item button text</title>
+		</var>
+	</extra_vars>
+</skin>

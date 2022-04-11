@@ -1,0 +1,21 @@
+<query id="updateItem" action="update">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="module_srl" var="module_srl" />
+		<column name="item_name" var="item_name" />
+		<column name="item_code" var="item_code" />
+		<column name="price" var="price" />
+		<column name="taxfree" var="taxfree" />
+		<column name="display" var="display" />
+		<column name="delivery_info" var="delivery_info" />
+		<column name="related_items" var="related_items" />
+		<column name="list_order" var="list_order" />
+		<column name="extra_vars" var="extra_vars" />
+		<column name="updatetime" var="updatetime" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="item_srl" var="item_srl" notnull="notnull" />
+	</conditions>
+</query>

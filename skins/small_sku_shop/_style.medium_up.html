@@ -1,0 +1,83 @@
+<div class="sc-db">
+	<ul class="main-product-list rows clearfix">
+		<li class="large-3 medium-3 small-3 columns" loop="$list=>$no,$val">
+{@
+// 관리자에서 가격미정 선택하면, 20150212
+$bPriceUndecided = 0;
+$oExtraVars = unserialize( $val->extra_vars );
+
+}
+<block loop="$oExtraVars=>$key,$cval">
+{@
+if( $cval->name == 'is_price_undecided' && $cval->value[0] == 'Y' )
+	$bPriceUndecided = 1;
+}
+</block>
+
+{@
+//exit;
+}
+<!-- Google Analytics Code Begin(20141110) -->
+<script>
+//console.log( 'ec addImpression' );
+var nPos = 5- {$no};
+//console.log( nPos );
+ga('ec:addImpression', {
+  'id': '{$val->item_srl}', // Product details are provided in an impressionFieldObject.
+  'name': '{$val->item_name}',
+  'category': '',
+  'brand': '',
+  'variant': '',
+  'list': 'eshop',
+  'position': nPos // 'position' indicates the product position in the list.
+});
+</script>
+<!-- Google Analytics Code End (20141110) -->
+			<input type="hidden" class="quantity" name="quantity" id="quantity_{$val->item_srl}" value="1" />
+			<input type="hidden" class="price" name="price" id="price_{$val->item_srl}" value="{$val->price}" />
+			<div class="mp-item">
+				<!---img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20b_264x208.jpg" alt="thumbnail-dial-h20b" /---->
+				<a class="mp-thumb-hook" href="#" onclick="_gaProductDetailClick( {$val->item_srl}, '{$val->item_name}', {$no}, '{getUrl('mid',$mid,'document_srl',$val->document_srl,'act','')}', 'desktop_shop' ); return !ga.loaded;"><img class="mp-thumb-{$val->item_srl}" src="{$val->getThumbnail($module_info->list_thumbnail_width,$module_info->list_thumbnail_height,$module_info->list_thumbnail_type)}" alt="thumbnail-{$val->item_code}"></a>
+				<!---div class="variant-selection font-medium vs-title-color">BEST SELLER!</div----->
+				<!---ul class="variant-selection">
+					<li>
+						<a class="color-button  grey" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_grey_small_dc8576bc-2a26-479f-880a-5121de5afd7f_large.jpg?v=1415053577" data-varid="270461900" data-varname="Grey" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  jet" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_jet_small_4ba6f6d6-a95a-4849-812d-2ad92868e152_large.jpg?v=1415053577" data-varid="387232624" data-varname="Jet" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  topaz" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_topaz_small_63aa3732-3981-420e-b6db-b2f6b07c72ee_large.jpg?v=1415053577" data-varid="387231980" data-varname="Topaz" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  champagne" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_champagne_small_ce889824-ef1b-49d9-87db-19aaf8b4b7af_large.jpg?v=1415053577" data-varid="387232558" data-varname="Champagne" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  storm" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_storm_small_bbaf954b-f50b-45e8-896d-a6773f2bcf89_large.jpg?v=1415053577" data-varid="744287293" data-varname="Storm" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  coral" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_coral_small_b453260a-b6da-4ce6-bb7a-8813e5fa9d8e_large.jpg?v=1415053577" data-varid="744287397" data-varname="Coral" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  wine" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_wine_small_13de0a7e-f093-4463-96c6-b94f8d67c5a5_large.jpg?v=1415053577" data-varid="798636409" data-varname="Wine" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  sea-glass" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_seaglass_small_f783bbdd-8bac-4d1d-8398-194f6e4bdfc6_large.jpg?v=1415053577" data-varid="798636433" data-varname="Sea Glass" data-varprice="$99.99"><i></i></a>
+					</li>
+					<li>
+						<a class="color-button  red" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_red_small_29e938ff-87c2-4e36-9e76-8e4c1746e4ff_large.jpg?v=1415053577" data-varid="944240101" data-varname="Red" data-varprice="$99.99"><i></i></a>
+					</li>
+				</ul--->
+				<div class="mp-info">
+					<h3 STYLE='font-size:1.5em; height:70px;'>{$val->item_name}</h3>
+					<p cond="!$bPriceUndecided" class="mp-desc" STYLE='color:#008cba;'>{$val->printDiscountedPrice()}</p>
+					<p cond="$bPriceUndecided" class="mp-desc" STYLE='color:#008cba;'>가격 미정</p>
+				</div>
+				<!---div class="btn-wrap">
+					<a href='' onclick="addItemsToCartInDetailPage({$val->item_srl}); return false;" class="button mfs-btn">장바구니 담기</a>
+					<!---input type="submit" class="button mfs-btn addtocart-btn" value="자세히 보기" /---->
+				</div--->
+			</div>
+		</li>
+	</ul>
+</div>

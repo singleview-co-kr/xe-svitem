@@ -1,0 +1,62 @@
+<SCRIPT TYPE='text/javascript'>
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+gaectkList.init( 1, 1 );
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+</SCRIPT>
+
+<div class="homepage-slider grid--full">
+	<ul class="homepage-slider__slides owl-carousel grid-item one-whole">
+		<li cond="$module_info->rolling_img_1"><img src="{$module_info->rolling_img_1}" alt="slide_1"/></li>
+		<li cond="$module_info->rolling_img_2"><img src="{$module_info->rolling_img_2}" alt="slide_2"/></li>
+		<li cond="$module_info->rolling_img_3"><img src="{$module_info->rolling_img_3}" alt="slide_3"/></li>
+		<li cond="$module_info->rolling_img_4"><img src="{$module_info->rolling_img_4}" alt="slide_4"/></li>
+		<li cond="$module_info->rolling_img_5"><img src="{$module_info->rolling_img_5}" alt="slide_5"/></li>
+		<li cond="$module_info->rolling_img_6"><img src="{$module_info->rolling_img_6}" alt="slide_6"/></li>
+	</ul>
+</div>
+<SCRIPT TYPE='text/javascript'>
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+gaectkList.queueItemInfo( '{$list[1]->item_srl}', '{$list[1]->item_name}', '{$list[1]->item_name}', '{$list[1]->item_name}', '' );
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+</SCRIPT>
+
+<div class="feature-homepage-content grid-item medium--two-thirds push--medium--one-sixth large--two-thirds push--large--one-sixth" style="width:100%; left:0px; padding-left:0px; margin-bottom:0px;">
+	<h2 class="text-center">
+	</h2>
+	<div class="rte" style="margin-bottom:0px;">
+		<div class="hyphenate_ko" style="position: relative; margin-top: -30px; width: 100%; text-align: justify;">{$module_info->main_description_1}</div>
+		<br />
+		<div class="hyphenate_ko" style="position: relative; margin-top: -30px; width: 100%; text-align: justify;"></div>
+		
+		<div style="position: relative; margin-top: 10px; margin-bottom: 30px; width: 100%; text-align: center; font-weight: bold; font-size: 15px;">
+			<div>{$module_info->call_to_action}</div>
+			<div style="display: inline-block; width: 300px; margin-top: 18px; padding-left: 0;"><input type="submit" value="{$module_info->move_to_item_btn_text}" class="cta_btn" style="width: 80%; font-size: 20px; background-color:red;" onclick="_itemDetailClick(); return !ga.loaded;"/></div>
+		</div>
+		<div class="hyphenate_ko" style="position: relative; margin-top: 30px; width: 100%; text-align: justify;"><span>{$module_info->main_description_2}</span></div>
+		<div class="hyphenate_ko" style="position: relative; margin-top: -30px; width: 100%; text-align: justify;"></div>
+		<br />
+		<div style="position: relative; margin-top: 50px; width: 100%; text-align: center; font-weight: bold; font-size: 15px;">
+			<div>{$module_info->call_to_action}</div>
+		</div>
+		<div style="position: relative; margin-top: 10px; margin-bottom: 30px; width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 300px; margin-top: 18px; padding-left: 0;"><input type="submit" value="{$module_info->move_to_item_btn_text}" class="cta_btn" style="width: 80%; font-size: 20px; background-color:red;" onclick="_itemDetailClick(); return !ga.loaded;"/></div>
+		</div>
+	</div>
+</div>
+<SCRIPT TYPE='text/javascript'>
+// Enhanced E-Commerce Tagging Begin (20150929) singleview.co.kr
+gaectkList.patchImpression();
+// Enhanced E-Commerce Tagging End (20150929) singleview.co.kr
+
+function _itemDetailClick()
+{
+	gaectkList.sendClicked( {$list[1]->item_srl} );
+	location.href='http://balanceseat.co.kr/Product/1234';
+}
+/*
+function _itemDetailClick_non_ga_split_test()
+{
+	gaectkList.sendClicked( {$list[1]->item_srl} );
+	location.href="{getUrl('mid',$mid,'document_srl',$list[1]->document_srl,'act','')}";
+}*/
+</SCRIPT>

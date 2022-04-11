@@ -1,0 +1,12 @@
+<query id="updateAdminItemTemp" action="update">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="pc_doc_srl" var="pc_doc_srl" filter="number" />
+		<column name="gallery_doc_srl" var="gallery_doc_srl" filter="number" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="item_srl" var="item_srl" notnull="notnull" />
+	</conditions>
+</query>

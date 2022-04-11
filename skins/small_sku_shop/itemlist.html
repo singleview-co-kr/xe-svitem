@@ -1,0 +1,165 @@
+<div class="content">
+	<div cond="$module_info->rolling_img_1 || $module_info->rolling_img_2 || $module_info->rolling_img_3" class="panel-container">
+		<section class="banner" id="slider-panel-0" data-magellan-destination="app">
+			<div class="flexslider" id="home-top-banner-slider">
+<!-- For slider (if more than one banner currently showed) -->
+				<div class="timer timer-dark">
+					<span class="mask mask-dark">
+						<span class="rotator rotator-dark"></span>
+					</span>
+				</div> 
+				<div class="pause_div pause_div_dark play"></div>
+				<ul class="slides">
+<!-- 1st slide -->
+<block cond="$module_info->rolling_img_1">
+					<li class="slide-item" id="techtee" STYLE='background-image:url({$module_info->rolling_img_1});'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+											<div class="o-content">
+												<p>
+													<img src="{$module_info->rolling_img_1_floating}" class="inlab-phrase"/>
+												</p>
+												<p cond="$module_info->rolling_img_1_box_text" style="margin-top:35px;"><a class="mfs-btn black-border-btn font-medium" href="{$module_info->rolling_img_1_box_text_link}">{$module_info->rolling_img_1_box_text}</a></p>
+												<!---p>당신을 더 움직이게 합니다.</p>
+												<p><em>InLab</em></p>
+												<p style="margin-top:35px;"><a class="mfs-btn font-medium" href="./buynow/132">자세히 보기</a></p--->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+</block>
+<!-- 2nd slide -->
+<block cond="$module_info->rolling_img_2">
+					<li class="slide-item" id="techtee" STYLE='background-image:url({$module_info->rolling_img_2});'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+											<div class="o-content">
+												<p>
+													<img src= "{$module_info->rolling_img_2_floating}" class="inlab-phrase"/>
+												</p>
+												<p cond="$module_info->rolling_img_2_box_text" style="margin-top:35px;"><a class="mfs-btn black-border-btn font-medium" href="{$module_info->rolling_img_2_box_text_link}">{$module_info->rolling_img_2_box_text}</a></p>
+												<!---p>당신을 더 움직이게 합니다.</p>
+												<p><em>InLab</em></p>
+												<p style="margin-top:35px;"><a class="mfs-btn font-medium" href="./buynow/132">자세히 보기</a></p--->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+</block>
+<!-- 3rd slide -->
+<block cond="$module_info->rolling_img_3">
+					<li class="slide-item" id="techtee" STYLE='background-image:url({$module_info->rolling_img_3});'>
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track">
+										<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+											<div class="o-content">
+												<p>
+													<img src= "{$module_info->rolling_img_3_floating}" class="inlab-phrase"/>
+												</p>
+												<p cond="$module_info->rolling_img_3_box_text" style="margin-top:35px;"><a class="mfs-btn black-border-btn font-medium" href="{$module_info->rolling_img_3_box_text_link}">{$module_info->rolling_img_3_box_text}</a></p>
+												<!---p style="margin-top:35px;"><a class="mfs-btn black-border-btn font-medium" href="./add_to_cart.html">자세히 보기</a></p>
+												<!---p>당신을 더 움직이게 합니다.</p>
+												<p><em>InLab</em></p>
+												<p style="margin-top:35px;"><a class="mfs-btn font-medium" href="./buynow/132">자세히 보기</a></p--->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+</block>
+					<!---li class="slide-item" id="vs_store_page_banner">
+						<div class="hero">
+							<div class="orbit slick-initialized slick-slider">
+								<div class="slick-list draggable">
+									<div class="slick-track"><div class="o-item s1 slick-slide slick-active" 
+										id="vs-banner-title">
+										<div class="o-content">
+											<p>
+												<img src= "./img/inbody_dial_phrase_healthy.png" class = "vs-shine-logo"/>
+											</p>
+											<p style="margin-top:35px;"><a class="mfs-btn white-border-btn font-medium" href="./add_to_cart.html">자세히 보기</a></p>
+										</div>
+								</div></div></div>
+							</div>
+						</div>
+					</li---->
+				</ul>
+			</div>
+		</section>
+	</div>
+<!-- Google Analytics Code Begin (20141110) -->
+<script>
+ga('require', 'ec');
+//console.log( 'ec loaded' );
+
+// Called when a link to a product is clicked.
+function _gaProductDetailClick( sId, sName, nPos, sLink, sMedia ) 
+{
+//console.log( sId, sName, nPos, sLink);
+//return;
+	ga('ec:addProduct', {
+		'id': sId,
+		'name': sName,
+		'category': '',
+		'brand': '',
+		'variant': '',
+		'position': nPos
+	});
+	
+	ga('ec:setAction', 'click', {list: sMedia });
+//console.log( {list: sMedia });
+//return;
+	var nRealPos = 5 - nPos;
+	// Send click with an event, then send user to product page.
+	ga('send', 'event', 'eshop_section', 'click', 'view_detail', {
+	'hitCallback': function() {
+		document.location = sLink + '?pos=' + nRealPos;
+		}
+	});
+}
+</script>
+<!-- Google Analytics Code End (20141110) -->
+	<div class="store-hp">
+<!---- showcase for tablet and desktop begin ---->
+		<div class="show-for-medium-up showcase-item main-product">
+			<div class="container row">
+				<div class="sc-hd">
+					<IMG SRC='./modules/svitem/skins/inbody/img/main_page_catch_phrase3.png'>
+					<!---h2>끊임없이 기록하고, 자극받고, 도전하세요!<BR><strong>인바디</strong>가 함께합니다.</h2--->
+					<!---p class="brief">Works with the InBody App for iOS or Android.</p--->
+				</div>
+				<include target="_style.medium_up.html" />
+			</div>
+		</div>
+<!---- showcase for tablet and desktop end ---->
+<!---- showcase for mobile begin ---->
+		<div class="show-for-small-only showcase-item product-loop">
+			<div class="container row">
+				<div class="sc-hd" STYLE='height:80px; line-height: 80px;'>
+					<IMG STYLE='width:250px; vertical-align: middle; ' SRC='./modules/svitem/skins/inbody/img/main_page_catch_phrase3.png'>
+					<!--h2>자극과 도전의 기록<BR><strong>인바디</strong>와 함께!</h2-->
+					<!---p class="brief">Wear your inbody Shine how you want, wherever you want for any occasion.</p--->
+				</div>
+				<include target="_style.small_only.html" />
+			</div>
+		</div>
+<!---- showcase for mobile begin ---->
+	</div> <!-- end container -->
+</div> <!-- end content -->
+<include target="_footer.html" />

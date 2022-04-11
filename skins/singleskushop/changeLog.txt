@@ -1,0 +1,10 @@
+31st, Dec 2014
+1. /tpl/updateitem.html
+아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="display">{$lang->page_type}</label>
+	<div class="x_controls">
+		<label for="page_type_preparing"><input type="radio" name="page_type" id="page_type_preparing" value="preparing" checked="checked"|cond="$item_info->page_type=='preparing'" />{$lang->preparing_product}</label>
+		<label for="page_type_closed_url"><input type="radio" name="page_type" id="page_type_closed_url" value="closed_url" checked="checked"|cond="$item_info->page_type=='closed_url'" />{$lang->closed_url}</label>
+	</div>
+</div>

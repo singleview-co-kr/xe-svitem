@@ -1,0 +1,67 @@
+31st, Dec 2014
+1. /tpl/updateitem.html
+아래의 코드 추가
+<div class="x_control-group">
+	<label class="x_control-label" for="display">{$lang->page_type}</label>
+	<div class="x_controls">
+		<label for="page_type_preparing"><input type="radio" name="page_type" id="page_type_preparing" value="preparing" checked="checked"|cond="$item_info->page_type=='preparing'" />{$lang->preparing_product}</label>
+		<label for="page_type_closed_url"><input type="radio" name="page_type" id="page_type_closed_url" value="closed_url" checked="checked"|cond="$item_info->page_type=='closed_url'" />{$lang->closed_url}</label>
+	</div>
+</div>
+
+2. /lang/lang.xml
+아래의 코드 추가
+<item name="page_type">
+	<value xml:lang="ko"><![CDATA[페이지유형]]></value>
+	<value xml:lang="en"><![CDATA[[Page type]]></value>
+</item>
+<item name="preparing_product">
+	<value xml:lang="ko"><![CDATA[제품 준비 중]]></value>
+	<value xml:lang="en"><![CDATA[Closed URL]]></value>
+</item>
+<item name="closed_url">
+	<value xml:lang="ko"><![CDATA[폐쇄 URL]]></value>
+	<value xml:lang="en"><![CDATA[Not display]]></value>
+</item>
+
+3. /nproduct.admin.controller.php::procNproductAdminUpdateItem
+아래의 코드 추가
+$page_type = Context::get('page_type');
+
+$args->page_type = $page_type;
+
+7th, Jan 2015
+1. /nproduct.model.php::discountItem()에서
+
+레퍼러에 따른 자동 할인 정책 테스트
+아래의 코드를
+// 상품개별그룹할인이 없으면 글로벌그룹할인
+if(!$output->discount_amount && $item->module_srl)
+{
+	$output = $this->getGlobalGroupDiscount($item->module_srl, $item, $group_list);
+	if(!$output->toBool()) return $output;
+}
+
+아래의 코드로 변경
+// 상품개별그룹할인이 없으면 글로벌그룹할인
+if(!$output->discount_amount && $item->module_srl)
+{
+	$output = $this->getGlobalGroupDiscount($item->module_srl, $item, $group_list);
+	//if(!$output->toBool()) 
+	//	return $output;
+
+	if( !$output->discount_amount ) 
+	{
+		if( strlen( $_SESSION['HTTP_INIT_REFERER'] ) > 0 )
+		{
+			$sTargetReferrer = 'singleview';
+			if( eregi( $sTargetReferrer, $_SESSION['HTTP_INIT_REFERER'] ) >-1 )
+			{
+				$output->discount_amount = 5000;
+				$output->discounted_price -= $output->discount_amount;
+				$output->discount_info = $sTargetReferrer.' 회원할인';
+			}
+		}
+		return $output;
+	}
+}

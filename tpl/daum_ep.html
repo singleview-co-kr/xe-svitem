@@ -1,0 +1,23 @@
+{@
+$nItemCnt = count( $list );
+}
+<<<tocnt>>>{$nItemCnt}{@echo PHP_EOL;}
+<block loop="$list=>$no,$val">
+<<<begin>>>{@echo PHP_EOL;}
+<<<mapid>>>{$val->item_srl}{@echo PHP_EOL;}
+<<<lprice>>>{$val->price}{@echo PHP_EOL;}
+<<<price>>>{$val->discounted_price}{@echo PHP_EOL;}
+<<<mpric>>>{$val->discounted_price}{@echo PHP_EOL;}
+<<<pname>>>{$val->enhanced_item_info->daum_ep_item_name}{@echo PHP_EOL;}
+<<<pgurl>>>{$val->link}{@echo PHP_EOL;}
+<<<igurl>>>{$val->getThumbnail(300,300,'crop')}{@echo PHP_EOL;}
+<<<cate1>>>{$val->catalog_name}{@echo PHP_EOL;}
+<<<caid1>>>{$val->category_node_srl}{@echo PHP_EOL;}
+<<<model>>>{$val->item_name}{@echo PHP_EOL;}
+<<<brand>>>{$val->enhanced_item_info->ga_brand_name}{@echo PHP_EOL;}
+<<<maker>>>{$val->enhanced_item_info->naver_ep_maker}{@echo PHP_EOL;}
+<<<deliv>>>{$val->shipping_cost}{@echo PHP_EOL;}
+<<<delivterm>>>1{@echo PHP_EOL;}
+<<<revct>>>{$val->review_cnt}{@echo PHP_EOL;}
+<<<ftend>>>{@echo PHP_EOL;}
+</block>

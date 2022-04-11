@@ -1,0 +1,510 @@
+<!--%import("filter/update_item.xml")-->
+<!--%import("filter/delete_item.xml")-->
+<load target="js/script.js" />
+<load target="js/updateitem.js" />
+
+<style>
+	.x_controls ul { list-style:none; margin:0; padding:0; }
+	.x_controls ul li { float:left; margin-right:10px;}
+</style>
+
+<form method="post" class="x_form-horizontal" ruleset="@svitem_insertItem" enctype="multipart/form-data">
+<input name="module" type="hidden" value="{$module}" />
+<input name="act" type="hidden" value="procSvitemAdminUpdateItem" />
+<input name="item_srl" type="hidden" value="{$item_srl}" />
+<input name="module_srl" type="hidden" value="{$item_info->nModuleSrl}" />
+<input name="document_srl" type="hidden" value="{$item_info->document_srl}" /> <!--- multi editor의 첨부파일 표시 용도 --->
+<input name="mob_doc_srl" type="hidden" value="{$item_info->mob_doc_srl}" /> <!--- multi editor의 첨부파일 표시 용도 --->
+<input name="pc_doc_srl" type="hidden" value="{$item_info->pc_doc_srl}" /> <!--- multi editor의 첨부파일 표시 용도 --->
+<input name="gallery_doc_srl" type="hidden" value="{$item_info->gallery_doc_srl}" /> <!--- multi editor의 첨부파일 표시 용도 --->
+<input name="ua_type" type="hidden" value="{$ua_type}" />
+<input name="description" type="hidden" value="{$item_info->sDescription}" />
+<input name="search_item_name" type="hidden" value="{$search_item_name}" />
+	<section class="section">
+	<h1>{$lang->title_product_basicinfo}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="disp_module_srl">{$lang->display_page}</label>
+			<div class="x_controls">
+				<select name="disp_module_srl">
+					<option loop="$modinst=>$key,$val" value="{$val->module_srl}" selected="selected"|cond="$val->module_srl==$item_info->module_srl">{$val->browser_title}({$val->mid})</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_code">{$lang->ga_brand_name}</label>
+			<div class="x_controls">
+				<input name="ga_brand_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_brand_name}" />
+				<a href="#item_code_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="item_code_help" class="x_help-block" hidden>{$lang->about_ga_brand_name}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="ga_category_name">{$lang->ga_category_name}</label>
+			<div class="x_controls">
+				<input name="ga_category_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_category_name}" />
+				<a href="#ga_category_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="ga_category_name_help" class="x_help-block" hidden>{$lang->about_ga_category_name}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_name">{$lang->product_name} <em style="color:red">*</em></label>
+			<div class="x_controls">
+				<input name="item_name" type="text" class="x_span6" value="{$item_info->item_name}" />
+				<a href="#item_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="item_name_help" class="x_help-block" hidden>{$lang->about_product_name}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_code">{$lang->ga_variation_name}</label>
+			<div class="x_controls">
+				<input name="ga_variation_name" type="text" class="inputTypeText w300" value="{$item_info->enhanced_item_info->ga_variation_name}" />
+				<a href="#ga_variation_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="ga_variation_name_help" class="x_help-block" hidden>{$lang->about_ga_variation_namee}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">{$lang->title_bundlings}</div>
+			<div class="x_controls">
+				<span class="btn small" data-item-srl="{$item_srl}"><a href="#modifyBundling" class="modalAnchor modifyBundling">{$lang->cmd_modify}</a></span>
+				<div loop="$bundlings=>$key,$val">
+					<ul>
+						<li>{$val->title} ({$item_info->printPrice($val->price)})</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_code">{$lang->item_code}</label>
+			<div class="x_controls">
+				<input name="item_code" type="text" class="inputTypeText w300" value="{$item_info->item_code}" />
+				<a href="#item_code_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="item_code_help" class="x_help-block" hidden>{$lang->about_product_code}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="barcode">{$lang->barcode}</label>
+			<div class="x_controls">
+				<input name="barcode" type="text" class="inputTypeText w300" value="{$item_info->barcode}" />
+				<a href="#barcode_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="barcode_help" class="x_help-block" hidden>{$lang->about_barcode}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="thumbnail_image">카탈로그 {$lang->thumbnail}</label>
+			<div class="x_controls">
+				<div cond="$item_info->thumbnail_url"><img src="{$item_info->thumbnail_url}" /></div>
+				<input type="file" name="thumbnail_image" />
+				<a href="#thumbnail_image_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="thumbnail_image_help" class="x_help-block" hidden>{$lang->about_thumbnail_image}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="display">{$lang->display_or_not} <em style="color:red">*</em></label>
+			<div class="x_controls">
+				<label for="display_Y"><input type="radio" name="display" id="display_Y" value="Y" checked="checked"|cond="$item_info->display=='Y'" />{$lang->display}</label>
+				<label for="display_N"><input type="radio" name="display" id="display_N" value="N" checked="checked"|cond="$item_info->display=='N'" />{$lang->not_display}</label>
+			</div>
+		</div>
+<!----- add page type option begin 20141231 ---->
+		<!---div class="x_control-group">
+			<label class="x_control-label" for="page_type">{$lang->page_type}</label>
+			<div class="x_controls">
+				<label for="page_type_preparing"><input type="radio" name="page_type" id="page_type_preparing" value="preparing" checked="checked"|cond="$xxitem_info->page_type=='preparing'" />{$lang->preparing_product}</label>
+				<label for="page_type_closed_url"><input type="radio" name="page_type" id="page_type_closed_url" value="closed_url" checked="checked"|cond="$xxitem_info->page_type=='closed_url'" />{$lang->closed_url}</label>
+			</div>
+		</div---->
+<!----- add page type option end 20141231 ---->
+		<div class="x_control-group">
+			<label class="x_control-label" for="price">{$lang->price} <em style="color:red">*</em></label>
+			<div class="x_controls">
+				<input name="price" type="text" class="inputTypeText w100" value="{$item_info->price}" />
+			</div>
+		</div>
+		<div class="x_control-group"|cond="$config->external_server_type==''">
+			<label class="x_control-label" for="safe_stock">{$lang->item_current_stock} </label>
+			<div class="x_controls">
+				<input name="current_stock" type="text" class="inputTypeText w100" value="{$item_info->current_stock}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="safe_stock">{$lang->item_safe_stock} </label>
+			<div class="x_controls">
+				<input name="safe_stock" type="text" class="inputTypeText w100" value="{$item_info->safe_stock}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="taxfree">{$lang->tax_or_not}</label>
+			<div class="x_controls">
+				<label for="taxfree_1"><input type="radio" name="taxfree" id="taxfree_1" value="N" checked="checked"|cond="$item_info->taxfree=='N'" />{$lang->taxation}</label>
+				<label for="taxfree_2"><input type="radio" name="taxfree" id="taxfree_2" value="Y" checked="checked"|cond="$item_info->taxfree=='Y'" />{$lang->no_taxation}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="editor2">{$lang->gallery_thumbnail} <em style="color:red">*</em></div>
+			<div class="x_controls">
+				<!-- css -->
+				<!-- JS -->
+				<!--#JSPLUGIN:ckeditor--><div id="ckeditor_instance_{$item_info->gallery_doc_srl}" data-editor-sequence="{$item_info->gallery_doc_srl}" data-editor-primary-key-name="document_srl" style="height:0; visibility:hidden;" ></div>
+					<!--#JSPLUGIN:jquery.fileupload--><!--#JSPLUGIN:jquery.finderSelect--><!--#JSPLUGIN:handlebars--><div id="xefu-container-{$item_info->gallery_doc_srl}" class="xefu-container xe-clearfix" data-editor-sequence="{$item_info->gallery_doc_srl}">
+					<div class="xefu-dropzone">
+						<span class="xefu-btn fileinput-button xefu-act-selectfile">
+							<span><i class="xi-icon xi-file-add"></i> 파일 첨부</span>
+							<input id="xe-fileupload" type="file" class="fileupload-processing " value="파일 첨부" name="Filedata" data-auto-upload="true" data-editor-sequence="{$item_info->gallery_doc_srl}" multiple />
+						</span>
+						<p class="xefu-dropzone-message">여기에 파일을 끌어 놓거나 파일 첨부 버튼을 클릭하세요.</p>
+						<p class="upload_info">파일 크기 제한 : <span class="allowed_filesize">0MB</span> <span>(허용 확장자 : <span class="allowed_filetypes">*.*</span>)</span></p>
+						<p class="xefu-progress-status" style="display: none;">파일 업로드 중... (<span class="xefu-progress-percent">0%</span>)</p>
+						<div class="xefu-progressbar" style="display: none;"><div></div></div>
+					</div>
+					<div class="xefu-controll xe-clearfix">
+						<div style="float: left;">
+							<span class="file_count">0</span>개 첨부 됨 (<span class="attached_size"></span> / <span class="allowed_attach_size"></span>)
+						</div>
+						<div style="float: right">
+							<input type="button" class="xefu-btn xefu-act-delete-selected" style=" vertical-align: middle; vertical-align: middle;" value="선택 삭제">
+						</div>
+					</div>
+					<div class="xefu-list">
+						<div class="xefu-list-images">
+							<ul>
+							</ul>
+						</div>
+						<div class="xefu-list-files">
+							<ul>
+							</ul>
+						</div>
+					</div>
+				</div>
+<script>
+jQuery(function($){
+	// uploader
+	var setting = {
+		maxFileSize: 104857600,
+		limitMultiFileUploadSize: 104857600		
+	};
+	var uploader = $('#xefu-container-{$item_info->gallery_doc_srl}').xeUploader(setting);
+	window.xe.msg_exceeds_limit_size = '허용된 용량을 초과하여 첨부가 되지 않았습니다.';
+	window.xe.msg_checked_file_is_deleted = '%d개의 첨부 파일이 삭제되었습니다.';
+	window.xe.msg_file_cart_is_null = '삭제할 파일을 선택해주세요.';
+	window.xe.msg_checked_file_is_deleted = '%d개의 첨부 파일이 삭제되었습니다.';
+	window.xe.msg_not_allowed_filetype = '업로드할 수 없는 파일 형식입니다.';
+	window.xe.msg_file_upload_error = '파일 업로드 중 에러가 발생하였습니다.';
+});
+(function($){
+	"use strict";
+	// editor
+	$(function(){
+		CKEDITOR.config.customConfig = '';
+		var settings = {
+			ckeconfig: {
+				height: '1',
+				skin: 'moono',
+				contentsCss: './modules/editor/styles/ckeditor_light/editor.css',
+				xe_editor_sequence: '{$item_info->gallery_doc_srl}',
+				toolbarCanCollapse: true,
+				language: "ko"
+			},
+			loadXeComponent: true,
+			enableToolbar: true,
+			content_field: jQuery('[name=]')
+		};
+		settings.enableToolbar = false;
+		settings.ckeconfig.toolbarCanCollapse = false;
+		settings.loadXeComponent = false;
+		var ckeApp = $('#ckeditor_instance_{$item_info->gallery_doc_srl}').XeCkEditor(settings);
+	});
+})(jQuery);
+</script>
+			</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="gallery_representative_thumbnail">{$lang->gallery_representative_thumbnail}</label>
+			<div class="x_controls">
+				<input name="gallery_rep_thumbnail_idx" type="text" class="inputTypeText w100" value="{$item_info->enhanced_item_info->rep_gallery_thumb_idx}" />
+				<a href="#gallery_representative_thumbnail_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="gallery_representative_thumbnail_help" class="x_help-block" hidden>{$lang->about_gallery_representative_thumbnail}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_brief">{$lang->item_brief}</label>
+			<div class="x_controls">
+				<textarea name="item_brief" id="item_brief" class="item_brief" rows="8" cols="22" placeholder="{$lang->about_item_brief}">{$item_info->enhanced_item_info->item_brief}</textarea>
+				<a href="#item_brief_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="item_brief_help" class="x_help-block" hidden>{$lang->about_item_brief}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="category_depth1">{$lang->select_description_skin_mob_from_archive}</label>
+			<div class="x_controls">
+				<select id="description_skin_mob" name="description_skin_mob">
+					<option value="use_each_mob">{$lang->choose_each_description_skin_mob}</option>
+					<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_mob==$val">{$val}</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="category_depth1">{$lang->select_description_skin_pc_from_archive}</label>
+			<div class="x_controls">
+				<select id="description_skin_pc" name="description_skin_pc">
+					<option value="use_each_pc">{$lang->choose_each_description_skin_pc}</option>
+					<option loop="$description_skin_list=>$key,$val" value="{$val}" selected="selected"|cond="$item_info->enhanced_item_info->description_skin_pc==$val">{$val}</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="ua_type">편집할 상세페이지 선택</label>
+			<div class="x_controls">
+				<label for="ua_type"><input type="radio" name="ua_type" id="ua_type" value="og" checked="checked"|cond="$ua_type=='og'||$ua_type==''" />open graph</label>
+				<label for="ua_type"><input type="radio" name="ua_type" id="ua_type" value="mob" checked="checked"|cond="$ua_type=='mob'" />MOB 상세페이지(%%PC%%만 적으면 PC 소재 표시)</label>
+				<label for="ua_type"><input type="radio" name="ua_type" id="ua_type" value="pc" checked="checked"|cond="$ua_type=='pc'" />PC 상세페이지(%%MOB%%만 적으면 모바일 소재 표시)</label>
+			</div>
+			<div class="x_control-label" for="editor2">{$ua_type} {$lang->description} <em style="color:red">*</em></div>
+			<div class="x_controls">
+				{$editor}
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">표시할 뱃지 아이콘</label>
+			<div class="x_controls">
+				<ul>
+					<li><label for="badge-best"><input type="checkbox" name="badge_icon[]" id="badge-best" value="best" checked="checked"|cond="$item_info->enhanced_item_info->default_badge_icon['best']==1"/>best</label></li>
+					<li><label for="badge-hot"><input type="checkbox" name="badge_icon[]" id="badge-hot" value="hot" checked="checked"|cond="$item_info->enhanced_item_info->default_badge_icon['hot']==1"/>hot</label></li>
+				</ul>
+				<a href="#badge_help" class="x_icon-question-sign" data-toggle>도움말</a>
+				<p id="badge_help" class="x_help-block" hidden></p>
+			</div>
+		</div>
+		<block loop="$extra_vars=>$key,$val">
+			<div class="x_control-group">
+				<label class="x_control-label">{$val->getTitle(TRUE)}</label>
+				<div class="x_controls">
+					{$val->getFormHTML(FALSE)}
+					<a href="#{$val->name}_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+					<p id="{$val->name}_help" class="x_help-block" hidden>{$val->desc}</p>
+				</div>
+			</div>
+		</block>
+		<div class="x_control-group">
+			<label class="x_control-label" for="sv_tags">{$lang->search_tags}</label>
+			<div class="x_controls">
+				<input name="sv_tags" type="text" class="inputTypeText w100" value="{$item_info->sv_tags}" />
+				<a href="#search_tags_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="search_tags_help" class="x_help-block" hidden>{$lang->about_search_tags}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">{$lang->order_options}</div>
+			<div class="x_controls">
+				<span class="btn small" data-item-srl="{$item_srl}"><a href="#modifyOptions" class="modalAnchor modifyOptions">{$lang->cmd_modify}</a></span>
+				<div loop="$options=>$key,$val">
+					<ul>
+						<li>{$val->title} ({$item_info->printPrice($val->price)})</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<section class="section collapsed" cond="$config->naver_ep_use=='Y'">
+		<h1>{$lang->title_naver_ep_info}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 상품명</div>
+			<div class="x_controls">
+				<input name="naver_ep_item_name" type="text" value="{$item_info->enhanced_item_info->naver_ep_item_name}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 제조사명</div>
+			<div class="x_controls">
+				<input name="naver_ep_maker" type="text" value="{$item_info->enhanced_item_info->naver_ep_maker}" />
+			</div>
+		</div>	
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 원산지명</div>
+			<div class="x_controls">
+				<input name="naver_ep_origin" type="text" value="{$item_info->enhanced_item_info->naver_ep_origin}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 검색태그, 구분자 |</div>
+			<div class="x_controls">
+				<input name="naver_ep_search_tag" type="text" value="{$item_info->enhanced_item_info->naver_ep_search_tag}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 바코드 -사용금지</div>
+			<div class="x_controls">
+				<input name="naver_ep_barcode" type="text" value="{$item_info->enhanced_item_info->naver_ep_barcode}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 네이버카테고리</div>
+			<div class="x_controls">
+				<input name="naver_ep_naver_category" type="text" value="{$item_info->enhanced_item_info->naver_ep_naver_category}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 이벤트 정보</div>
+			<div class="x_controls">
+				<input name="naver_ep_event_words" type="text" value="{$item_info->enhanced_item_info->naver_ep_event_words}" />
+				<a href="#naver_ep_event_words_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="naver_ep_event_words_help" class="x_help-block" hidden>{$lang->about_naver_ep_event_words}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 SV 캠페인 코드 2단계</div>
+			<div class="x_controls">
+				<input name="naver_ep_sv_campaign2" type="text" value="{$item_info->enhanced_item_info->naver_ep_sv_campaign2}" />
+				<a href="#naver_ep_sv_campaign2_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="naver_ep_sv_campaign2_help" class="x_help-block" hidden>{$lang->about_naver_ep_sv_campaign2}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 SV 캠페인 코드 3단계</div>
+			<div class="x_controls">
+				<input name="naver_ep_sv_campaign3" type="text" value="{$item_info->enhanced_item_info->naver_ep_sv_campaign3}" />
+				<a href="#naver_ep_sv_campaign3_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="naver_ep_sv_campaign3_help" class="x_help-block" hidden>{$lang->about_naver_ep_sv_campaign3}</p>
+			</div>
+		</div>
+	</section>
+	<section class="section collapsed" cond="$config->daum_ep_use=='Y'">
+		<h1>{$lang->title_daum_ep_info}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">EP 연동 상품명</div>
+			<div class="x_controls">
+				<input name="daum_ep_item_name" type="text" value="{$item_info->enhanced_item_info->daum_ep_item_name}" />
+			</div>
+		</div>
+	</section>
+
+	<section class="section collapsed">
+		<h1>{$lang->title_extra_options}</h1>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">관련상품</div>
+			<div class="x_controls">
+				<input name="related_items" type="text" value="{$xxitem_info->related_items}" />
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label" for="">{$lang->refund_policy}</div>
+			<div class="x_controls">
+				<span class="btn small" id="{$item_srl}"><a href="#modifyDeliveryInfo" class="modalAnchor modifyDeliveryInfo">{$lang->cmd_modify}</a></span>
+				{$xxitem_info->delivery_info}
+			</div>
+		</div>	
+	</section>
+
+	<div class="btnArea">
+		<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_save}</button>
+		<a href="#deleteItem" class="x_btn modalAnchor deleteItem">{$lang->cmd_delete}</a>
+		<a class="x_btn" href="{getUrl('act','dispSvitemAdminItemListByModule')}">{$lang->cmd_list}</a>
+	</div>
+</form>
+
+<div class="x_modal" id="modifyDeliveryInfo">
+	<form action="./" class="fg form" ruleset="insertDeliveryInfo" method="post">
+		<input type="hidden" name="act" value="procSvitemAdminInsertDeliveryInfo" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input type="hidden" name="success_return_url" value="{getUrl('act', $act)}" />
+		<div id="extendForm">
+		</div>
+	</form>
+</div>
+<div class="x_modal" id="adminManualOrder">
+	<form action="./" class="fg form" ruleset="insertManualOrder" method="post">
+		<input type="hidden" name="act" value="procSvitemAdminInsertManualOrder" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input type="hidden" name="success_return_url" value="{getUrl('act', $act)}" />
+		<input type="hidden" name="item_srl" value="{$item_srl}" />
+		<div id="orderForm">
+		</div>
+	</form>
+</div>
+
+<form action="./" id="deleteItem" class="x_modal" method="post">
+	<input type="hidden" name="act" value="procSvitemAdminDeleteItem" />
+	<input type="hidden" name="module_srl" value="{$module_srl}" />
+	<input type="hidden" name="success_return_url" value="{getUrl('act', 'dispSvitemAdminItemListByModule')}" />
+	<input type="hidden" name="item_srl" value="{$item_srl}" />
+	<div class="x_modal-header">
+		<h1>{$lang->cmd_delete}</h1>
+	</div>
+	<div class="x_modal-content">
+		<p>{$lang->msg_sure_to_delete}</p>
+	</div>
+	<div class="x_modal-footer">
+		<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_delete}</button>
+	</div>
+</form>
+
+<div class="x_modal" id="modifyOptions">
+	<form action="./" class="fg form" method="post">
+		<input type="hidden" name="act" value="procSvitemAdminInsertOptions" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input name="item_srl" type="hidden" value="{$item_srl}" />
+		<div id="optionsForm">
+		</div>
+	</form>
+</div>
+
+<div class="x_modal" id="modifyBundling">
+	<form action="./" class="fg form" method="post">
+		<input type="hidden" name="act" value="procSvitemAdminInsertBundling" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input name="item_srl" type="hidden" value="{$item_srl}" />
+		<div id="bundlingForm"></div>
+	</form>
+</div>
+
+<script>
+var module_srl = {$module_srl};
+var v=xe.getApp('validator')[0];
+<block loop="$extra_vars=>$key,$val">
+v.cast('ADD_MESSAGE',['{$val->column_name}','{$val->column_title}']);
+</block>
+
+// radio change 이벤트
+
+jQuery("input[name=ua_type]").change(function() {
+	var sUaType = jQuery(this).val();
+
+	switch(sUaType)
+	{
+		case 'og':
+		case 'mob':
+		case 'pc':
+			break;
+		default:
+			sUaType = 'mob';
+	}
+	console.log( sUaType );
+
+	var nModuleSrl = getUrlParameter('module_srl');
+	var nItemSrl = getUrlParameter('item_srl');
+	var sProtocol = jQuery(location).attr('protocol');
+	var sHostname = jQuery(location).attr('hostname');
+	var sPathname = jQuery(location).attr('pathname');
+
+//http://127.0.0.1/index.php?module=svshopmaster&act=dispSvitemAdminUpdateItem&module_srl=185&item_srl=475
+//console.log("host = "+jQuery(location).attr('host'));
+//console.log("hostname = "+jQuery(location).attr('hostname'));
+//console.log("pathname = "+jQuery(location).attr('pathname')); 
+//console.log("href = "+jQuery(location).attr('href'));   
+//console.log("port = "+jQuery(location).attr('port'));   
+//console.log("protocol = "+jQuery(location).attr('protocol'));
+	var sFullUri = sProtocol + '//' + sHostname + sPathname + '?module=svshopmaster&act=dispSvitemAdminUpdateItem&module_srl=' + nModuleSrl + '&item_srl=' + nItemSrl + '&ua_type=' + sUaType;
+	location.href=sFullUri;
+});
+
+var getUrlParameter = function getUrlParameter(sParam) {
+	var sPageURL = window.location.search.substring(1),
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
+	for(i = 0; i < sURLVariables.length; i++) 
+	{
+		sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] === sParam) 
+			return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+	}
+};
+</script>

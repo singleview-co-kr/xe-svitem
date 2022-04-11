@@ -1,0 +1,22 @@
+/*!
+ *  inbody item detail
+ *  License - N/A
+ */
+ 
+ /*--[ Back to Top ]--*/
+#sTop
+{
+	background:url(./modules/nproduct/skins/inbody/img/arrows.png) no-repeat scroll -78px 0 #333;
+	background-color:rgba(0, 0, 0, 0.6);
+	display:none; height:39px; width:39px;
+	border-radius:100%;
+	overflow:hidden;
+	position:fixed; bottom:30px;
+	right:10px;
+	text-decoration:none;
+	text-indent:-999px;
+	z-index:10000;
+	outline:medium none;
+}
+
+#sTop:hover, #sTop:focus{background-color:#ea5859}

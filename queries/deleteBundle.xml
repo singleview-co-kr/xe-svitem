@@ -1,0 +1,8 @@
+<query id="deleteBundle" action="delete">
+	<tables>
+		<table name="svitem_bundles" />
+	</tables>
+	<conditions>
+		<condition operation="in" column="bundle_srl" var="bundle_srl" notnull="notnull" />
+	</conditions>
+</query>

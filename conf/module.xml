@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants>
+	</grants>
+	<permissions>
+	</permissions>
+	<actions>
+		<action name="dispSvitemAdminConfig" type="view" />
+		<action name="dispSvitemAdminModInstList" type="view" />
+		<action name="dispSvitemAdminInsertModInst" type="view" />
+		<action name="dispSvitemAdminInsertItem" type="view" />
+		<action name="dispSvitemAdminItemListByModule" type="view" />
+		<action name="dispSvitemAdminUpdateItem" type="view" />
+		<action name="dispSvitemAdminAdditionSetup" type="view" />
+		<action name="dispSvitemAdminShowWindowCatalog" type="view" />
+		<action name="dispSvitemAdminExtendVarSetup" type="view" />
+		<action name="dispSvitemAdminSkinInfo" type="view" />
+		<action name="dispSvitemAdminMobileSkinInfo" type="view" />
+		<action name="dispSvitemAdminBulkItems" type="view" />
+		<action name="dispSvitemAdminItemListExcelDownload" type="view" />
+		<action name="dispSvitemAdminListDisplaySetup" type="view" />
+		<action name="dispSvitemAdminDetailDisplaySetup" type="view" />
+		<action name="dispSvitemAdminGrantInfo" type="view" />
+		<action name="dispSvitemAdminQnaBoardMgmt" type="view" />
+		<action name="dispSvitemAdminReviewBoardMgmt" type="view" />
+		<action name="dispSvitemAdminExtMallLogger" type="view" />
+		<action name="dispSvitemAdminBarcodeMgmt" type="view" />
+		
+		<action name="procSvitemAdminConfig" type="controller" />
+		<action name="procSvitemAdminInsertModInst" type="controller" />
+		<action name="procSvitemAdminDeleteModInst" type="controller" />
+		<action name="procSvitemAdminUpdateShowWindowCatalog" type="controller" />
+		<action name="procSvitemAdminUpdateItemShowWindowTab" type="controller" />
+		<action name="procSvitemAdminUpdateDCListOrder" type="controller" />
+		<action name="procSvitemAdminUpdateDIListOrder" type="controller" />
+		<action name="procSvitemAdminInsertExtendVar" type="controller" />
+		<action name="procSvitemAdminDeleteExtendVar" type="controller" />
+		<action name="procSvitemAdminInsertDeliveryInfo" type="controller" />
+		<action name="procSvitemAdminUpdateItemExtraOrder" type="controller" />
+		<action name="procSvitemAdminUpdateItemListOrder" type="controller" />
+		<action name="procSvitemAdminUpdateItemDefaultCatalogInfo" type="controller" />
+		<action name="procSvitemAdminDeleteItem" type="controller" />
+		<action name="procSvitemAdminPermanentDeleteItem" type="controller" />
+		<action name="procSvitemAdminUpdateItemList" type="controller" />
+		<action name="procSvitemAdminSaveDisplayConfig" type="controller" />
+		<action name="procSvitemAdminInsertItem" type="controller" />
+		<action name="procSvitemAdminUpdateItem" type="controller"/>
+		<action name="procSvitemAdminInsertOptions" type="controller" />
+		<action name="procSvitemAdminInsertBundling" type="controller" />
+		<action name="procSvitemAdminUpdateQnaBoardMgmt" type="controller" />
+		<action name="procSvitemAdminUpdateReviewBoardMgmt" type="controller" />
+		<action name="procSvitemAdminUpdateCatalogNodeAjax" type="controller" />
+		<action name="procSvitemAdminMoveCatalog" type="controller" />
+		<action name="procSvitemAdminBulkInsertViaExcel" type="controller" />
+		<action name="procSvitemAdminBarcodeMgmt" type="controller" />
+		<action name="procSvitemAdminUpdateExtmallLogger" type="controller" />
+
+		<action name="getSvitemAdminInsertItemExtra" type="model" />
+		<action name="getSvitemAdminInsertDeliveryInfo" type="model" />
+		<action name="getSvitemAdminItemListAjax" type="model" />
+		<action name="getSvitemAdminDeleteModInst" type="model" />
+		<action name="getSvitemAdminDeleteItem" type="model" />
+		<action name="getSvitemAdminInsertOptions" type="model" />
+		<action name="getSvitemAdminInsertBundling" type="model" />
+		<action name="getSvitemAdminCatalogAjax" type="model" />
+		<action name="getSvitemAdminShowWindowItemListAjax" type="model" />
+
+		<action name="dispSvitemIndex" type="view" index="true" />
+		<action name="dispSvitemItemList" type="view" />
+		<action name="dispSvitemItemDetail" type="view" />
+		<action name="dispSvitemNpayXml" type="view" />
+		<action name="dispSvitemNaverEp" type="view" />
+		<action name="dispSvitemDaumEp" type="view" />
+		
+		<action name="procSvitemNaverpay" type="controller" />
+		<action name="procSvitemAddItemsToCartObj" type="controller" />
+		<action name="procSvitemAddItemsToFavorites" type="controller" />
+		<action name="procSvitemUpdateQuantity" type="controller" />
+
+		<action name="getSvitemExtraVars" type="model" />
+		<action name="getSvitemConditionalPromoInfo" type="model" />
+		<action name="getSvitemDetailPageAction" type="model" />
+	</actions>
+</module>

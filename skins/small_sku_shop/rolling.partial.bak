@@ -1,0 +1,50 @@
+<li class="slide-item" id="vs_store_page_banner_bloom" STYLE='background-image:url(./modules/nproduct/skins/inbody/img/key_visual_inbody_dial_brown.jpg);'>
+	<div class="hero">
+		<div class="orbit slick-initialized slick-slider">
+			<div class="slick-list draggable">
+				<div class="slick-track">
+					<div class="o-item s1 slick-slide slick-active" id="vs-banner-bloom-title">
+						<div class="o-content">
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src= "./modules/nproduct/skins/inbody/img/dial_phrase.png" class="vs-shine-logo"/>
+							</p>
+							<!---div class="white-text vs-bloom-text">
+								<em>INBODY DIAL</em>
+							</div>
+							<div class="white-text font-light vs-bloom-intro">
+								인바디와 함께 건강을 계획하세요.
+							</div---->
+							<!-- <div class="white-text" style="margin-top: 10px;">
+								<span class="font-bold">$79.99</span>
+								<span class="font-bold">$69.99</span> 
+							</div> -->
+							<div style="margin-top: 40px;"><a class="mfs-btn black-border-btn font-medium" href="./buynow/139">자세히 보기</a></div>
+							<!---div class="white-text font-medium" style="font-size: 12px; margin-top: 25px;">InBody 전용 모니터링 App 포함</div--->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</li>
+
+<li class="slide-item" id="vs_store_page_banner" STYLE='background-image:url(./modules/nproduct/skins/inbody/img/key_visual_inbody_app.jpg);'>
+	<div class="hero">
+		<div class="orbit slick-initialized slick-slider">
+			<div class="slick-list draggable">
+				<div class="slick-track">
+					<div class="o-item s1 slick-slide slick-active" id="techtee-title">
+						<div class="o-content">
+							<img src= "./modules/nproduct/skins/inbody/img/app_phrase.png" class="vs-shine-logo"/>
+							<!---p>체계적인 건강관리의 시작</p>
+							<p><em>InBody App</em></p>
+							<BR--->
+							<!---p>iOS와 안드로이드 지원</p---->
+							<!--p style="margin-top:35px;"><a class="mfs-btn font-medium" href="#">자세히 보기</a></p--->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</li>

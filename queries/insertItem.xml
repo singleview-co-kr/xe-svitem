@@ -1,0 +1,27 @@
+<query id="insertItem" action="insert">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="item_srl" var="item_srl" filter="number" notnull="notnull" />
+		<column name="item_code" var="item_code"/>
+		<column name="barcode" var="barcode"/>
+		<column name="item_name" var="item_name" notnull="notnull" />
+		<column name="enhanced_item_info" var="enhanced_item_info" />
+		<column name="module_srl" var="module_srl" notnull="notnull" />
+		<column name="category_node_srl" var="category_node_srl" default="0" />
+		<column name="document_srl" var="document_srl" notnull="notnull" />
+		<column name="mob_doc_srl" var="mob_doc_srl" notnull="notnull" />
+		<column name="pc_doc_srl" var="pc_doc_srl" notnull="notnull" />
+		<column name="gallery_doc_srl" var="gallery_doc_srl" notnull="notnull" />
+		<column name="thumb_file_srl" var="thumb_file_srl" />
+		<column name="price" var="price" notnull="notnull" />
+		<column name="taxfree" var="taxfree" default="N" />
+		<column name="display" var="display" notnull="notnull" />
+		<column name="delivery_info" var="delivery_info" />
+		<column name="list_order" var="list_order" />
+		<column name="extra_vars" var="extra_vars" />
+		<column name="updatetime" var="updatetime" default="curdate()" />
+		<column name="regdate" var="regdate" default="curdate()" />
+	</columns>
+</query>

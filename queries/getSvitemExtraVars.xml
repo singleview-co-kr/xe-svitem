@@ -1,0 +1,13 @@
+<query id="getSvitemExtraVars" action="select">
+	<tables>
+		<table name="svitem_extra_vars" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="in" column="item_srl" var="item_srl" pipe="and"/>
+		<condition operation="equal" column="name" var="name" pipe="and" />
+		<condition operation="equal" column="value" var="value" />
+	</conditions>
+</query>

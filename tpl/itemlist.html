@@ -1,0 +1,141 @@
+<!--%import("js/jstree.min.js")-->
+<!--%import("js/themes/default/style.min.css")-->
+<!--%import("js/itemlist.js")-->
+
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE && $inc != 'skininfo'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div class="table event easyList">
+	<table>
+	<form action="./" method="post" id="list_form" class="form">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminUpdateItemList" />
+	<input type="hidden" name="module_srl" value="{$module_srl}" />
+	<input cond="$page" type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="category" value="{$category}" />
+		<thead>
+			<tr>
+				<th><input type="checkbox" name="cart" value="" /></th>
+				<th>{$lang->list_order}</th>
+				<th>{$lang->item_code}</th>
+				<th>{$lang->item_name}</th>
+				<th>{$lang->display_or_not}</th>
+				<th>{$lang->rsp}</th>
+				<th>{$lang->sales}</th>
+				<th>{$lang->item_current_stock}</th>
+				<th>{$lang->reviews}</th>
+				<th>{$lang->cmd_modify}</th>
+				<th>{$lang->cmd_extmall_logger}</th>
+			</tr>
+		</thead>
+		<tbody id="itemlistorder">
+			<tr loop="$list=>$no,$val" id="record_{$val->item_srl}">
+				<td><input type="hidden" name="item_srls[]" value="{$val->item_srl}" /><input type="checkbox" name="cart" value="{$val->item_srl}" /></td>
+				<td><input type="text" name="list_order[]" style="width:80px;" value="{$val->list_order}" /></td>
+				<td><input type="text" name="item_code[]" style="width:100px;" value="{$val->item_code}" /></td>
+				<td><a href="{getUrl('act','dispSvitemAdminUpdateItem','item_srl',$val->item_srl, 'ua_type', '')}"><span style="margin-right:6px;"><img src="{svitemView::_dispThumbnailUrl($val->thumb_file_srl,30)}" /></span></a><input type="text" style="width:250px" name="item_name[]" value="{$val->item_name}" /></td>
+				<td><select name="display[]" style="width:100px"><option value="Y" selected="selected"|cond="$val->display=='Y'">{$lang->display}</option><option value="N" selected="selected"|cond="$val->display=='N'">{$lang->not_display}</option></select></td>
+				<td><input type="text" name="price[]" style="width:80px" value="{$val->price}" /></td>
+				<td>{number_format($val->sales_count)}</td>
+				<td>{number_format($val->current_stock)}</td>
+				<td><a href="{getUrl('','document_srl',$val->document_srl)}#content_02" target="_blank">{number_format($val->review_count)}</a></td>
+				<td><a href="{getUrl('act','dispSvitemAdminUpdateItem','item_srl',$val->item_srl, 'ua_type', '')}">{$lang->cmd_modify}</a></td>
+				<td><a href="{getUrl('act','dispSvitemAdminExtMallLogger','item_srl',$val->item_srl)}">{$lang->cmd_setup}</a></td>
+			</tr>
+			<tr cond="!count($list)">
+				<td colspan="12">{$lang->msg_no_registered_items}</td>
+			</tr>
+		</tbody>
+	</form>
+	</table>
+</div>
+<div class="search">
+	<form id="searchForm" action="./" method="post" class="x_input-append" >
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<select name="search_key">
+			<option value="">{$lang->search_target}</option>
+			<option value="item_name" selected="selected"|cond="$search_key==''">{$lang->item_name}</option>
+			{@$lang->search_target_list = array_merge($lang->search_target_list, (array)$usedIdentifiers)}
+			<option value="{$key}" loop="$lang->search_target_list=>$key,$val" selected="selected"|cond="$search_target==$key">{$val}</option>
+		</select>
+		<input type="text" name="search_item_name" value="{htmlspecialchars($search_item_name)}" />
+		<span class="btn"><button type="submit">{$lang->cmd_search}</button></span>
+		<a href="{getUrl('module','svshopmaster', 'module_srl', $module_srl, 'search_key', '', 'search_item_name', '')}" class="x_btn">{$lang->cmd_cancel}</a>
+		<a href="#" id='btnModifyForm' class="x_btn">수정사항적용</a>
+		<a href="#" onclick="itemListCatalogTab.inviteItems(); return false;" class="x_btn">{$lang->add_into_category}</a>
+		<a href="{getUrl('act','dispSvitemAdminItemListExcelDownload')}" class="x_btn">{$lang->excelfile_download}</a>
+	</form>
+</div>
+<div class="pagenation">
+	<form action="" class="pagination" method="post">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input cond="$order_target" type="hidden" name="order_target" value="{$order_target}" />
+		<input cond="$order_type" type="hidden" name="order_type" value="{$order_type}" />
+		<input cond="$category_srl" type="hidden" name="category_srl" value="{$category_srl}" />
+		<input cond="$childrenList" type="hidden" name="childrenList" value="{$childrenList}" />
+		<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
+
+		<a href="{getUrl('page', '')}" class="direction">&laquo; FIRST</a>
+
+		<block cond="$page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page && $page_navigation->page_count != $page_navigation->total_page">
+			{@$isGoTo = true}
+			<a href="{getUrl('page', '')}">1</a>
+			<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+		</block>
+
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+			{@$last_page = $page_no}
+			<strong cond="$page_no == $page">{$page_no}</strong>
+			<a cond="$page_no != $page" href="{getUrl('page', $page_no)}">{$page_no}</a>
+		<!--@end-->
+
+		<block cond="$last_page != $page_navigation->last_page">
+			{@$isGoTo = true}
+			<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+			<a href="{getUrl('page', $page_navigation->last_page)}">{$page_navigation->last_page}</a>
+		</block>
+		<a href="{getUrl('page', $page_navigation->last_page)}" class="direction">LAST &raquo;</a>
+		<span cond="$isGoTo" id="goTo" class="tgContent">
+			<input name="page" title="{$lang->cmd_go_to_page}" />
+			<button type="submit">Go</button>
+		</span>
+	</form>
+</div>
+
+<style>
+#explorer_category { float:left; width:auto; height:auto; }
+</style>
+
+<div id="tabs">
+	<h1>
+		{$lang->category_management}<a href="#aboutCategoryMgmt" data-toggle class="x_icon-question-sign">{$lang->help}</a>
+	</h1>
+	<p class="x_alert x_alert-info" id="aboutCategoryMgmt" hidden>{$lang->about_showwindow_categories}</p>
+	<ul>
+		<li category_srl="0"><a href="#tabs-0" category_srl="0">{$lang->default_item_category}</a></li>
+		<li loop="$showwindow_categories=>$key,$val" category_srl="{$val->category_srl}">
+			<a href="#tabs-{$val->category_srl}" category_srl="{$val->category_srl}">(쇼윈도우){$val->category_name}({$val->category_srl})</a>
+		</li>
+	</ul>
+	<div id="tabs-0" style="height:auto; overflow:auto;">
+		<div id='explorer_category'><ul id="category_tree"></ul></div>
+		<ul id="tabs0-itemlist" class="sortable lined" style="margin:0px 0px 0px 60px;width:auto;float:left;"></ul>
+		
+	</div>
+	<div loop="$showwindow_categories=>$key,$val" id="tabs-{$val->category_srl}">
+		<ul class="sortable lined"></ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	displayTree({$module_srl}, '#category_tree');
+});
+</script>

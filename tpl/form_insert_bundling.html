@@ -1,0 +1,31 @@
+<div class="x_modal-header">
+	<h1>{$lang->title_bundlings}</h1>
+</div>
+
+<div class="x_modal-content">
+	<table>
+		<thead>
+			<tr>
+				<th>{$lang->bundling_item}</th><th>{$lang->bundle_quantity}</th><th>{$lang->bundle_price}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{@$count=0}
+			<tr loop="$bundlings=>$key,$val">
+				<td><input type="hidden" name="bundle_srls[]" value="{$val->bundle_srl}" /><input type="text" name="bundlling_items[]" value="{$val->bundle_items}" /></td>
+				<td><input type="text" name="bundle_quantity[]" value="{$val->bundle_quantity}" /></td>
+				<td><input type="text" name="bundle_price[]" value="{$val->bundle_price}" /></td>
+				{@$count++}
+			</tr>
+			<tr loop="$i=$count;$i<20;$i++">
+				<td><input type="text" name="bundlling_items[]" placeholder="item_srls," value="" /></td>
+				<td><input type="text" name="bundle_quantity[]" placeholder="bundle_quantity" value="" /></td>
+				<td><input type="text" name="bundle_price[]" placeholder="bundle_price" value="" /></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="x_modal-footer">
+	<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_submit}</button>
+</div>

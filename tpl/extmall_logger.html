@@ -1,0 +1,119 @@
+<include target="_header.html" />
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form action="./" method="post" class="x_form-horizontal">
+<input type="hidden" name="act" value="procSvitemAdminUpdateExtmallLogger" />
+<input type="hidden" name="mode" value="config" />
+<input type="hidden" name="module" value="{$module}" />
+<input type="hidden" name="item_srl" value="{$item_srl}" />
+<input type="hidden" name="module_srl" value="{$module_srl}" />
+<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', 'dispSvitemAdminExtMallLogger','item_srl', $item_srl)}" />
+
+<h1>{$item_name}</h1>
+<section class="section">
+	<div class="x_control-group">
+		<label class="x_control-label" for="extmall_logger_toggle">{$lang->extmall_logger_toggle}</label>
+		<div class="x_controls">
+			<select name="extmall_logger_toggle">
+				<option value="" selected="selected"|cond="$item_extmall_logger_config==''">{$lang->please_select}</option>
+				<option value="on" selected="selected"|cond="$item_extmall_logger_config=='on'">{$lang->on}</option>
+				<option value="off" selected="selected"|cond="$item_extmall_logger_config=='off'">{$lang->off}</option>
+			</select>
+		</div>
+	</div>
+</section>
+<div class="x_clearfix btnArea">
+	<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+</div>
+</form>
+
+<div class="table event easyList">
+	<form action="./" method="post" id="list_form" class="form">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminUpdateExtmallLogger" />
+	<input type="hidden" name="mode" value="daily_log" />
+	<input type="hidden" name="item_srl" value="{$item_srl}" />
+	<table>
+		<thead>
+			<tr>
+				<th>{$lang->extmall_type}</th>
+				<th>{$lang->extmall_title}</th>
+				<th>{$lang->rsp}</th>
+				<th>{$lang->bundle_qty}</th>
+				<th>{$lang->extmall_promo_memo}</th>
+			</tr>
+		</thead>
+		<tbody id="itemlistorder">
+			<tr loop="$extmall_list=>$no,$val" id="record_{$val->ext_mall_srl}">
+				<input type="hidden" name="ext_mall_srl[]" value="{$val->ext_mall_srl}" />
+				<td>{$val->type}</td>
+				<td>{$val->title}</td>
+				<td><input type="text" name="extmall_rsp[]" style="width:60px;" value="" /></td>
+				<td><input type="text" name="extmall_bundle_qty[]" style="width:40px;" value="" /></td>
+				<td><input type="text" name="extmall_promo_memo[]" style="width:200px;" value="" /></td>
+			</tr>
+			<tr cond="!count($extmall_list)">
+				<td colspan="12">{$lang->msg_no_registered_items}</td>
+			</tr>
+		</tbody>
+	</form>
+	</table>
+	<div class="x_clearfix btnArea">
+		<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+	</div>
+</div>
+<section class="section">
+	<form method="post" action="./" class="x_form-horizontal" enctype="multipart/form-data">
+		<input type="hidden" name="act" value="procSvitemAdminUpdateExtmallLogger" />
+		<input type="hidden" name="mode" value="register_extmall" />
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="item_srl" value="{$item_srl}" />
+		<input type="hidden" name="module_srl" value="{$module_srl}" />
+		<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', 'dispSvitemAdminExtMallLogger','item_srl', $item_srl)}" />
+
+	<column name="url" type="text" notnull="notnull" />
+
+		<h1>{$lang->title_extmall_registration}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="item_code">{$lang->extmall_type}</label>
+			<div class="x_controls">
+				<select name="extmall_type">
+					<option value="">{$lang->please_select}</option>
+					<option value="shop">{$lang->extmall_shop}</option>
+					<option value="market">{$lang->extmall_market}</option>
+				</select>
+				<a href="#item_code_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="item_code_help" class="x_help-block" hidden>{$lang->about_ga_brand_name}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="extmall_title">{$lang->extmall_title}</label>
+			<div class="x_controls">
+				<input name="extmall_title" type="text" class="inputTypeText w300" value="" />
+				<a href="#ga_category_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="ga_category_name_help" class="x_help-block" hidden>{$lang->about_ga_category_name}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="price">{$lang->extmall_url}</label>
+			<div class="x_controls">
+				<input name="extmall_url" type="text" value="" />
+				<a href="#price_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="price_help" class="x_help-block" hidden>{$lang->about_price}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="display">{$lang->display_or_not}</label>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" id="display_Y" name="is_active" value="Y" />{$lang->display}</label>
+				<label class="x_inline"><input type="radio" id="display_N" name="is_active" value="N" />{$lang->not_display}</label>
+				<a href="#display_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="display_help" class="x_help-block" hidden>{$lang->about_display_or_not}</p>
+			</div>
+		</div>
+		<div class="x_clearfix btnArea">
+			<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+		</div>
+	</form>
+</section>

@@ -1,0 +1,132 @@
+<li class="large-3 medium-3 small-3 columns">
+	<!---form action="/cart/add" method="post">
+	<input type="hidden" name="id" class="variant-id" value="1000413136" />
+	<input type="hidden" name="varprice" class="varprice" value="$99.99" />
+	<input type="hidden" name="varname" class="varname" value="Pink" /---->
+	<div class="mp-item">
+		<a class="mp-thumb-hook" href="./buynow/1273"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20b_264x208.jpg" alt="thumbnail-dial-h20b" /></a>
+		<div class="variant-selection font-medium vs-title-color">BEST SELLER!</div>
+		<div class="mp-info">
+			<h3> White</h3>
+			<p class="mp-desc">InBody H20B</p>
+		</div>
+		<div class="btn-wrap">
+			<a href="./add_to_cart.html" class="button mfs-btn">자세히 보기</a>
+		</div>
+	</div>
+	<!----/form---->
+</li>
+<li class="large-3 medium-3 small-3 columns">
+	<form action="/cart/add" method="post">
+	<input type="hidden" name="id" class="variant-id" value="1000872368" />
+	<input type="hidden" name="varprice" class="varprice" value="$99.99" />
+	<input type="hidden" name="varname" class="varname" value="Pink" />
+	<div class="mp-item">
+		<a class="mp-thumb-hook" href="./buynow/1273"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inbody_dial_h20_264x208.jpg" alt="thumbnail-dial-h20" /></a>
+		<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+		<!---ul class="variant-selection">
+			<li>
+				<a class="color-button  grey" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_grey_small_dc8576bc-2a26-479f-880a-5121de5afd7f_large.jpg?v=1415053577" data-varid="270461900" data-varname="Grey" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  jet" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_jet_small_4ba6f6d6-a95a-4849-812d-2ad92868e152_large.jpg?v=1415053577" data-varid="387232624" data-varname="Jet" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  topaz" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_topaz_small_63aa3732-3981-420e-b6db-b2f6b07c72ee_large.jpg?v=1415053577" data-varid="387231980" data-varname="Topaz" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  champagne" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_champagne_small_ce889824-ef1b-49d9-87db-19aaf8b4b7af_large.jpg?v=1415053577" data-varid="387232558" data-varname="Champagne" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  storm" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_storm_small_bbaf954b-f50b-45e8-896d-a6773f2bcf89_large.jpg?v=1415053577" data-varid="744287293" data-varname="Storm" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  coral" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_coral_small_b453260a-b6da-4ce6-bb7a-8813e5fa9d8e_large.jpg?v=1415053577" data-varid="744287397" data-varname="Coral" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  wine" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_wine_small_13de0a7e-f093-4463-96c6-b94f8d67c5a5_large.jpg?v=1415053577" data-varid="798636409" data-varname="Wine" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  sea-glass" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_seaglass_small_f783bbdd-8bac-4d1d-8398-194f6e4bdfc6_large.jpg?v=1415053577" data-varid="798636433" data-varname="Sea Glass" data-varprice="$99.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  red" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/shine_red_small_29e938ff-87c2-4e36-9e76-8e4c1746e4ff_large.jpg?v=1415053577" data-varid="944240101" data-varname="Red" data-varprice="$99.99"><i></i></a>
+			</li>
+		</ul--->
+		<div class="mp-info">
+			<h3>White</h3>
+			<p class="mp-desc">InBody H20</p>
+		</div>
+		<div class="btn-wrap">
+			<input type="submit" class="button mfs-btn addtocart-btn" value="자세히 보기" />
+		</div>
+	</div>
+	</form>
+</li>
+<li class="large-3 medium-3 small-3 columns">
+	<form action="/cart/add" method="post">
+	<input type="hidden" name="id" class="variant-id" value="943588065" />
+	<input type="hidden" name="varprice" class="varprice" value="$49.99" />
+	<input type="hidden" name="varname" class="varname" value="Onyx" />
+	<div class="mp-item">
+		<a class="mp-thumb-hook" href="#"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_black_264x208.jpg" alt="thumbnail-inlab-black" /></a>
+		<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+		<!---ul class="variant-selection">
+			<li>
+				<a class="color-button active onyx" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_onyx_small_272f7191-93be-47a1-9e90-42f07443f7ef_large.jpg?v=1411650956" data-varid="943588065" data-varname="Onyx" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  frost" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_frost_small_2455c962-7b0c-4b52-971d-ab81bf91ef06_large.jpg?v=1411650956" data-varid="943588061" data-varname="Frost" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  fuchsia" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_fuchsia_small_cea61d16-0fc1-4659-9cf6-49f203d66eec_large.jpg?v=1411650956" data-varid="943588069" data-varname="Fuchsia" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  zest" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_zest_small_228cb319-befe-405e-94fe-2efbc6a8aad1_large.jpg?v=1411650956" data-varid="943588073" data-varname="Zest" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  wave" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_wave_small_f585d057-a94a-4361-a32f-17d72e458e23_large.jpg?v=1411650956" data-varid="943588077" data-varname="Wave" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  reef" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_reef_small_e3bceb8c-0cdc-4c2d-a4ff-2f6f840ad1ee_large.jpg?v=1411650956" data-varid="943588081" data-varname="Reef" data-varprice="$49.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  red" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/flash_red_small_be03e31a-4f93-4c97-be05-b5522d27925e_large.jpg?v=1411650956" data-varid="943588085" data-varname="Red" data-varprice="$49.99"><i></i></a>
+			</li>
+		</ul--->
+		<div class="mp-info">
+			<h3>Black</h3>
+			<p class="mp-desc">InLab</p>
+		</div>
+		<div class="btn-wrap">
+			<a href="./add_to_cart.html" class="button mfs-btn">자세히 보기</a>
+		</div>
+	</div>
+	</form>
+</li>
+<li class="large-3 medium-3 small-3 columns">
+	<form action="/cart/add" method="post">
+	<input type="hidden" name="id" class="variant-id" value="837337501" />
+	<input type="hidden" name="varprice" class="varprice" value="$149.99" />
+	<input type="hidden" name="varname" class="varname" value="White" />
+	<div class="mp-item">
+		<a class="mp-thumb-hook" href="#"><img class="mp-thumb" src="./layouts/inbody/img/thumb_inlab_white_264x208.jpg" alt="thumbnail-inlab-white" /></a>
+		<div class="variant-selection font-medium vs-title-color">&nbsp;</div>
+		<!---ul class="variant-selection">
+			<li>
+				<a class="color-button active white" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/beddit_white_small_f8f3a4b1-3e6b-4111-a60d-d8b026dc15fa_large.jpg?v=1411650620" data-varid="837337501" data-varname="White" data-varprice="$149.99"><i></i></a>
+			</li>
+			<li>
+				<a class="color-button  black" href="##" data-img="//cdn.shopify.com/s/files/1/0208/5970/products/beddit_black_small_80ddd884-cc57-442a-8284-1e954ee2b611_large.jpg?v=1411650620" data-varid="837337505" data-varname="Black" data-varprice="$149.99"><i></i></a>
+			</li>
+		</ul--->
+		<div class="mp-info">
+			<h3>White</h3>
+			<p class="mp-desc">InLab</p>
+		</div>
+		<div class="btn-wrap">
+			<input type="submit" class="button mfs-btn addtocart-btn" value="자세히 보기" />
+		</div>
+	</div>
+	</form>
+</li>

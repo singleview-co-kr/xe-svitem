@@ -1,0 +1,27 @@
+<query id="updateAdminItem" action="update">
+	<tables>
+		<table name="svitem_items" />
+	</tables>
+	<columns>
+		<column name="module_srl" var="module_srl" />
+		<column name="item_name" var="item_name" />
+		<column name="item_code" var="item_code" />
+		<column name="barcode" var="barcode" />
+		<column name="enhanced_item_info" var="enhanced_item_info" />
+		<column name="price" var="price" />
+		<column name="current_stock" var="current_stock" />
+		<column name="safe_stock" var="safe_stock" />
+		<column name="sv_tags" var="sv_tags" />
+		<column name="taxfree" var="taxfree" />
+		<column name="display" var="display" />
+		<column name="category_node_srl" var="category_node_srl" />
+		<column name="mob_description" var="mob_description" />
+		<column name="pc_description" var="pc_description" />
+		<column name="list_order" var="list_order" />
+		<column name="updatetime" var="updatetime" default="curdate()" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="item_srl" var="item_srl" notnull="notnull" />
+		<condition operation="equal" column="module_srl" var="module_srl" notnull="notnull" pipe="and"/>
+	</conditions>
+</query>

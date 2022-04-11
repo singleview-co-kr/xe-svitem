@@ -1,0 +1,15 @@
+<!--%import("js/jstree.min.js")-->
+<!--%import("js/themes/default/style.min.css")-->
+<!--%import("js/categorymanagement.js")-->
+<include target="_header.html" />
+<div class="category" style="float:left; margin-right:10px;">
+	<ul id="category_tree" style="border:solid #eee 1px; min-width:400px;"></ul>
+</div>
+
+<script language="javascript">
+(function($) {
+	jQuery(function($) {
+		displayTree({$module_srl}, '#category_tree');
+	});
+}) (jQuery);
+</script>

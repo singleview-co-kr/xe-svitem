@@ -1,0 +1,26 @@
+<include target="_header.html" />
+
+<!-- Content -->
+<div class="admin_content">
+	{@$inc=strtolower($act)}
+	{@$inc=preg_replace('/dispsvitemadmin/','',$inc)}
+
+	<div cond="$XE_VALIDATOR_MESSAGE && $inc != 'skininfo'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+
+	<include target="config" cond="$inc=='config'" />
+	<include target="modinstlist" cond="$inc=='modinstlist'" />
+	<include target="insertmodinst" cond="$inc=='insertmodinst'" />
+	<include target="categorymanagement" cond="$inc=='categorymanagement'" />
+	<include target="barcode_ddl" cond="$inc=='barcodemgmt'" />
+	<include target="insertitem" cond="$inc=='insertitem'" />
+	<include target="updateitem" cond="$inc=='updateitem'" />
+	<include target="itemlist" cond="$inc=='itemlist'" />
+	<include target="additionsetup" cond="$inc=='additionsetup'" />
+	<include target="displaycategories" cond="$inc=='displaycategories'" />
+	<include target="extendvarsetup" cond="$inc=='extendvarsetup'" />
+	<include target="skininfo" cond="$inc=='skininfo'" />
+	<include target="bulkitems" cond="$inc=='bulkitems'" />
+	<include target="listsetup" cond="$inc=='listsetup'" />
+</div><!-- Content -->

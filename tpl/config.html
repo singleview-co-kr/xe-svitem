@@ -1,0 +1,114 @@
+<!--%import("js/script.js")-->
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+        <p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="./" method="post" class="form" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="procSvitemAdminConfig" />
+
+	<fieldset class="section">
+		<h1>{$lang->connect_external_stock_server}</h1>
+		<ul>
+			<li>
+				<p class="q">{$lang->select_server}</p>
+				<p class="a">
+					<select name="external_server_type">
+						<option value='' selected="selected"|cond="$config->external_server_type==''">{$lang->connect_internal_stock_server}</option>
+						<option value='ecaso' selected="selected"|cond="$config->external_server_type=='ecaso'">ecaso</option>
+					</select>
+				</p>
+				<p class="desc">{$lang->about_select_server}</p>
+			</li>
+			<li>
+				<p class="q">{$lang->default_safe_stock}</p>
+				<p class="a">
+					<input type="text" name="default_safe_stock" value="{$config->default_safe_stock}" />
+				</p>
+				<p class="desc">{$lang->about_default_safe_stock}</p>
+			</li>
+		</ul>
+	</fieldset>
+	<section class="section">
+		<h1>{$lang->naver_ep_setting}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="naver_ep_use">{$lang->naver_ep_use}</label>
+			<div class="x_controls">{$lang->naver_ep_use_htaccess}<BR>
+				<label class="x_inline" for="naver_ep_use"><input type="radio" name="naver_ep_use" id="naver_ep_use" value="Y" checked="checked"|cond="$config->naver_ep_use=='Y'" />{$lang->naver_ep_on}</label>
+				<label class="x_inline" for="naver_ep_use"><input type="radio" name="naver_ep_use" id="naver_ep_use" value="N" checked="checked"|cond="$config->naver_ep_use=='N'"/>{$lang->naver_ep_off}</label>
+				<a href="#naver_ep_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="naver_ep_help" class="x_help-block" hidden>{$lang->about_naver_ep}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->naver_ep_extract_module}</label>
+			<div class="x_controls">
+<block loop="$svitem_mod_list=>$key,$val">
+				<label class="x_inline" for="extract_svitem_{$val->module_srl}"><input type="checkbox" name="naver_ep_extract_svitem[]" id="naver_ep_extract_svitem[]" value="{$val->module_srl}" checked="checked"|cond="$config->naver_ep_extract_svitem[$val->module_srl] == 'extract'" /> {$val->mid}</label>
+</block>
+				<a href="#naver_ep_extract_mid_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="naver_ep_extract_mid_help" class="x_help-block" hidden>{$lang->about_naver_ep_extract_mid}</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<h1>{$lang->daum_ep_setting}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mlayout_srl">{$lang->daum_ep_use}</label>
+			<div class="x_controls">{$lang->daum_ep_use_htaccess}<BR>
+				<label class="x_inline" for="daum_ep_use"><input type="radio" name="daum_ep_use" id="daum_ep_use" value="Y" checked="checked"|cond="$config->daum_ep_use=='Y'" />{$lang->daum_ep_on}</label>
+				<label class="x_inline" for="daum_ep_use"><input type="radio" name="daum_ep_use" id="daum_ep_use" value="N" checked="checked"|cond="$config->daum_ep_use=='N'"/>{$lang->daum_ep_off}</label>
+				<a href="#daum_ep_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="daum_ep_help" class="x_help-block" hidden>{$lang->about_daum_ep}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->daum_ep_extract_module}</label>
+			<div class="x_controls">
+<block loop="$svitem_mod_list=>$key,$val">
+				<label class="x_inline" for="extract_svitem_{$val->module_srl}"><input type="checkbox" name="daum_ep_extract_svitem[]" id="daum_ep_extract_svitem[]" value="{$val->module_srl}" checked="checked"|cond="$config->daum_ep_extract_svitem[$val->module_srl] == 'extract'" /> {$val->mid}</label>
+</block>
+				<a href="#daum_ep_extract_mid_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="daum_ep_extract_mid_help" class="x_help-block" hidden>{$lang->about_daum_ep_extract_mid}</p>
+			</div>
+		</div>
+	</section>
+	<fieldset class="section">
+		<h1>{$lang->currency_settings}</h1>
+		<ul>
+			<li>
+				<p class="q">{$lang->select_currency}</p>
+				<p class="a">
+					<select name="currency">
+						<option loop="$lang->currency_list=>$code,$val" value="{$code}" selected="selected"|cond="$config->currency==$code">{$val}</option>
+					</select>
+				</p>
+				<p class="desc">{$lang->about_select_currency}</p>
+			</li>
+			<li>
+			<p class="q">{$lang->currency_format}</p>
+				<p class="a">
+					<select name="as_sign">
+						<option value="Y" selected="selected"|cond="$config->as_sign=='Y'">$ 1,234</option>
+						<option value="N" selected="selected"|cond="$config->as_sign=='N'">1,234 USD</option>
+					</select>
+				</p>
+				<p class="desc">{$lang->about_currency_format}</p>
+			</li>
+			<li>
+				<p class="q">{$lang->decimal_place}</p>
+				<p class="a">
+					<input type="text" name="decimals" value="{$config->decimals}" />
+				</p>
+				<p class="desc">{$lang->about_decimal_place}</p>
+			</li>
+		</ul>
+	</fieldset>
+
+	<div class="btnArea">
+		<button type="submit" class="x_btn">{$lang->cmd_registration}</button>
+	</div>
+
+</form>

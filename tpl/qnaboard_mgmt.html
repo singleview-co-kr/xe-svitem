@@ -1,0 +1,80 @@
+<include target="_header.html" />
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form action="./" method="post" class="x_form-horizontal">
+<input name="act" type="hidden" value="procSvitemAdminUpdateQnaBoardMgmt" />
+<input name="module" type="hidden" value="{$module}" />
+<section class="section">
+	<h1>
+		{$lang->title_qna_board_mgmt}
+		<a href="#aboutQnaBoardMgmt" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+	</h1>
+	<p id="aboutQnaBoardMgmt" class="x_alert x_alert-info-block" hidden>{$lang->about_qna_board_mgmt}</p>
+	<div class="x_control-group">
+		<label class="x_control-label" for="qna_board_title">{$lang->connecting_qna_board_title}</label>
+		<div class="x_controls">
+			<select name="connected_qna_board_srl">
+				<option value="0" selected="selected"|cond="$config->connected_qna_board_srl==0">{$lang->board_disconnect}</option>
+				<option loop="$board_list=>$key,$val" value="{$val->module_srl}" selected="selected"|cond="$config->connected_qna_board_srl==$val->module_srl">{$val->mid}</option>
+			</select>
+			<a href="#qna_board_title_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="qna_board_title_help" class="x_help-block" hidden>{$lang->about_connecting_board}</p>
+		</div>
+	</div>
+	<div cond="$config->connected_qna_board_srl!=0" class="x_control-group">
+		<label class="x_control-label">{$lang->order_type}</label>
+		<div class="x_controls">
+			<select name="order_target" id="order_target" title="{$lang->order_target}">
+				<option loop="$order_target=>$order_key,$order_val" value="{$order_key}" selected="selected"|cond="$config->order_target== $order_key">{$order_val}</option>
+			</select>
+			<select name="order_type" id="order_type" title="{$lang->order_type}">
+				<option value="asc" selected="selected"|cond="$config->order_type != 'desc'">{$lang->order_asc}</option>
+				<option value="desc" selected="selected"|cond="$config->order_type == 'desc'">{$lang->order_desc}</option>
+			</select>
+		</div>
+	</div>
+	<div cond="$config->connected_qna_board_srl!=0" class="x_control-group">
+		<label class="x_control-label" for="review_board_title">{$lang->max_qnas_cnt_title}</label>
+		<div class="x_controls">
+			<select name="max_qnas_cnt">
+				<option value="2" selected="selected"|cond="$config->max_qnas_cnt==2">2개</option>
+				<option value="3" selected="selected"|cond="$config->max_qnas_cnt==3">3개</option>
+				<option value="4" selected="selected"|cond="$config->max_qnas_cnt==4">4개</option>
+				<option value="5" selected="selected"|cond="$config->max_qnas_cnt==5">5개</option>
+				<option value="6" selected="selected"|cond="$config->max_qnas_cnt==6">6개</option>
+				<option value="7" selected="selected"|cond="$config->max_qnas_cnt==7">7개</option>
+				<option value="8" selected="selected"|cond="$config->max_qnas_cnt==8">8개</option>
+				<option value="9" selected="selected"|cond="$config->max_qnas_cnt==9">9개</option>
+				<option value="10" selected="selected"|cond="$config->max_qnas_cnt==10">10개</option>
+			</select>
+			<a href="#review_board_title_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="review_board_title_help" class="x_help-block" hidden>{$lang->about_connecting_board}</p>
+		</div>
+	</div>
+	<div cond="$config->connected_qna_board_srl!=0" class="x_control-group">
+		<label class="x_control-label" for="review_board_title">{$lang->qnas_per_page_title}</label>
+		<div class="x_controls">
+			<select name="qnas_per_page">
+				<option value="2" selected="selected"|cond="$config->qnas_per_page==2">2개</option>
+				<option value="3" selected="selected"|cond="$config->qnas_per_page==3">3개</option>
+				<option value="4" selected="selected"|cond="$config->qnas_per_page==4">4개</option>
+				<option value="5" selected="selected"|cond="$config->qnas_per_page==5">5개</option>
+			</select>
+			<a href="#review_board_title_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+			<p id="review_board_title_help" class="x_help-block" hidden>{$lang->about_connecting_board}</p>
+		</div>
+	</div>
+	<div cond="$qna_category" class="x_control-group" loop="$display_items=>$item_key,$item_val">
+		<label class="x_control-label" for="qna_for_item">{$item_val->mid}<BR>"{$item_val->item_name}"=> 질문</label>
+		<div class="x_controls">
+			<block loop="$qna_category=>$rev_key,$rev_val">
+				<label class="x_inline" for="qna_connect_{$item_key}"><input type="checkbox" name="qna_connect_{$item_key}[]" id="qna_connect_{$item_key}_{$rev_key}[]" value="{$rev_key}" checked="checked"|cond="$config->qna_for_item[$item_key][$rev_key] == 'match'" /> {$rev_val}</label>
+			</block>
+		</div>
+	</div>
+</section>
+<div class="x_clearfix btnArea">
+	<button type="submit" class="x_btn x_btn-primary">{$lang->cmd_submit}</button>
+</div>
+</form>

@@ -1,0 +1,32 @@
+<div class="x_page-header">
+	<h1>
+		{$lang->product_management}
+		<span class="path" cond="$module_info->mid"> &gt; <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" target="_blank"|cond="$module=='admin'">{$module_info->mid}<block cond="$module_info->is_default=='Y'">({$lang->is_default})</block></a> </span>
+		<a href="#aboutModule" data-toggle class="x_icon-question-sign">{$lang->help}</a>
+	</h1>
+</div>
+<p class="x_alert x_alert-info" id="aboutModule" hidden>{$lang->about_svitem}</p>
+<ul cond="$module_info" class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act=='dispSvitemAdminModInstList'"><a href="{getUrl('','module',$module,'act','dispSvitemAdminModInstList')}">{$lang->page_list}</a></li>
+	<li cond="$module_srl" class="x_active"><a href="{getUrl('','module',$module,'act','dispSvitemAdminItemListByModule','module_srl',$module_srl)}">{$module_info->mid} {$lang->page_management}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminInsertModInst' && !$module_srl"><a href="{getUrl('','module',$module,'act','dispSvitemAdminInsertModInst')}">{$lang->page_creation}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminQnaBoardMgmt'"><a href="{getUrl('','module',$module, 'act','dispSvitemAdminQnaBoardMgmt')}">{$lang->cmd_qna_board_mgmt}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminReviewBoardMgmt'"><a href="{getUrl('','module',$module, 'act','dispSvitemAdminReviewBoardMgmt')}">{$lang->cmd_review_board_mgmt}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminBarcodeMgmt'"><a href="{getUrl('','module',$module, 'act','dispSvitemAdminBarcodeMgmt')}">{$lang->cmd_barcode}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminConfig'"><a href="{getUrl('','module',$module, 'act','dispSvitemAdminConfig','module_srl','')}">{$lang->basic_settings}</a></li>
+</ul>
+<ul cond="$module_srl" class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act=='dispSvitemAdminItemListByModule'"><a href="{getUrl('act','dispSvitemAdminItemListByModule')}">{$lang->product_list}</a></li>
+	<li cond="$act=='dispSvitemAdminUpdateItem'" class="x_active"><a href="{getUrl('act','dispSvitemAdminUpdateItem')}">{$lang->product_modification}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminInsertItem'"><a href="{getUrl('act','dispSvitemAdminInsertItem')}">{$lang->product_registration}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminBulkItems'"><a href="{getUrl('act','dispSvitemAdminBulkItems')}">{$lang->bulk_registration}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminShowWindowCatalog'"><a href="{getUrl('act','dispSvitemAdminShowWindowCatalog')}">{$lang->show_window_catalog}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminExtendVarSetup'"><a href="{getUrl('act','dispSvitemAdminExtendVarSetup')}">{$lang->extended_var_setting}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminListDisplaySetup'"><a href="{getUrl('act','dispSvitemAdminListDisplaySetup')}">{$lang->fielddisplay_settings}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminDetailDisplaySetup'"><a href="{getUrl('act','dispSvitemAdminDetailDisplaySetup')}">{$lang->detailpage_fielddisplay_settings}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminInsertModInst'"><a href="{getUrl('act','dispSvitemAdminInsertModInst')}">{$lang->page_configuration}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminSkinInfo'"><a href="{getUrl('act','dispSvitemAdminSkinInfo')}">{$lang->skin_settings}</a></li>
+	<li cond="$module_info->mskin && $module_info->use_mobile=='Y'" class="x_active"|cond="$act=='dispSvitemAdminMobileSkinInfo'"><a href="{getUrl('act','dispSvitemAdminMobileSkinInfo')}">{$lang->mobile_skin}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminAdditionSetup'"><a href="{getUrl('act','dispSvitemAdminAdditionSetup')}">{$lang->additional_settings}</a></li>
+	<li class="x_active"|cond="$act=='dispSvitemAdminGrantInfo'"><a href="{getUrl('act','dispSvitemAdminGrantInfo')}">{$lang->permission_settings}</a></li>
+</ul>
